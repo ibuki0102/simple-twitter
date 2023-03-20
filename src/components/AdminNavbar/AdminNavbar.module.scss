@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  .NavbarContainer {
+    width: 178px;
+    height: 1200px;
+    margin-left: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 10px;
+    .NavbarMenuContainer {
+      width: 100%;
+      .Logo {
+        margin-left: 10px;
+      }
+      .MenuContainer {
+        font-weight: 700;
+        .MenuItem {
+          display: flex;
+          align-items: center;
+          margin: 24px 16px 32px;
+          .Text {
+            margin-left: 10px;
+          }
+        }
+        .ActiveMenuItem {
+          @extend .MenuItem;
+          color: #ff6600;
+          .ActiveHome {
+            fill: #ff6600;
+          }
+        }
+      }
+    }
+    .LogoutLinkContainer {
+      display: flex;
+      align-items: center;
+      margin: 16px;
+      font-weight: 700;
+      .Text {
+        margin-left: 10px;
+      }
+    }
+  }
+}
