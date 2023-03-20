@@ -1,5 +1,5 @@
-import { RegistPage, LoginPage, AdminLoginPage } from 'pages'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { RegistPage, LoginPage, AdminLoginPage } from "pages";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
