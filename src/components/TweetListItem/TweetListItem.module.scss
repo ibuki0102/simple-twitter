@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  .ListItemContainer {
+    display: flex;
+    width: 937px;
+    padding: 10px;
+    .Avatar {
+      flex-grow: 0;
+      margin-left: 24px;
+    }
+    .ContentContainer {
+      margin-left: 8px;
+      flex-grow: 3;
+      .UserInfoContainer {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        .Name {
+          font-weight: 700;
+          margin-right: 8px;
+        }
+        .DetailInfo {
+          font-size: 14px;
+          color: #6c757d;
+        }
+      }
+    }
+  }
+}

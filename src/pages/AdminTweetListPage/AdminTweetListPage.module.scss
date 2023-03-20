@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+  .Container {
+    display: flex;
+    .Header {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+}
