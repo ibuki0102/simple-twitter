@@ -1,3 +1,4 @@
+
 import { RegistPage, LoginPage, AdminLoginPage } from 'pages'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AdminTweetListPage from 'pages/AdminTweetListPage/AdminTweetListPage'
@@ -16,7 +17,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
