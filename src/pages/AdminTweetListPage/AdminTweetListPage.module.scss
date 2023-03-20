@@ -1,10 +1,23 @@
-* {
-  box-sizing: border-box;
-  .Container {
-    display: flex;
+// 雪央
+
+.Container {
+  display: flex;
+  height: 920px;
+  overflow-y: scroll;
+  .TweetListContainer {
+    margin-left: 330px;
     .Header {
+      width: 937px;
       font-size: 24px;
       font-weight: 700;
+      padding: 20px;
+      border: 1px dashed #e6ecf0;
+      border-top: 0;
+      position: fixed;
+      background-color: white;
+    }
+    .ListItemContainer {
+      margin-top: 64px;
     }
   }
 }

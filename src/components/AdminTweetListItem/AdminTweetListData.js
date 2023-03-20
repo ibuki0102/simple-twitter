@@ -1,4 +1,4 @@
-export const TweetListData = [
+export const AdminTweetListData = [
   {
     name: 'test',
     account: 'testAcount',

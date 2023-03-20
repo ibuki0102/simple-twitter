@@ -1,0 +1,33 @@
+// 雪央
+
+.ListItemContainer {
+  display: flex;
+  width: 937px;
+  padding: 16px;
+  border: 1px dashed #e6ecf0;
+  .Avatar {
+    flex-grow: 0;
+  }
+  .ContentContainer {
+    margin-left: 8px;
+    flex-grow: 3;
+    .UserInfoContainer {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      .Name {
+        font-weight: 700;
+        margin-right: 8px;
+      }
+      .DetailInfo {
+        font-size: 14px;
+        color: #6c757d;
+      }
+      .GrayCross {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

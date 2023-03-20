@@ -1,16 +1,18 @@
-import AdminNavbar from 'components/AdminNavbar/AdminNavbar'
+// 雪央
+
+import Sidebar from 'components/Sidebar/Sidebar'
 import styles from '../AdminTweetListPage/AdminTweetListPage.module.scss'
-import TweetListItem from 'components/TweetListItem/TweetListItem'
-import { TweetListData } from 'components/TweetListItem/TweetListData'
+import AdminTweetListItem from 'components/AdminTweetListItem/AdminTweetListItem'
+import { AdminTweetListData } from 'components/AdminTweetListItem/AdminTweetListData'
 
 const AdminTweetListPage = () => {
-  const listItems = TweetListData.map((itemData) => (
-    <TweetListItem itemData={itemData} />
+  const listItems = AdminTweetListData.map((itemData) => (
+    <AdminTweetListItem itemData={itemData} />
   ))
   return (
     <div className={styles.Container}>
       <div className={styles.Sidebar}>
-        <AdminNavbar />
+        <Sidebar type="admin" />
       </div>
       <div className={styles.TweetListContainer}>
         <div className={styles.Header}>推文清單</div>
