@@ -1,5 +1,5 @@
 import styles from '../AdminTweetListItem/AdminTweetListItem.module.scss'
-import grayCross from 'assets/icons/gray_cross.svg'
+import { ReactComponent as GrayCross } from 'assets/icons/gray_cross.svg'
 import defaultAvatar from 'assets/icons/default_avatar.svg'
 
 const AdminTweetListItem = ({ itemData }) => {
@@ -18,7 +18,7 @@ const AdminTweetListItem = ({ itemData }) => {
             </span>
           </div>
           <div>
-            <img src={grayCross} alt="grayCross" />
+            <GrayCross className={styles.GrayCross} />
           </div>
         </div>
         <div className={styles.tweetContentContainer}>

@@ -2,7 +2,7 @@
 
 import styles from '../Sidebar/Sidebar.module.scss'
 import { ReactComponent as Logo } from 'assets/icons/logo.svg'
-import { ReactComponent as FilledHome } from 'assets/icons/filled_home.svg'
+import { ReactComponent as ActiveHome } from 'assets/icons/active_home.svg'
 import { ReactComponent as User } from 'assets/icons/user.svg'
 import { ReactComponent as Logout } from 'assets/icons/logout.svg'
 import { ReactComponent as Cog } from 'assets/icons/cog.svg'
@@ -16,7 +16,7 @@ const Sidebar = ({ type, page }) => {
         <Logo className={styles.Logo} />
         <div className={styles.MenuContainer}>
           <div className={styles.ActiveMenuItem}>
-            <FilledHome />
+            <ActiveHome />
             <span className={styles.Text}>
               {type === 'admin' ? '推文清單' : '首頁'}
             </span>
