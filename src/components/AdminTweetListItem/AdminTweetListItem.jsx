@@ -1,8 +1,8 @@
-import styles from '../TweetListItem/TweetListItem.module.scss'
+import styles from '../AdminTweetListItem/AdminTweetListItem.module.scss'
 import grayCross from 'assets/icons/gray_cross.svg'
 import defaultAvatar from 'assets/icons/default_avatar.svg'
 
-const TweetListItem = ({ itemData }) => {
+const AdminTweetListItem = ({ itemData }) => {
   const { name, account, createAt, content } = itemData
   return (
     <div className={styles.ListItemContainer}>
@@ -29,4 +29,4 @@ const TweetListItem = ({ itemData }) => {
   )
 }
 
-export default TweetListItem
+export default AdminTweetListItem

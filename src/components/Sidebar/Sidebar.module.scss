@@ -1,0 +1,55 @@
+.SidebarContainer {
+  width: 178px;
+  height: 1200px;
+  margin-left: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 10px;
+  position: fixed;
+  .SidebarMenuContainer {
+    width: 100%;
+    .Logo {
+      margin-left: 10px;
+    }
+    .MenuContainer {
+      font-weight: 700;
+      .MenuItem {
+        display: flex;
+        align-items: center;
+        margin: 24px 16px 32px;
+        &:hover {
+          cursor: pointer;
+        }
+        .Text {
+          margin-left: 10px;
+        }
+      }
+      .ActiveMenuItem {
+        @extend .MenuItem;
+        color: #ff6600;
+      }
+      .TweetButton {
+        border: 0;
+        width: 100%;
+        height: 46px;
+        background-color: #ff6600;
+        color: white;
+        border-radius: 50px;
+        font-size: 20px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .LogoutLinkContainer {
+    display: flex;
+    align-items: center;
+    margin: 16px;
+    font-weight: 700;
+    .Text {
+      margin-left: 10px;
+    }
+  }
+}

@@ -1,7 +1,7 @@
-* {
-  box-sizing: border-box;
-  .Container {
-    display: flex;
+.Container {
+  display: flex;
+  .TweetListContainer {
+    margin-left: 330px;
     .Header {
       font-size: 24px;
       font-weight: 700;
