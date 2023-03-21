@@ -2,10 +2,10 @@
 
 .Container {
   display: flex;
-  height: 100vh;
+  height: 1200px;
   overflow-y: scroll;
   .TweetListContainer {
-    margin-left: 330px;
+    margin-left: 332px;
     width: 937px;
     .Header {
       width: 100%;
@@ -19,7 +19,7 @@
       z-index: 2;
     }
     .ListItemContainer {
-      margin-top: 72px;
+      margin-top: 75px;
       padding: 16px;
       display: flex;
       flex-wrap: wrap;

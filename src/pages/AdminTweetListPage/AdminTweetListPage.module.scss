@@ -2,7 +2,7 @@
 
 .Container {
   display: flex;
-  height: 100vh;
+  height: 1200px;
   overflow-y: scroll;
   .TweetListContainer {
     margin-left: 330px;
@@ -17,7 +17,7 @@
       background-color: white;
     }
     .ListItemContainer {
-      margin-top: 64px;
+      margin-top: 76px;
     }
   }
 }

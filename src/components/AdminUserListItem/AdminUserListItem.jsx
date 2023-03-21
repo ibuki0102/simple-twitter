@@ -27,9 +27,10 @@ const AdminUserListItem = ({ userData }) => {
         ) : (
           <img src={avatar} className={styles.Avatar} alt={avatar} />
         )}
-
-        <span className={styles.Name}>{name}</span>
-        <span className={styles.Account}>@{account}</span>
+        <div className={styles.NameAccount}>
+          <span className={styles.Name}>{name}</span>
+          <span className={styles.Account}>@{account}</span>
+        </div>
       </div>
       <div className={styles.DetailInfoContainer}>
         <div className={styles.TweetsLikesContainer}>
@@ -44,11 +45,11 @@ const AdminUserListItem = ({ userData }) => {
         </div>
         <div className={styles.FollowContainer}>
           <div className={styles.Following}>
-            <span>{following}個</span>
+            <span>{following} 個</span>
             <span className={styles.GreyText}>跟隨中</span>
           </div>
           <div className={styles.Follower}>
-            <span>{follower}位</span>
+            <span>{follower} 位</span>
             <span className={styles.GreyText}>跟隨者</span>
           </div>
         </div>
