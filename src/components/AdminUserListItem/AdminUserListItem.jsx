@@ -1,7 +1,6 @@
 // 雪央
 
 import styles from '../AdminUserListItem/AdminUserListItem.module.scss'
-import defaultBanner from 'assets/images/default_banner.png'
 import { ReactComponent as DefaultAvatar } from 'assets/icons/default_avatar.svg'
 import { ReactComponent as Post } from 'assets/icons/post.svg'
 import { ReactComponent as Like } from 'assets/icons/like.svg'
@@ -20,15 +19,7 @@ const AdminUserListItem = ({ userData }) => {
   return (
     <div className={styles.ListItemContainer}>
       <div className={styles.Bg}>
-        {banner === null ? (
-          <img
-            src={defaultBanner}
-            className={styles.Banner}
-            alt={defaultBanner}
-          />
-        ) : (
-          <img src={banner} alt={banner} />
-        )}
+        <img src={banner} className={styles.Banner} alt={banner} />
       </div>
       <div className={styles.AvatarAccountContainer}>
         {avatar === null ? (
