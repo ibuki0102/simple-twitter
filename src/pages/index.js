@@ -1,9 +1,10 @@
-import LoginPage from './LoginPage/LoginPage'
-import RegistPage from './RegistPage/RegistPage'
-import AdminLoginPage from './AdminLoginPage/AdminLoginPage'
-import AdminTweetListPage from './AdminTweetListPage/AdminTweetListPage'
-import AdminUserListPage from './AdminUserListPage/AdminUserListPage'
+import LoginPage from "./LoginPage/LoginPage";
+import RegistPage from "./RegistPage/RegistPage";
+import AdminLoginPage from "./AdminLoginPage/AdminLoginPage";
+import AdminTweetListPage from "./AdminTweetListPage/AdminTweetListPage";
+import AdminUserListPage from "./AdminUserListPage/AdminUserListPage";
 import MainPage from "./MainPage/MainPage";
+import ReplyListPage from "./ReplyListPage/ReplyListPage";
 
 export {
   LoginPage,
@@ -11,5 +12,6 @@ export {
   AdminLoginPage,
   AdminTweetListPage,
   AdminUserListPage,
-  MainPage
-}
+  MainPage,
+  ReplyListPage,
+};

@@ -1,0 +1,47 @@
+// Jasmine
+
+.ReplyItemContainer {
+  outline: 1px solid #e6ecf0;
+  padding-top: 16px;
+  .ReplyUser {
+    display: flex;
+    .DefaultAvatar {
+      margin-left: 32px;
+      margin-right: 8px;
+    }
+    .Reply {
+      .UserName {
+        font-weight: 700;
+        margin-right: 8px;
+        line-height: 26px;
+      }
+      .UserAcount {
+        color: #6c757d;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+      }
+      .ReplyAndTag {
+        margin-top: 8px;
+        .ReplyText {
+          color: #6c757d;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 22px;
+          margin-right: 4px;
+        }
+        .Tag {
+          color: #ff6600;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+  .ReplyContent {
+    width: 500px;
+    margin: 8px 0 0 90px;
+    padding-bottom: 16px;
+  }
+}

@@ -1,14 +1,14 @@
-
 import {
   RegistPage,
   LoginPage,
   AdminLoginPage,
   AdminTweetListPage,
   AdminUserListPage,
-  MainPage
-} from 'pages'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import styles from 'App.module.scss'
+  MainPage,
+  ReplyListPage,
+} from "pages";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styles from "App.module.scss";
 
 function App() {
   return (
@@ -21,11 +21,12 @@ function App() {
           <Route path="admin/tweetList" element={<AdminTweetListPage />} />
           <Route path="admin/userList" element={<AdminUserListPage />} />
           <Route path="main" element={<MainPage />} />
+          <Route path="main/replyList" element={<ReplyListPage />} />
           <Route path="*" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
