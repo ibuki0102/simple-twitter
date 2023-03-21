@@ -29,6 +29,9 @@
       border-radius: 50px;
       margin-top: 10px;
       align-self: flex-end;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
