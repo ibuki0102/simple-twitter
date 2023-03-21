@@ -8,7 +8,7 @@ import { ReactComponent as Logout } from 'assets/icons/logout.svg'
 import { ReactComponent as Cog } from 'assets/icons/cog.svg'
 
 // 帶入type這個props來決定要顯示前台的sidebar還是後台的，帶入user會顯示前台，admin會顯示後台
-// page還不確定是否帶入，應該會用來決定要顯示為active的icom
+// page還不確定是否帶入，應該會用來決定要顯示為active的icon
 const Sidebar = ({ type, page }) => {
   return (
     <div className={styles.SidebarContainer}>
