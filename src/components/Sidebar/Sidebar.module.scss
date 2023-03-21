@@ -2,29 +2,33 @@
 
 .SidebarContainer {
   width: 178px;
-  height: 100vh;
+  height: 1200px;
   margin-left: 130px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 10px;
-  position: fixed;
+  padding-top: 9px;
+  position: absolute;
   .SidebarMenuContainer {
     width: 100%;
     .Logo {
-      margin-left: 10px;
+      margin: 4px 0 0 10px;
     }
     .MenuContainer {
       font-weight: 700;
       .MenuItem {
         display: flex;
         align-items: center;
-        margin: 24px 16px 32px;
+        height: 58px;
+        padding: 16px;
+        margin: 8px 0;
+        font-size: 18px;
+        color: #44444f;
         &:hover {
           cursor: pointer;
         }
         .Text {
-          margin-left: 10px;
+          margin-left: 16px;
         }
       }
       .ActiveMenuItem {
@@ -55,6 +59,7 @@
     }
     .Text {
       margin-left: 10px;
+      font-size: 18px;
     }
   }
 }

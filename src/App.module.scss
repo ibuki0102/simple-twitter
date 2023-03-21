@@ -1,15 +1,15 @@
 // 導入字體
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 
 // 使用font-face自訂義字體
 @font-face {
-  font-family: "TwitterFont";
-  src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+  font-family: 'TwitterFont';
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 }
 @font-face {
-  font-family: "TwitterFont";
-  src: url("assets/fonts/Montserrat-Regular.ttf");
+  font-family: 'TwitterFont';
+  src: url('assets/fonts/Montserrat-Regular.ttf');
   unicode-range: U+0030-0039;
 }
 
@@ -17,7 +17,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "TwitterFont", "Noto Sans TC", "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: 'TwitterFont', 'Noto Sans TC', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  .App {
+    width: 1400px;
+    height: 1200px;
+    margin: 0 auto;
+  }
 }

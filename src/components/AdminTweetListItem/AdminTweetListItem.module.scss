@@ -3,10 +3,11 @@
 .ListItemContainer {
   display: flex;
   width: 937px;
-  padding: 16px;
+  padding: 16px 0px 16px 16px;
   border: 1px dashed #e6ecf0;
   .Avatar {
     flex-grow: 0;
+    margin-left: 9px;
   }
   .ContentContainer {
     margin-left: 8px;
