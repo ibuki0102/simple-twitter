@@ -50,6 +50,9 @@
     align-items: center;
     margin: 16px;
     font-weight: 700;
+    &:hover {
+      cursor: pointer;
+    }
     .Text {
       margin-left: 10px;
     }

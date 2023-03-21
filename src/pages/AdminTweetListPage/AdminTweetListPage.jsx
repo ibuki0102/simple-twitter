@@ -12,7 +12,7 @@ const AdminTweetListPage = () => {
   return (
     <div className={styles.Container}>
       <div className={styles.Sidebar}>
-        <Sidebar type="admin" />
+        <Sidebar type="admin" page="home" />
       </div>
       <div className={styles.TweetListContainer}>
         <div className={styles.Header}>推文清單</div>

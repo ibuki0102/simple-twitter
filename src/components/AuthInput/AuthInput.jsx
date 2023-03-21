@@ -1,7 +1,7 @@
 //雪央
 import styles from './AuthInput.module.scss'
 
-const AuthInput = ({ inputLabel, type, placeholder }) => {
+const AuthInput = ({ inputLabel, type, placeholder, value }) => {
   return (
     <>
       <div className={styles.AuthInputContainer}>
@@ -10,6 +10,7 @@ const AuthInput = ({ inputLabel, type, placeholder }) => {
           className={styles.AuthInput}
           type={type}
           placeholder={placeholder}
+          value={value}
         />
       </div>
       <div className={styles.BottomLine}></div>
