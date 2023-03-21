@@ -2,13 +2,13 @@
 
 .SidebarContainer {
   width: 178px;
-  height: 1200px;
+  height: 100vh;
   margin-left: 130px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 9px;
-  position: absolute;
+  position: fixed;
   .SidebarMenuContainer {
     width: 100%;
     .Logo {
