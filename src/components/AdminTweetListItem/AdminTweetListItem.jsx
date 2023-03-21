@@ -1,9 +1,11 @@
+// 雪央
+
 import styles from '../AdminTweetListItem/AdminTweetListItem.module.scss'
 import { ReactComponent as GrayCross } from 'assets/icons/gray_cross.svg'
 import defaultAvatar from 'assets/icons/default_avatar.svg'
 
-const AdminTweetListItem = ({ itemData }) => {
-  const { name, account, createAt, content } = itemData
+const AdminTweetListItem = ({ listData }) => {
+  const { name, account, createAt, content } = listData
   return (
     <div className={styles.ListItemContainer}>
       <div className={styles.Avatar}>

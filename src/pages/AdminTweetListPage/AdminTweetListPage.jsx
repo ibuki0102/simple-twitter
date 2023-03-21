@@ -6,8 +6,8 @@ import AdminTweetListItem from 'components/AdminTweetListItem/AdminTweetListItem
 import { AdminTweetListData } from 'components/AdminTweetListItem/AdminTweetListData'
 
 const AdminTweetListPage = () => {
-  const listItems = AdminTweetListData.map((itemData) => (
-    <AdminTweetListItem itemData={itemData} />
+  const tweetlistItems = AdminTweetListData.map((listData) => (
+    <AdminTweetListItem listData={listData} />
   ))
   return (
     <div className={styles.Container}>
@@ -16,7 +16,7 @@ const AdminTweetListPage = () => {
       </div>
       <div className={styles.TweetListContainer}>
         <div className={styles.Header}>推文清單</div>
-        <div className={styles.ListItemContainer}>{listItems}</div>
+        <div className={styles.ListItemContainer}>{tweetlistItems}</div>
       </div>
     </div>
   )

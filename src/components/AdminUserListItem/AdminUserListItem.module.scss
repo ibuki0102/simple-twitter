@@ -1,0 +1,80 @@
+.ListItemContainer {
+  width: 210px;
+  height: 314px;
+  border-radius: 10px;
+  position: relative;
+  background-color: #f6f7f8;
+  .Bg {
+    width: 210px;
+    height: 140px;
+    .Banner {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px 10px 0px 0px;
+    }
+  }
+  .AvatarAccountContainer {
+    position: absolute;
+    top: 64px;
+    left: 55px;
+    width: 100px;
+    height: 154px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .Avatar {
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      border: 4px solid white;
+    }
+    .Name {
+      font-weight: 700;
+      color: #171725;
+      margin-top: 8px;
+    }
+    .Account {
+      font-size: 14px;
+      color: #6c757d;
+    }
+  }
+  .DetailInfoContainer {
+    margin-top: 94px;
+    .TweetsLikesContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 8px;
+      column-gap: 16px;
+      .PostContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 8px;
+        color: #1c1c1c;
+        font-weight: 500;
+        .Post {
+          width: 24px;
+        }
+        .Like {
+          width: 24px;
+        }
+      }
+      .LikeContainer {
+        @extend .PostContainer;
+      }
+    }
+    .FollowContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      column-gap: 8px;
+      .GreyText {
+        color: #6c757d;
+      }
+    }
+  }
+}
