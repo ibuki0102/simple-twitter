@@ -1,8 +1,11 @@
-.App {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Noto Sans TC', 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+}
+
+.App {
+  font-family: "Noto Sans TC", "Montserrat", "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }

@@ -1,0 +1,53 @@
+// Jasmine
+
+.TweetListContainer {
+  background-color: #e6ecf0;
+  width: 620px;
+  height: 100%;
+  margin-left: 333px;
+  .TweetListTopSection {
+    background-color: white;
+    position: relative;
+    height: 211px;
+    border: 1px solid #e6ecf0;
+    border-top: none;
+    margin-bottom: 10px;
+    h4 {
+      color: #171725;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0px;
+      padding: 24px 0 24px 23px;
+      border-bottom: 1px solid #e6ecf0;
+    }
+    .Post {
+      width: 526px;
+      height: 50px;
+      margin-top: 16px;
+      margin-left: 23px;
+      display: flex;
+      align-items: center;
+    }
+    .Photo {
+      width: 50px;
+      height: 50px;
+    }
+    h5 {
+      margin-left: 8px;
+      font-size: 18px;
+      color: #6c757d;
+    }
+    button {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      width: 64px;
+      height: 40px;
+      background-color: #ff6600;
+      border: none;
+      border-radius: 50px;
+      color: #ffffff;
+      font-weight: 400;
+    }
+  }
+}
