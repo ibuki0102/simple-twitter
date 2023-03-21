@@ -2,7 +2,7 @@
 
 .TweetItemContainer {
   width: 620px;
-  height: 168px;
+  max-height: 186px;
   border: 1px solid #e6ecf0;
   border-bottom: none;
   background-color: white;
@@ -35,6 +35,7 @@
     }
     .Icon {
       display: flex;
+      margin-bottom: 18px;
       .Message {
         display: flex;
         align-items: center;
