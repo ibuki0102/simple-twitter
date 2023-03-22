@@ -1,10 +1,10 @@
 // Jasmine
 
-import styles from "./MainPage.module.scss";
+import styles from './MainPage.module.scss'
 
-import Sidebar from "components/Sidebar/Sidebar";
-import TweetList from "components/TweetList/TweetList";
-import PopularUserList from "components/PopularUserList/PopularUserList";
+import Sidebar from 'components/Sidebar/Sidebar'
+import TweetList from 'components/TweetList/TweetList'
+import PopularUserList from 'components/PopularUserList/PopularUserList'
 
 const MainPage = () => {
   return (
@@ -13,7 +13,7 @@ const MainPage = () => {
       <TweetList />
       <PopularUserList />
     </div>
-  );
-};
+  )
+}
 
-export default MainPage;
+export default MainPage
