@@ -7,6 +7,7 @@ import MainPage from "./MainPage/MainPage";
 import ReplyListPage from "./ReplyListPage/ReplyListPage";
 import SettingPage from "./SettingPage/SettingPage";
 import UserTweetPage from "./UserTweetPage/UserTweetPage";
+import UserFollowPage from "./UserFollowPage/UserFollowPage";
 
 export {
   LoginPage,
@@ -18,4 +19,5 @@ export {
   SettingPage,
   ReplyListPage,
   UserTweetPage,
+  UserFollowPage,
 };

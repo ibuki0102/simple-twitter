@@ -8,7 +8,8 @@ import {
   SettingPage,
   ReplyListPage,
   UserTweetPage,
-} from 'pages'
+  UserFollowPage,
+} from "pages";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import styles from 'App.module.scss'
 import { userData } from 'assets/userData'
@@ -29,6 +30,7 @@ function App() {
           <Route path="main" element={<MainPage />} />
           <Route path="main/replyList" element={<ReplyListPage />} />
           <Route path="/user/self" element={<UserTweetPage />} />
+          <Route path="/user/follow" element={<UserFollowPage />} />
           <Route path="setting" element={<SettingPage userData={userData} />} />
           {/* 雪央註: Modal的路由僅供顯示，之後會在MainPage以及ReplyListPage裡用Component使用 */}
           <Route
