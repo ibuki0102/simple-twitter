@@ -12,12 +12,10 @@ const ReplyList = () => {
   return (
     <div className={styles.ReplyListContainer}>
       <div className={styles.ReplyListTopSection}>
-        <h4>
-          <div className={styles.Heading}>
-            <Back className={styles.Back} />
-            推文
-          </div>
-        </h4>
+        <div className={styles.Heading}>
+          <Back className={styles.Back} />
+          <div>推文</div>
+        </div>
         <div>
           <div className={styles.User}>
             <DefaultAvatar className={styles.DefaultAvatar} />

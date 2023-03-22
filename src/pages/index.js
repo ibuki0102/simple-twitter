@@ -5,7 +5,8 @@ import AdminTweetListPage from "./AdminTweetListPage/AdminTweetListPage";
 import AdminUserListPage from "./AdminUserListPage/AdminUserListPage";
 import MainPage from "./MainPage/MainPage";
 import ReplyListPage from "./ReplyListPage/ReplyListPage";
-import SettingPage from './SettingPage/SettingPage'
+import SettingPage from "./SettingPage/SettingPage";
+import UserTweetPage from "./UserTweetPage/UserTweetPage";
 
 export {
   LoginPage,
@@ -16,4 +17,5 @@ export {
   MainPage,
   SettingPage,
   ReplyListPage,
+  UserTweetPage,
 };

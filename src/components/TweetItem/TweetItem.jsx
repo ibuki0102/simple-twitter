@@ -3,7 +3,7 @@
 import styles from "components/TweetItem/TweetItem.module.scss";
 import { ReactComponent as DefaultAvatar } from "assets/icons/default_avatar.svg";
 import { ReactComponent as Reply } from "assets/icons/reply.svg";
-import { ReactComponent as Like } from "assets/icons/like.svg";
+import { ReactComponent as Like } from "assets/icons/heart.svg";
 
 const TweetItem = () => {
   return (
