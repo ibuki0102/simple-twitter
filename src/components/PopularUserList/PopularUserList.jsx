@@ -7,16 +7,18 @@ import PopularUser from "components/PopularUser/PopularUser";
 const PopularUserList = () => {
   return (
     <div className={styles.PopularUserListContainer}>
-      <h4>推薦跟隨</h4>
       <div className={styles.PopularUserContainer}>
-        <PopularUser />
-        <PopularUser />
-        <PopularUser />
-        <PopularUser />
-        <PopularUser />
-        <PopularUser />
-        <PopularUser />
-        <PopularUser />
+        <h4>推薦跟隨</h4>
+        <div className={styles.PopularUserCollection}>
+          <PopularUser />
+          <PopularUser />
+          <PopularUser />
+          <PopularUser />
+          <PopularUser />
+          <PopularUser />
+          <PopularUser />
+          <PopularUser />
+        </div>
       </div>
     </div>
   );
