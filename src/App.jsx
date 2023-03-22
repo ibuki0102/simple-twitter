@@ -11,7 +11,7 @@ import {
   UserFollowPage,
   OtherTweetPage,
 } from 'pages'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import styles from 'App.module.scss'
 import { userData } from 'assets/userData'
 import { replyTweetModalData } from 'assets/replyTweetModalData'
