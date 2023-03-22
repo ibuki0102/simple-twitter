@@ -8,6 +8,7 @@ import ReplyListPage from "./ReplyListPage/ReplyListPage";
 import SettingPage from "./SettingPage/SettingPage";
 import UserTweetPage from "./UserTweetPage/UserTweetPage";
 import UserFollowPage from "./UserFollowPage/UserFollowPage";
+import OtherTweetPage from "./OtherTweetPage/OtherTweetPage";
 
 export {
   LoginPage,
@@ -20,4 +21,5 @@ export {
   ReplyListPage,
   UserTweetPage,
   UserFollowPage,
+  OtherTweetPage,
 };
