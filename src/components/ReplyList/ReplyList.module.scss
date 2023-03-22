@@ -16,10 +16,14 @@
       margin: 0px;
       padding: 24px 0 24px 23px;
       border-bottom: 1px solid #e6ecf0;
-      .Back {
-        margin-right: 19px;
-        &:hover {
-          cursor: pointer;
+      .Heading {
+        display: flex;
+        align-items: center;
+        .Back {
+          margin-right: 19px;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
