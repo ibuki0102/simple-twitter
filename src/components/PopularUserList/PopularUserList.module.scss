@@ -3,8 +3,8 @@
 .PopularUserListContainer {
   width: 273px;
   height: 731px;
-  position: fixed;
-  right: 30px;
+  position: sticky;
+  top: 0;
   h4 {
     color: #171725;
     font-size: 24px;

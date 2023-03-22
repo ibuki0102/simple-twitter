@@ -7,10 +7,11 @@ import {
   MainPage,
   SettingPage,
   ReplyListPage,
-} from 'pages'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import styles from 'App.module.scss'
-import { userData } from 'assets/userData'
+  UserTweetPage,
+} from "pages";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styles from "App.module.scss";
+import { userData } from "pages/SettingPage/UserData";
 import { replyTweetModalData } from 'assets/replyTweetModalData'
 import TweetModal from 'components/TweetModal/TweetModal'
 import ReplyModal from 'components/ReplyModal/ReplyModal'
@@ -27,6 +28,7 @@ function App() {
           <Route path="admin/userList" element={<AdminUserListPage />} />
           <Route path="main" element={<MainPage />} />
           <Route path="main/replyList" element={<ReplyListPage />} />
+          <Route path="/user/self" element={<UserTweetPage />} />
           <Route path="setting" element={<SettingPage userData={userData} />} />
           {/* 雪央註: Modal的路由僅供顯示，之後會在MainPage以及ReplyListPage裡用Component使用 */}
           <Route

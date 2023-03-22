@@ -42,8 +42,8 @@
         justify-content: center;
         margin-right: 41.3px;
         .Reply {
-          width: 18px;
-          height: 18px;
+          width: 19px;
+          height: 19px;
           margin-right: 9.44px;
         }
         .Number {
@@ -57,9 +57,13 @@
         align-items: center;
         justify-content: center;
         .Like {
-          width: 18px;
-          height: 18px;
+          width: 15px;
+          height: 15px;
           margin-right: 9.3px;
+          stroke: #6c757d;
+          // 點擊愛心後增加以下兩樣式(填滿愛心)
+          // stroke: #FC5A5A;
+          // fill: #FC5A5A;
         }
         .Number {
           color: #6c757d;

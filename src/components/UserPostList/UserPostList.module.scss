@@ -1,0 +1,120 @@
+// Jasmine
+
+.UserPostListContainer {
+  border: 1px solid #e6ecf0;
+  width: 620px;
+  height: 100%;
+  margin-left: 333px;
+  .UserPostListTopSection {
+    position: relative;
+    max-height: 550px;
+    .Return {
+      display: flex;
+      align-items: center;
+      padding: 19px 0 17px 28px;
+      .UserName {
+        display: flex;
+        flex-direction: column;
+        margin-left: 19px;
+        .Name {
+          margin: 0;
+          padding: 0;
+          color: #171725;
+          font-size: 18px;
+          line-height: 26px;
+          font-weight: 700;
+        }
+        .TweetCount {
+          color: #6c757d;
+          font-size: 13px;
+          font-weight: 500;
+        }
+      }
+    }
+    .Banner {
+      width: 620px;
+    }
+    .Photo {
+      width: 141.1px;
+      height: 140px;
+      position: absolute;
+      top: 199px;
+      left: 16.13px;
+    }
+    button {
+      position: absolute;
+      top: 291px;
+      right: 16px;
+      padding: 8px 16px;
+      color: #ff6600;
+      background-color: #fff;
+      line-height: 24px;
+      font-weight: 400;
+      border: 1px solid #ff6600;
+      border-radius: 50px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .UserIntroduction {
+      margin-top: 72px;
+      margin-left: 16px;
+      .User {
+        margin-bottom: 6px;
+        .UserName {
+          color: #171725;
+          font-size: 18px;
+          line-height: 26px;
+          font-weight: 700;
+        }
+        .UserAcount {
+          color: #6c757d;
+          font-size: 14px;
+          line-height: 22px;
+          font-weight: 400;
+        }
+      }
+      .Introduction {
+        color: #171725;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 400;
+        margin-bottom: 8px;
+      }
+      .Follow {
+        display: flex;
+        margin-bottom: 31px;
+        .Following,
+        .Follower {
+          display: flex;
+          margin-right: 20px;
+          &:hover {
+            cursor: pointer;
+          }
+          .Number {
+            color: #171725;
+          }
+          .Text {
+            color: #6c757d;
+          }
+        }
+      }
+    }
+    .Heading {
+      display: flex;
+      .Title {
+        width: 140px;
+        text-align: center;
+        padding-bottom: 15px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .Active {
+        cursor: pointer;
+        color: #ff6600;
+        border-bottom: 2px solid #ff6600;
+      }
+    }
+  }
+}
