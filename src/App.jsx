@@ -17,10 +17,12 @@ import TweetModal from 'components/TweetModal/TweetModal'
 import ReplyModal from 'components/ReplyModal/ReplyModal'
 import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
 
+const basename = process.env.PUBLIC_URL
+
 function App() {
   return (
     <div className={styles.App}>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="login" element={<LoginPage />} />
           <Route path="regist" element={<RegistPage />} />
