@@ -15,6 +15,7 @@ import { userData } from 'assets/userData'
 import { replyTweetModalData } from 'assets/replyTweetModalData'
 import TweetModal from 'components/TweetModal/TweetModal'
 import ReplyModal from 'components/ReplyModal/ReplyModal'
+import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
           <Route
             path="replyModal"
             element={<ReplyModal replyTweetModalData={replyTweetModalData} />}
+          />
+          <Route
+            path="profileEditModal"
+            element={<ProfileEditModal userData={userData} />}
           />
           <Route path="*" element={<LoginPage />} />
         </Routes>
