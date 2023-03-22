@@ -1,20 +1,25 @@
 // Jasmine
 
 .PopularUserListContainer {
-  width: 273px;
-  height: 731px;
+  max-width: 280px;
+  max-height: 800px;
   position: sticky;
   top: 0;
-  h4 {
-    color: #171725;
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0px;
-    padding: 40px 0 24px 48px;
-  }
   .PopularUserContainer {
-    width: 273px;
-    margin-left: 24px;
-    border-top: 1px solid #e6ecf0;
+    background-color: #fafafb;
+    width: 100%;
+    margin: 16px 0 18px 24px;
+    h4 {
+      border-bottom: 1px solid #e6ecf0;
+      color: #171725;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0px;
+      padding: 24px 0 24px 24px;
+    }
+    .PopularUserCollection {
+      margin-left: 24px;
+      padding-right: 16px;
+    }
   }
 }

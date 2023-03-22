@@ -41,16 +41,50 @@
       top: 199px;
       left: 16.13px;
     }
+    .Mail {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 291px;
+      right: 185px;
+      border: 1.3px solid #ff6600;
+      border-radius: 50%;
+      padding: 8px;
+      fill: #ff6600;
+      &:hover {
+        cursor: pointer;
+        background-color: #ff6600;
+        stroke: white;
+        fill: white;
+      }
+    }
+    .Bell {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 291px;
+      right: 124px;
+      border: 1.3px solid #ff6600;
+      border-radius: 50%;
+      padding: 6px;
+      fill: #ff6600;
+      &:hover {
+        cursor: pointer;
+        background-color: #ff6600;
+        stroke: white;
+        fill: white;
+      }
+    }
     button {
       position: absolute;
       top: 291px;
-      right: 16px;
+      right: 17px;
       padding: 8px 16px;
-      color: #ff6600;
-      background-color: #fff;
+      color: #ffffff;
+      background-color: #ff6600;
       line-height: 24px;
       font-weight: 400;
-      border: 1px solid #ff6600;
+      border: none;
       border-radius: 50px;
       &:hover {
         cursor: pointer;
