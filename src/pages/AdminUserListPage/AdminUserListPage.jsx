@@ -3,7 +3,7 @@
 import Sidebar from 'components/Sidebar/Sidebar'
 import styles from '../AdminUserListPage/AdminUserListPage.module.scss'
 import AdminUserListItem from 'components/AdminUserListItem/AdminUserListItem'
-import { AdminUserListData } from 'components/AdminUserListItem/AdminUserListData'
+import { AdminUserListData } from 'assets/adminUserListData'
 
 const AdminUserListPage = () => {
   const userListItems = AdminUserListData.map((listData) => (

@@ -3,7 +3,7 @@
 import Sidebar from 'components/Sidebar/Sidebar'
 import styles from '../AdminTweetListPage/AdminTweetListPage.module.scss'
 import AdminTweetListItem from 'components/AdminTweetListItem/AdminTweetListItem'
-import { AdminTweetListData } from 'components/AdminTweetListItem/AdminTweetListData'
+import { AdminTweetListData } from 'assets/adminTweetListData'
 
 const AdminTweetListPage = () => {
   const tweetlistItems = AdminTweetListData.map((listData) => (
