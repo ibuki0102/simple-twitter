@@ -10,14 +10,14 @@ import {
   UserTweetPage,
   UserFollowPage,
   OtherTweetPage,
-} from "pages";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styles from "App.module.scss";
-import { userData } from "assets/userData";
-import { replyTweetModalData } from "assets/replyTweetModalData";
-import TweetModal from "components/TweetModal/TweetModal";
-import ReplyModal from "components/ReplyModal/ReplyModal";
-import ProfileEditModal from "components/ProfileEditModal/ProfileEditModal";
+} from 'pages'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import styles from 'App.module.scss'
+import { userData } from 'assets/userData'
+import { replyTweetModalData } from 'assets/replyTweetModalData'
+import TweetModal from 'components/TweetModal/TweetModal'
+import ReplyModal from 'components/ReplyModal/ReplyModal'
+import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
         <Route path="*" element={<LoginPage />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
