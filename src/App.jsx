@@ -17,7 +17,7 @@ import { userData } from "assets/userData";
 import { replyTweetModalData } from "assets/replyTweetModalData";
 import TweetModal from "components/TweetModal/TweetModal";
 import ReplyModal from "components/ReplyModal/ReplyModal";
-import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
+import ProfileEditModal from "components/ProfileEditModal/ProfileEditModal";
 
 function App() {
   return (
