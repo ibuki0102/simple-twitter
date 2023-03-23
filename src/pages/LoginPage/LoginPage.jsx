@@ -15,7 +15,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
 
   const handleClick = async () => {
-    const { success, token } = await login({
+    const { success, token, error } = await login({
       account,
       password,
     })
@@ -29,14 +29,15 @@ const LoginPage = () => {
         showConfirmButton: false,
       })
       return
+    } else if (error) {
+      Swal.fire({
+        position: 'top',
+        title: '登入失敗！',
+        timer: 1000,
+        icon: 'error',
+        showConfirmButton: false,
+      })
     }
-    Swal.fire({
-      position: 'top',
-      title: '登入失敗！',
-      timer: 1000,
-      icon: 'error',
-      showConfirmButton: false,
-    })
   }
 
   return (
