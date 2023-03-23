@@ -10,8 +10,9 @@ import {
   UserTweetPage,
   UserFollowPage,
   OtherTweetPage,
+  Homepage,
 } from 'pages'
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import styles from 'App.module.scss'
 import { userData } from 'assets/userData'
 import { replyTweetModalData } from 'assets/replyTweetModalData'
@@ -22,7 +23,7 @@ import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
 function App() {
   return (
     <div className={styles.App}>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="login" element={<LoginPage />} />
           <Route path="regist" element={<RegistPage />} />
@@ -48,9 +49,9 @@ function App() {
             path="profileEditModal"
             element={<ProfileEditModal userData={userData} />}
           />
-          <Route path="*" element={<LoginPage />} />
+          <Route path="*" element={<Homepage />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   )
 }
