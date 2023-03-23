@@ -18,7 +18,7 @@ const AuthInput = ({
   let sameEmailExist
   let accountLengthExceed
   let hasAccountValue
-  if (inputLabel === '名稱') {
+  if (inputLabel === '名稱' && value) {
     if (value.length > 50) {
       nameLengthExceed = true
     }
@@ -26,7 +26,7 @@ const AuthInput = ({
       hasNameValue = true
     }
   }
-  if (inputLabel === '帳號') {
+  if (inputLabel === '帳號' && value) {
     if (value.length > 10) {
       accountLengthExceed = true
     }
