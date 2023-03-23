@@ -2,9 +2,9 @@ name: Deploy to GitHub pages
 
 on:
   push:
-    branches: [record]
+    branches: [feature/deploy2]
   pull_request:
-    branches: [record]
+    branches: [feature/deploy2]
 
 jobs:
   build:
