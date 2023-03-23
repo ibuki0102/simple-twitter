@@ -24,8 +24,8 @@ const basename = process.env.PUBLIC_URL
 
 function App() {
   return (
-    <div className={styles.App} basename={basename}>
-      <BrowserRouter>
+    <div className={styles.App}>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="login" element={<LoginPage />} />
           <Route path="regist" element={<RegistPage />} />
