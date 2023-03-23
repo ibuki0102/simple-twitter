@@ -20,9 +20,11 @@ import TweetModal from 'components/TweetModal/TweetModal'
 import ReplyModal from 'components/ReplyModal/ReplyModal'
 import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
 
+const basename = process.env.PUBLIC_URL
+
 function App() {
   return (
-    <div className={styles.App}>
+    <div className={styles.App} basename={basename}>
       <BrowserRouter>
         <Routes>
           <Route path="login" element={<LoginPage />} />
