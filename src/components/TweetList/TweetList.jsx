@@ -1,11 +1,11 @@
 // Jasmine
 
-import styles from "../TweetList/TweetList.module.scss";
-import { ReactComponent as Photo } from "assets/icons/Photo.svg";
+import styles from '../TweetList/TweetList.module.scss'
+import { ReactComponent as Photo } from 'assets/icons/Photo.svg'
 
-import TweetItemCollection from "components/TweetItemCollection/TweetItemCollection";
+import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 
-const TweetList = () => {
+const TweetList = ({ users }) => {
   return (
     <div className={styles.TweetListContainer}>
       <div className={styles.TweetListTopSection}>
@@ -16,9 +16,9 @@ const TweetList = () => {
         </div>
         <button>推文</button>
       </div>
-      <TweetItemCollection />
+      <TweetItemCollection users={users} />
     </div>
-  );
-};
+  )
+}
 
-export default TweetList;
+export default TweetList
