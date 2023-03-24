@@ -122,7 +122,7 @@ const RegistPage = () => {
       <button className={styles.AuthButtons} onClick={handleClick}>
         註冊
       </button>
-      <span href="/#" className={styles.AuthLink}>
+      <span className={styles.AuthLink}>
         <Link to="/login">取消</Link>
       </span>
     </div>
