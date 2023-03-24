@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const authURL = 'https://enigmatic-refuge-29514.herokuapp.com/api'
 
+// 登入用API
 export const login = async ({ account, password }) => {
   try {
     const { data } = await axios.post(`${authURL}/signin`, {
@@ -22,6 +23,7 @@ export const login = async ({ account, password }) => {
   }
 }
 
+// 註冊用API
 export const regist = async ({
   account,
   name,
@@ -50,6 +52,7 @@ export const regist = async ({
   }
 }
 
+// 雪央新增: 拿到使用者資料的API
 export const getUserData = async ({ token, userId }) => {
   try {
     const { data } = await axios.get(`${authURL}/users/${userId}`, {
