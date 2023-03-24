@@ -69,3 +69,18 @@ export const getUserData = async ({ token, userId }) => {
     return { error }
   }
 }
+
+// Jasmine 新增: 拿到使用者首頁推文的API
+export const getMainPageUserTweets = async ({ token, userId }) => {
+  try {
+    const { data } = await axios.get(`${authURL}/tweets`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    return data
+  } catch (error) {
+    console.error('[GetUserData Failed]:', error)
+    return { error }
+  }
+}
