@@ -39,6 +39,9 @@
       .AuthLink {
         color: #0062ff;
         text-decoration: underline;
+        &:hover {
+          cursor: pointer;
+        }
       }
       .Dot {
         margin: 0 10px;
