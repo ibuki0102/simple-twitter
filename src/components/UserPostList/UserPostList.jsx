@@ -1,13 +1,13 @@
 // Jasmine
 
-import styles from "components/UserPostList/UserPostList.module.scss";
-import { ReactComponent as Back } from "assets/icons/back.svg";
-import { ReactComponent as Photo } from "assets/icons/Big_Photo.svg";
+import styles from 'components/UserPostList/UserPostList.module.scss'
+import { ReactComponent as Back } from 'assets/icons/back.svg'
+import { ReactComponent as Photo } from 'assets/icons/Big_Photo.svg'
 
-import TweetItemCollection from "components/TweetItemCollection/TweetItemCollection";
-import ReplyItemCollection from "components/ReplyItemCollection/ReplyItemCollection";
+import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
+import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 
-const UserPostList = () => {
+const UserPostList = ({ users }) => {
   return (
     <div className={styles.UserPostListContainer}>
       <div className={styles.UserPostListTopSection}>
@@ -52,11 +52,11 @@ const UserPostList = () => {
         </div>
       </div>
       {/* 推文 */}
-      <TweetItemCollection />
+      <TweetItemCollection users={users} />
       {/* 回覆 */}
       {/* <ReplyItemCollection /> */}
     </div>
-  );
-};
+  )
+}
 
-export default UserPostList;
+export default UserPostList
