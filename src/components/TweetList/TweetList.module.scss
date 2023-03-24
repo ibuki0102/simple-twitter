@@ -12,6 +12,13 @@
     border: 1px solid #e6ecf0;
     border-top: none;
     margin-bottom: 10px;
+    .TweetArea {
+      width: 620px;
+      height: 130px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
     h4 {
       color: #171725;
       font-size: 24px;

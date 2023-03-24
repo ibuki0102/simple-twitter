@@ -74,7 +74,7 @@ const dummyUsers = [
 const UserTweetPage = () => {
   return (
     <div className={styles.UserTweetPageContainer}>
-      <Sidebar />
+      <Sidebar page="user" />
       <UserPostList users={dummyUsers} />
       <PopularUserList />
     </div>
