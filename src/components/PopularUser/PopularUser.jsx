@@ -1,9 +1,9 @@
 // Jasmine
 
-import styles from "components/PopularUser/PopularUser.module.scss";
-import { ReactComponent as DefaultAvatar } from "assets/icons/default_avatar.svg";
+import styles from 'components/PopularUser/PopularUser.module.scss'
+import { ReactComponent as DefaultAvatar } from 'assets/icons/default_avatar.svg'
 
-const PopularUser = () => {
+const PopularUser = ({ userData }) => {
   return (
     <div className={styles.PopularUserContainer}>
       <DefaultAvatar className={styles.DefaultAvatar} />
@@ -13,7 +13,7 @@ const PopularUser = () => {
       </div>
       <button>正在跟隨</button>
     </div>
-  );
-};
+  )
+}
 
-export default PopularUser;
+export default PopularUser

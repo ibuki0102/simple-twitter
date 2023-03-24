@@ -6,13 +6,22 @@ import AuthInput from 'components/AuthInput/AuthInput'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { login } from 'api/auth'
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   // Jasmine 新增 useState & handleClick
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
+
+  // 雪央 新增 登入後自動轉向首頁
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      navigate('/main')
+    }
+  }, [navigate])
 
   const handleClick = async () => {
     const { success, token, error, userId } = await login({
