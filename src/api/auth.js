@@ -70,6 +70,21 @@ export const getUserData = async ({ token, userId }) => {
   }
 }
 
+// Jasmine 新增: 拿到使用者首頁推文的API
+export const getMainPageUserTweets = async ({ token, userId }) => {
+  try {
+    const { data } = await axios.get(`${authURL}/tweets`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    return data
+  } catch (error) {
+    console.error('[GetUserData Failed]:', error)
+    return { error }
+  }
+}
+// 雪央 新增: 拿到使用者的所有推文(未完成)
 export const getUserTweets = async ({ token, userId }) => {
   try {
     const { data } = await axios.get(`${authURL}/users/${userId}/tweets`, {
@@ -77,7 +92,7 @@ export const getUserTweets = async ({ token, userId }) => {
         Authorization: 'Bearer ' + token,
       },
     })
-    if (data) {
+        if (data) {
       return { success: true, ...data }
     }
     return data
@@ -86,3 +101,6 @@ export const getUserTweets = async ({ token, userId }) => {
     return { error }
   }
 }
+
+
+
