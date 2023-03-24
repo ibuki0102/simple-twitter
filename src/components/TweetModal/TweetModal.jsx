@@ -1,13 +1,35 @@
 import styles from '../TweetModal/TweetModal.module.scss'
 import { ReactComponent as OrangeCross } from 'assets/icons/orange_cross.svg'
+import { getUserData } from 'api/auth'
+import { useNavigate } from 'react-router-dom'
 
-const TweetModal = ({ userData }) => {
-  const { avatar } = userData
+const TweetModal = ({ setModalState }) => {
+  let avatar
+  const navigate = useNavigate()
+  const userData = async () => {
+    try {
+      const token = localStorage.getItem('token')
+      const userId = localStorage.getItem('userId')
+      if (!token) {
+        navigate('/login')
+      }
+      const result = await getUserData({ token, userId })
+      if (result) {
+        avatar = result.avatar
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  userData()
   return (
     <div className={styles.Overlay}>
       <div className={styles.Container}>
         <div className={styles.Header}>
-          <OrangeCross className={styles.Close} />
+          <OrangeCross
+            className={styles.Close}
+            onClick={() => setModalState(false)}
+          />
         </div>
         <div className={styles.MainContainer}>
           <div className={styles.Main}>

@@ -35,7 +35,7 @@ const MainPage = () => {
 
   return (
     <div className={styles.MainPageContainer}>
-      <Sidebar />
+      <Sidebar page="home" />
       <TweetList users={users} />
       <PopularUserList />
     </div>
