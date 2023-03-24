@@ -38,7 +38,7 @@ const LoginPage = () => {
         icon: 'success',
         showConfirmButton: false,
       })
-      return
+      return navigate('/main')
     } else if (error) {
       Swal.fire({
         position: 'top',
