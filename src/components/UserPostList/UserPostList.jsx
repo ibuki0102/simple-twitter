@@ -61,7 +61,7 @@ const UserPostList = () => {
     cover,
     tweetsCounts,
   } = userData
-  
+
   return (
     <div className={styles.UserPostListContainer}>
       <div className={styles.UserPostListTopSection}>
@@ -103,7 +103,7 @@ const UserPostList = () => {
         </div>
       </div>
       {/* 推文 */}
-      <TweetItemCollection users={users} />
+      <TweetItemCollection />
       {/* 回覆 */}
       {/* <ReplyItemCollection /> */}
     </div>
