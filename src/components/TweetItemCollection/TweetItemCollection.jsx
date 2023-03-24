@@ -1,18 +1,15 @@
 // Jasmine
 
-import TweetItem from "components/TweetItem/TweetItem";
+import TweetItem from 'components/TweetItem/TweetItem'
 
-const TweetItemCollection = () => {
+const TweetItemCollection = ({ users }) => {
   return (
     <div>
-      <TweetItem />
-      <TweetItem />
-      <TweetItem />
-      <TweetItem />
-      <TweetItem />
-      <TweetItem />
+      {users.map((user) => {
+        return <TweetItem key={user.id} user={user} />
+      })}
     </div>
-  );
-};
+  )
+}
 
-export default TweetItemCollection;
+export default TweetItemCollection
