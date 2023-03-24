@@ -69,3 +69,20 @@ export const getUserData = async ({ token, userId }) => {
     return { error }
   }
 }
+
+export const getUserTweets = async ({ token, userId }) => {
+  try {
+    const { data } = await axios.get(`${authURL}/users/${userId}/tweets`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    if (data) {
+      return { success: true, ...data }
+    }
+    return data
+  } catch (error) {
+    console.error('[GetUserTweets Failed]:', error)
+    return { error }
+  }
+}
