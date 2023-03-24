@@ -37,7 +37,7 @@ function App() {
           <Route path="/user/self" element={<UserTweetPage />} />
           <Route path="/user/follow" element={<UserFollowPage />} />
           <Route path="/user/other" element={<OtherTweetPage />} />
-          <Route path="setting" element={<SettingPage userData={userData} />} />
+          <Route path="setting" element={<SettingPage />} />
           {/* 雪央註: Modal的路由僅供顯示，之後會在MainPage以及ReplyListPage裡用Component使用 */}
           <Route
             path="tweetModal"

@@ -10,9 +10,10 @@ export const login = async ({ account, password }) => {
       account,
       password,
     })
+    const userId = data.data.user.id
     const { token } = data.data
     if (token) {
-      return { success: true, ...data, token }
+      return { success: true, userId, token }
     }
     return data
   } catch (error) {
@@ -46,5 +47,22 @@ export const regist = async ({
     const errorMessage = error.response.data.message
     console.error('[Regist Failed]:', error.response.data.message)
     return { errorMessage }
+  }
+}
+
+export const getUserData = async ({ token, userId }) => {
+  try {
+    const { data } = await axios.get(`${authURL}/users/${userId}`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    if (data) {
+      return { success: true, ...data }
+    }
+    return data
+  } catch (error) {
+    console.error('[GetUserData Failed]:', error)
+    return { error }
   }
 }
