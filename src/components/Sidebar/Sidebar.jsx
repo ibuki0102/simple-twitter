@@ -9,10 +9,19 @@ import { ReactComponent as ActiveUser } from 'assets/icons/active_user.svg'
 import { ReactComponent as Cog } from 'assets/icons/cog.svg'
 import { ReactComponent as ActiveCog } from 'assets/icons/active_cog.svg'
 import { ReactComponent as Logout } from 'assets/icons/logout.svg'
+import { useNavigate } from 'react-router-dom'
 
 // 帶入type這個props來決定要顯示前台的sidebar還是後台的，帶入user會顯示前台，admin會顯示後台
 // page可帶入的值: 'home','user','setting'，帶入的值會決定哪個選項會是active的樣式
 const Sidebar = ({ type, page }) => {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    navigate('/login')
+  }
+
   return (
     <div className={styles.SidebarContainer}>
       <div className={styles.SidebarMenuContainer}>
@@ -55,7 +64,9 @@ const Sidebar = ({ type, page }) => {
       </div>
       <div className={styles.LogoutLinkContainer}>
         <Logout />
-        <span className={styles.Text}>登出</span>
+        <span className={styles.Text} onClick={handleClick}>
+          登出
+        </span>
       </div>
     </div>
   )
