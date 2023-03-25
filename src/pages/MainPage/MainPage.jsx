@@ -7,36 +7,36 @@ import TweetList from 'components/TweetList/TweetList'
 import PopularUserList from 'components/PopularUserList/PopularUserList'
 
 import { useNavigate } from 'react-router-dom'
-import { getMainPageUserTweets } from 'api/auth'
+import { getMainPageUserTweets } from 'api/mainPageTweets'
 import { useEffect, useState } from 'react'
 
 const MainPage = () => {
   const navigate = useNavigate()
-  const [users, setUsers] = useState([])
+  const [tweets, setTweets] = useState([])
 
   useEffect(() => {
-    const getUsers = async () => {
+    const getTweets = async () => {
       try {
         const token = localStorage.getItem('token')
         const userId = localStorage.getItem('userId')
         if (!token) {
           navigate('/login')
         }
-        const users = await getMainPageUserTweets({ token, userId })
-        if (users) {
-          setUsers(users)
+        const tweets = await getMainPageUserTweets({ token, userId })
+        if (tweets) {
+          setTweets(tweets)
         }
       } catch (error) {
         console.error(error)
       }
     }
-    getUsers()
+    getTweets()
   }, [navigate])
 
   return (
     <div className={styles.MainPageContainer}>
       <Sidebar page="home" />
-      <TweetList users={users} />
+      <TweetList tweets={tweets} page="mainTweets" />
       <PopularUserList />
     </div>
   )
