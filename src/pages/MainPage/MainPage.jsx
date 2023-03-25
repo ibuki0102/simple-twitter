@@ -14,6 +14,7 @@ const MainPage = () => {
   const navigate = useNavigate()
   const [tweets, setTweets] = useState([])
   const [modalState, setModalState] = useState(false)
+  const [updateTweetList, setUpdateTweetList] = useState(false)
 
   useEffect(() => {
     const getTweets = async () => {
@@ -32,7 +33,7 @@ const MainPage = () => {
       }
     }
     getTweets()
-  }, [navigate, modalState])
+  }, [navigate, modalState, updateTweetList])
 
   return (
     <div className={styles.MainPageContainer}>
@@ -43,7 +44,10 @@ const MainPage = () => {
         modalState={modalState}
         setModalState={setModalState}
       />
-      <PopularUserList />
+      <PopularUserList
+        updateTweetList={updateTweetList}
+        setUpdateTweetList={setUpdateTweetList}
+      />
     </div>
   )
 }
