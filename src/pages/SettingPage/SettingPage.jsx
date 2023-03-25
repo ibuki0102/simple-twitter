@@ -29,7 +29,7 @@ const SettingPage = () => {
           setUserData({
             account: result.account,
             name: result.name,
-            // 雪央註: 這裡之後要加上email
+            email: result.email,
           })
         }
       } catch (error) {
@@ -58,6 +58,7 @@ const SettingPage = () => {
                 setEditUserData({
                   editAccount: accountInputValue,
                   editName: editUserData.editName,
+                  editEmail: editUserData.editEmail,
                 })
               }
             />
@@ -73,10 +74,26 @@ const SettingPage = () => {
                 setEditUserData({
                   editName: nameInputValue,
                   editAccount: editUserData.editAccount,
+                  editEmail: editUserData.editEmail,
                 })
               }
             />
-            <AuthInput inputLabel="Email" type="email" value="" />
+            <AuthInput
+              inputLabel="Email"
+              type="email"
+              value={
+                editUserData.editEmail !== ''
+                  ? editUserData.editEmail
+                  : userData.email
+              }
+              onChange={(accountInputValue) =>
+                setEditUserData({
+                  editEmail: accountInputValue,
+                  editAccount: editUserData.editAccount,
+                  editName: editUserData.editName,
+                })
+              }
+            />
             <AuthInput
               inputLabel="密碼"
               type="password"

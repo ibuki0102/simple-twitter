@@ -18,8 +18,9 @@ export const login = async ({ account, password }) => {
     }
     return data
   } catch (error) {
-    console.error('[Login Failed]:', error)
-    return { error }
+    const errorMessage = error.response.data.message
+    console.error('[Login Failed]:', error.response.data.message)
+    return { errorMessage }
   }
 }
 
