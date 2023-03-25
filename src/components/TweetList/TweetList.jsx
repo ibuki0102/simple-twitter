@@ -7,7 +7,7 @@ import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollect
 import TweetModal from 'components/TweetModal/TweetModal'
 import { useState } from 'react'
 
-const TweetList = ({ tweets, page }) => {
+const TweetList = ({ tweets }) => {
   const [modalState, setModalState] = useState(false)
   return (
     <div className={styles.TweetListContainer}>
@@ -25,7 +25,7 @@ const TweetList = ({ tweets, page }) => {
         <TweetModal setModalState={setModalState} modalState={modalState} />
       )}
       {/* <TweetModal avatar={avatar} /> */}
-      <TweetItemCollection tweets={tweets} page={page} />
+      <TweetItemCollection tweets={tweets}/>
     </div>
   )
 }

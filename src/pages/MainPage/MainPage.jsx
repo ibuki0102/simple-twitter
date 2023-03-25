@@ -36,7 +36,7 @@ const MainPage = () => {
   return (
     <div className={styles.MainPageContainer}>
       <Sidebar page="home" />
-      <TweetList tweets={tweets} page="mainTweets" />
+      <TweetList tweets={tweets}/>
       <PopularUserList />
     </div>
   )
