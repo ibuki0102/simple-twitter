@@ -14,6 +14,7 @@ const LoginPage = () => {
   // Jasmine 新增 useState & handleClick
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   // 雪央 新增 登入後自動轉向首頁
   useEffect(() => {
@@ -24,7 +25,7 @@ const LoginPage = () => {
   }, [navigate])
 
   const handleClick = async () => {
-    const { success, token, error, userId } = await login({
+    const { success, token, errorMessage, userId } = await login({
       account,
       password,
     })
@@ -39,7 +40,8 @@ const LoginPage = () => {
         showConfirmButton: false,
       })
       return navigate('/main')
-    } else if (error) {
+    } else if (errorMessage) {
+      setErrorMessage(errorMessage)
       Swal.fire({
         position: 'top',
         title: '登入失敗！',
@@ -60,14 +62,22 @@ const LoginPage = () => {
             inputLabel={'帳號'}
             placeholder={'請輸入帳號'}
             value={account || ''}
-            onChange={(accountInputValue) => setAccount(accountInputValue)}
+            onChange={(accountInputValue) => {
+              setAccount(accountInputValue)
+              setErrorMessage('')
+            }}
+            errorMessage={errorMessage}
           />
           <AuthInput
             inputLabel={'密碼'}
             type="password"
             placeholder={'請輸入密碼'}
             value={password || ''}
-            onChange={(passwordInputValue) => setPassword(passwordInputValue)}
+            onChange={(passwordInputValue) => {
+              setPassword(passwordInputValue)
+              setErrorMessage('')
+            }}
+            errorMessage={errorMessage}
           />
         </form>
       </div>

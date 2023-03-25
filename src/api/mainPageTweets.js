@@ -18,3 +18,21 @@ export const getMainPageUserTweets = async ({ token, userId }) => {
     return { error }
   }
 }
+
+export const Tweet = async ({ token, userId, description }) => {
+  try {
+    const { data } = await axios({
+      method: 'post',
+      url: `${authURL}/tweets`,
+      headers: { Authorization: 'Bearer ' + token },
+      data: {
+        userId,
+        description,
+      },
+    })
+    return data
+  } catch (error) {
+    console.error('[Tweet Failed]:', error)
+    return { error }
+  }
+}
