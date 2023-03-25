@@ -1,15 +1,14 @@
 // Jasmine
 
 import styles from '../TweetList/TweetList.module.scss'
-import { ReactComponent as Photo } from 'assets/icons/Photo.svg'
 
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import TweetModal from 'components/TweetModal/TweetModal'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 
-const TweetList = ({ tweets, page, setTweets, modalState, setModalState }) => {
+const TweetList = ({ tweets, setTweets, modalState, setModalState }) => {
   const [avatar, setAvatar] = useState('')
   const navigate = useNavigate()
   const userData = async () => {
@@ -34,7 +33,11 @@ const TweetList = ({ tweets, page, setTweets, modalState, setModalState }) => {
         <h4>首頁</h4>
         <div onClick={() => setModalState(true)} className={styles.TweetArea}>
           <div className={styles.Post}>
-            <img className={styles.Photo} src={avatar} alt="avatar" />
+            <img
+              className={styles.Photo}
+              src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
+              alt="avatar"
+            />
             <h5>有什麼新鮮事？</h5>
           </div>
           <button>推文</button>
@@ -49,7 +52,7 @@ const TweetList = ({ tweets, page, setTweets, modalState, setModalState }) => {
           tweets={tweets}
         />
       )}
-      <TweetItemCollection tweets={tweets} page={page} />
+      <TweetItemCollection tweets={tweets} />
     </div>
   )
 }
