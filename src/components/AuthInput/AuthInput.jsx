@@ -9,15 +9,17 @@ const AuthInput = ({
   onChange,
   errorMessage,
 }) => {
-  let nameLengthExceed
-  let hasNameValue
-  let accountNotExist
-  let wrongEmail
-  let wrongCheckPassword
-  let sameAccountExist
-  let sameEmailExist
-  let accountLengthExceed
-  let hasAccountValue
+  let nameLengthExceed,
+    hasNameValue,
+    accountNotExist,
+    accountOrPasswordWrong,
+    wrongEmail,
+    wrongCheckPassword,
+    sameAccountExist,
+    sameEmailExist,
+    accountLengthExceed,
+    hasAccountValue
+
   if (inputLabel === '名稱' && value) {
     if (value.length > 50) {
       nameLengthExceed = true
@@ -34,10 +36,18 @@ const AuthInput = ({
       hasAccountValue = true
     }
   }
-  // 雪央註: 要等後端設定帳戶不存在時回傳相關錯誤訊息
-  // if (inputLabel === '帳號' && errorMessage) {
-  //   accountNotExist = true
-  // }
+  if (
+    inputLabel === '帳號' &&
+    errorMessage === 'AssertionError: 帳號不存在！'
+  ) {
+    accountNotExist = true
+  }
+  if (
+    inputLabel === '密碼' &&
+    errorMessage === 'AssertionError: 帳號或密碼輸入錯誤！'
+  ) {
+    accountOrPasswordWrong = true
+  }
   if (errorMessage) {
     if (
       inputLabel === '密碼確認' &&
@@ -76,7 +86,8 @@ const AuthInput = ({
             wrongEmail ||
             sameEmailExist ||
             sameAccountExist ||
-            accountLengthExceed
+            accountLengthExceed ||
+            accountOrPasswordWrong
               ? styles.ErrorAuthInput
               : styles.AuthInput
           }
@@ -90,6 +101,12 @@ const AuthInput = ({
           {/* // 錯誤訊息的判定跟顯示 */}
           {nameLengthExceed && (
             <span className={styles.ErrorMessage}>字數超出上限！</span>
+          )}
+          {accountNotExist && (
+            <span className={styles.ErrorMessage}>帳號不存在！</span>
+          )}
+          {accountOrPasswordWrong && (
+            <span className={styles.ErrorMessage}>帳號或密碼輸入錯誤！</span>
           )}
           {hasNameValue ? (
             <span className={styles.InputValueLength}>{value.length}/50</span>

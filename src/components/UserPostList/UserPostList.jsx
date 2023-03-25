@@ -2,7 +2,6 @@
 
 import styles from 'components/UserPostList/UserPostList.module.scss'
 import { ReactComponent as Back } from 'assets/icons/back.svg'
-import { ReactComponent as Photo } from 'assets/icons/Big_Photo.svg'
 import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,7 +9,7 @@ import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollect
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import { useEffect, useState } from 'react'
 
-const UserPostList = ({tweets, page}) => {
+const UserPostList = ({ tweets }) => {
   const navigate = useNavigate()
   const [userData, setUserData] = useState({
     account: '',
@@ -56,7 +55,6 @@ const UserPostList = ({tweets, page}) => {
     introduction,
     followerCounts,
     followingCounts,
-    // 雪央註: 待後端修正確認的網址
     avatar,
     cover,
     tweetsCounts,
@@ -73,11 +71,15 @@ const UserPostList = ({tweets, page}) => {
           </div>
         </div>
         <img
-          src={`https://i.imgur.com/jXE6Mmp.png`}
+          src={cover || `https://i.imgur.com/jXE6Mmp.png`}
           className={styles.Banner}
           alt="banner"
         />
-        <Photo className={styles.Photo} />
+        <img
+          src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
+          className={styles.Photo}
+          alt=""
+        />
         <button>編輯個人資料</button>
         <div className={styles.UserIntroduction}>
           <div className={styles.User}>
@@ -103,7 +105,7 @@ const UserPostList = ({tweets, page}) => {
         </div>
       </div>
       {/* 推文 */}
-      <TweetItemCollection tweets={tweets} page={page}/>
+      <TweetItemCollection tweets={tweets} />
       {/* 回覆 */}
       {/* <ReplyItemCollection /> */}
     </div>

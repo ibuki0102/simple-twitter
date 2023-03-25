@@ -1,7 +1,7 @@
 //雪央
 import styles from '../InputTextArea/InputTextArea.module.scss'
 
-const InputTextArea = ({ inputLabel, type, placeholder, value }) => {
+const InputTextArea = ({ inputLabel, type, placeholder, value, onChange }) => {
   return (
     <>
       <div className={styles.InputContainer}>
@@ -11,7 +11,8 @@ const InputTextArea = ({ inputLabel, type, placeholder, value }) => {
           type={type}
           placeholder={placeholder}
           value={value}
-        />
+          onChange={(event) => onChange(event.target.value)}
+        ></textarea>
       </div>
       <div className={styles.BottomLine}></div>
     </>

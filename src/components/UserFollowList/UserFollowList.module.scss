@@ -47,7 +47,7 @@
         }
       }
       .Active {
-        cursor: pointer;
+        @extend .Title;
         color: #ff6600;
         border-bottom: 2px solid #ff6600;
       }

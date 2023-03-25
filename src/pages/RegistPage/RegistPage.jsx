@@ -54,14 +54,14 @@ const RegistPage = () => {
     }
     if (errorMessage) {
       setErrorMessage(errorMessage)
+      Swal.fire({
+        position: 'top',
+        title: '註冊失敗！',
+        timer: 1000,
+        icon: 'error',
+        showConfirmButton: false,
+      })
     }
-    Swal.fire({
-      position: 'top',
-      title: '註冊失敗！',
-      timer: 1000,
-      icon: 'error',
-      showConfirmButton: false,
-    })
   }
 
   return (

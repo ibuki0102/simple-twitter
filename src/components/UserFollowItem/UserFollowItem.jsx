@@ -1,23 +1,18 @@
 // Jasmine
 
-import styles from "components/UserFollowItem/UserFollowItem.module.scss";
-import { ReactComponent as DefaultAvatar } from "assets/icons/default_avatar.svg";
+import styles from 'components/UserFollowItem/UserFollowItem.module.scss'
 
-const UserFollowItem = () => {
+const UserFollowItem = (follow) => {
   return (
     <div className={styles.UserFollowItemContainer}>
-      <DefaultAvatar className={styles.DefaultAvatar} />
+      <img src={follow.follow.avatar} className={styles.Avatar} alt="avatar" />
       <div className={styles.Tweet}>
-        <div className={styles.UserName}>Apple</div>
+        <div className={styles.UserName}>{follow.follow.name}</div>
         <button>正在跟隨</button>
-        <div className={styles.TweetContent}>
-          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
-          cillum dolor. Voluptate exercitation incididunt aliquip deserunt
-          reprehenderit elit laborum.
-        </div>
+        <div className={styles.TweetContent}>{follow.follow.introduction}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserFollowItem;
+export default UserFollowItem

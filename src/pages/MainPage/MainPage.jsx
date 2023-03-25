@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 const MainPage = () => {
   const navigate = useNavigate()
   const [tweets, setTweets] = useState([])
+  const [modalState, setModalState] = useState(false)
 
   useEffect(() => {
     const getTweets = async () => {
@@ -31,12 +32,17 @@ const MainPage = () => {
       }
     }
     getTweets()
-  }, [navigate])
+  }, [navigate, modalState])
 
   return (
     <div className={styles.MainPageContainer}>
       <Sidebar page="home" />
-      <TweetList tweets={tweets} page="mainTweets" />
+      <TweetList
+        tweets={tweets}
+        setTweets={setTweets}
+        modalState={modalState}
+        setModalState={setModalState}
+      />
       <PopularUserList />
     </div>
   )
