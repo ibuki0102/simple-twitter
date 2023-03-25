@@ -8,7 +8,7 @@ import { ReactComponent as Like } from 'assets/icons/heart.svg'
 const TweetItem = ({ tweet }) => {
   return (
     <div className={styles.TweetItemContainer}>
-      <DefaultAvatar className={styles.DefaultAvatar} />
+      <img src={tweet.User.avatar} className={styles.Avatar} alt="avatar" />
       <div className={styles.Tweet}>
         <span className={styles.UserName}>{tweet.User.name}</span>
         <span className={styles.UserAcount}>
