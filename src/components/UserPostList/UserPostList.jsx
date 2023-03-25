@@ -10,7 +10,7 @@ import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollect
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import { useEffect, useState } from 'react'
 
-const UserPostList = ({ tweets }) => {
+const UserPostList = ({tweets, page}) => {
   const navigate = useNavigate()
   const [userData, setUserData] = useState({
     account: '',
@@ -103,7 +103,7 @@ const UserPostList = ({ tweets }) => {
         </div>
       </div>
       {/* 推文 */}
-      <TweetItemCollection tweets={tweets} />
+      <TweetItemCollection tweets={tweets} page={page}/>
       {/* 回覆 */}
       {/* <ReplyItemCollection /> */}
     </div>
