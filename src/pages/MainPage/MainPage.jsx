@@ -40,7 +40,6 @@ const MainPage = () => {
       <TweetList
         tweets={tweets}
         setTweets={setTweets}
-        page="mainTweets"
         modalState={modalState}
         setModalState={setModalState}
       />
