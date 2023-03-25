@@ -2,11 +2,11 @@
 
 import TweetItem from 'components/TweetItem/TweetItem'
 
-const TweetItemCollection = ({ users }) => {
+const TweetItemCollection = ({ tweets, page }) => {
   return (
     <div>
-      {users.map((user) => {
-        return <TweetItem key={user.id} user={user} />
+      {tweets.map((tweet) => {
+        return <TweetItem key={tweet.id} tweet={tweet} page={page} />
       })}
     </div>
   )
