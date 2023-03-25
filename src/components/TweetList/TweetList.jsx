@@ -1,11 +1,10 @@
 // Jasmine
 
 import styles from '../TweetList/TweetList.module.scss'
-import { ReactComponent as Photo } from 'assets/icons/Photo.svg'
 
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import TweetModal from 'components/TweetModal/TweetModal'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 
@@ -34,7 +33,11 @@ const TweetList = ({ tweets, setTweets, modalState, setModalState }) => {
         <h4>首頁</h4>
         <div onClick={() => setModalState(true)} className={styles.TweetArea}>
           <div className={styles.Post}>
-            <img className={styles.Photo} src={avatar} alt="avatar" />
+            <img
+              className={styles.Photo}
+              src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
+              alt="avatar"
+            />
             <h5>有什麼新鮮事？</h5>
           </div>
           <button>推文</button>
