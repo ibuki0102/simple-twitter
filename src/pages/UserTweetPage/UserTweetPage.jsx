@@ -35,7 +35,7 @@ const UserTweetPage = () => {
 
   return (
     <div className={styles.UserTweetPageContainer}>
-      <Sidebar page="user" />
+      <Sidebar page="user" type="user" />
       <UserPostList tweets={tweets} page="userPostTweets" />
       <PopularUserList />
     </div>
