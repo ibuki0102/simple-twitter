@@ -1,11 +1,24 @@
 // Jasmine
 
-import styles from "components/UserFollowList/UserFollowList.module.scss";
-import { ReactComponent as Back } from "assets/icons/back.svg";
+import styles from 'components/UserFollowList/UserFollowList.module.scss'
+import { ReactComponent as Back } from 'assets/icons/back.svg'
 
-import UserFollowItem from "components/UserFollowItem/UserFollowItem";
+import UserFollowItem from 'components/UserFollowItem/UserFollowItem'
 
-const UserFollowList = () => {
+const UserFollowList = ({
+  followers,
+  followings,
+  followPage,
+  setFollowPage,
+}) => {
+  function handleFollowPage(page) {
+    if (page === 'followers') {
+      setFollowPage('followers')
+    } else {
+      setFollowPage('followings')
+    }
+  }
+
   return (
     <div className={styles.UserFollowListContainer}>
       <div className={styles.UserFollowListTopSection}>
@@ -17,19 +30,40 @@ const UserFollowList = () => {
           </div>
         </div>
         <div className={styles.Heading}>
-          <div className={`${styles.Title} ${styles.Active}`}>追隨者</div>
-          <div className={styles.Title}>正在追隨</div>
+          <div
+            className={
+              followPage === 'followers' ? styles.Active : styles.Title
+            }
+            onClick={() => {
+              handleFollowPage('followers')
+            }}
+          >
+            追隨者
+          </div>
+          <div
+            className={
+              followPage === 'followings' ? styles.Active : styles.Title
+            }
+            onClick={() => {
+              handleFollowPage('followings')
+            }}
+          >
+            正在追隨
+          </div>
         </div>
       </div>
-      <UserFollowItem />
-      <UserFollowItem />
-      <UserFollowItem />
-      <UserFollowItem />
-      <UserFollowItem />
-      <UserFollowItem />
-      <UserFollowItem />
+      <div>
+        {followPage === 'followers' &&
+          followers.map((follower) => {
+            return <UserFollowItem key={follower.id} follow={follower} />
+          })}
+        {followPage === 'followings' &&
+          followings.map((following) => {
+            return <UserFollowItem key={following.id} follow={following} />
+          })}
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserFollowList;
+export default UserFollowList
