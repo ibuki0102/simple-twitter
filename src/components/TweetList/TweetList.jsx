@@ -44,13 +44,7 @@ const TweetList = ({ tweets, setTweets, modalState, setModalState }) => {
         </div>
       </div>
       {modalState && (
-        <TweetModal
-          setModalState={setModalState}
-          modalState={modalState}
-          avatar={avatar}
-          setTweets={setTweets}
-          tweets={tweets}
-        />
+        <TweetModal setModalState={setModalState} avatar={avatar} />
       )}
       <TweetItemCollection tweets={tweets} />
     </div>

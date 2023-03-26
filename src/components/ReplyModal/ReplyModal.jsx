@@ -1,31 +1,30 @@
 import styles from '../ReplyModal/ReplyModal.module.scss'
 import { ReactComponent as OrangeCross } from 'assets/icons/orange_cross.svg'
 
-const ReplyModal = ({ replyTweetModalData }) => {
-  const userData = replyTweetModalData.userData
-  const replyTweetUserData = replyTweetModalData.replyTweetUserData
-  const replyTweetData = replyTweetModalData.replyTweetData
-  const { userAvatar } = userData
-  const { name, account, tweetUserAvatar } = replyTweetUserData
-  const { content, creatAt } = replyTweetData
+const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
+  const { avatar, account, name } = replyTweetData.User
+  const { description, createdAt } = replyTweetData
   return (
     <div className={styles.Overlay}>
       <div className={styles.Container}>
         <div className={styles.Header}>
-          <OrangeCross className={styles.Close} />
+          <OrangeCross
+            className={styles.Close}
+            onClick={() => setReplyModalState(false)}
+          />
         </div>
         <div className={styles.ReplyTweetContainer}>
           <div className={styles.TweetUserAvatar}>
-            <img src={tweetUserAvatar} alt="tweetUserAvatar" />
+            <img src={avatar} alt="tweetUserAvatar" />
           </div>
           <div className={styles.ReplyTweetMain}>
             <div className={styles.TweetUserInfo}>
               <span className={styles.Name}>{name}</span>
               <span className={styles.GrayText}>
-                @{account}・{creatAt}
+                @{account}・{createdAt}
               </span>
             </div>
-            <div className={styles.TweetContent}>{content}</div>
+            <div className={styles.TweetContent}>{description}</div>
             <div className={styles.Footer}>
               <div> 回覆給</div>
               <div className={styles.TweetUserAccount}>@{account}</div>

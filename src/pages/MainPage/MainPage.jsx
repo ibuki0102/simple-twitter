@@ -37,7 +37,11 @@ const MainPage = () => {
 
   return (
     <div className={styles.MainPageContainer}>
-      <Sidebar page="home" />
+      <Sidebar
+        page="home"
+        modalState={modalState}
+        setModalState={setModalState}
+      />
       <TweetList
         tweets={tweets}
         setTweets={setTweets}
