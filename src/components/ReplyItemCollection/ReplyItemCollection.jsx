@@ -6,7 +6,7 @@ const ReplyItemCollection = ({ replyListData, replyTweetData }) => {
   const replyList = replyListData.map((replyTweet) => {
     return (
       <ReplyItem
-        key={replyTweet.TweetId}
+        key={replyTweet.id}
         replyTweet={replyTweet}
         replyTweetData={replyTweetData}
       />
