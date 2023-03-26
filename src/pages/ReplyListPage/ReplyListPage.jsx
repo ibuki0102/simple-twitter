@@ -1,10 +1,10 @@
 // Jasmine
 
-import styles from "./ReplyListPage.module.scss";
+import styles from './ReplyListPage.module.scss'
 
-import Sidebar from "components/Sidebar/Sidebar";
-import ReplyList from "components/ReplyList/ReplyList";
-import PopularUserList from "components/PopularUserList/PopularUserList";
+import Sidebar from 'components/Sidebar/Sidebar'
+import ReplyList from 'components/ReplyList/ReplyList'
+import PopularUserList from 'components/PopularUserList/PopularUserList'
 
 const ReplyListPage = () => {
   return (
@@ -13,7 +13,7 @@ const ReplyListPage = () => {
       <ReplyList />
       <PopularUserList />
     </div>
-  );
-};
+  )
+}
 
-export default ReplyListPage;
+export default ReplyListPage

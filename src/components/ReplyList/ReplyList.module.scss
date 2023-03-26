@@ -99,14 +99,22 @@
         }
       }
       .Like {
-        width: 25px;
-        height: 25px;
+        padding-right: 3px;
+        width: 27px;
+        height: 27px;
+        &:hover {
+          cursor: pointer;
+        }
       }
       .Liked {
-        width: 21px;
-        height: 21px;
+        padding-left: 2px;
+        width: 22px;
+        height: 22px;
         stroke: #fc5a5a;
         fill: #fc5a5a;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
