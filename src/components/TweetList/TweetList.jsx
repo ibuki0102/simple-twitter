@@ -4,29 +4,32 @@ import styles from '../TweetList/TweetList.module.scss'
 
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import TweetModal from 'components/TweetModal/TweetModal'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 
 const TweetList = ({ tweets, setTweets, modalState, setModalState }) => {
   const [avatar, setAvatar] = useState('')
   const navigate = useNavigate()
-  const userData = async () => {
-    try {
-      const token = localStorage.getItem('token')
-      const userId = localStorage.getItem('userId')
-      if (!token) {
-        navigate('/login')
+  useEffect(() => {
+    const userData = async () => {
+      try {
+        const token = localStorage.getItem('token')
+        const userId = localStorage.getItem('userId')
+        if (!token) {
+          navigate('/login')
+        }
+        const result = await getUserData({ token, userId })
+        if (result) {
+          setAvatar(result.avatar)
+        }
+      } catch (error) {
+        console.error(error)
       }
-      const result = await getUserData({ token, userId })
-      if (result) {
-        setAvatar(result.avatar)
-      }
-    } catch (error) {
-      console.error(error)
     }
-  }
-  userData()
+    userData()
+  }, [navigate])
+
   return (
     <div className={styles.TweetListContainer}>
       <div className={styles.TweetListTopSection}>

@@ -6,14 +6,18 @@ import { ReactComponent as Like } from 'assets/icons/heart.svg'
 import { getOneTweet } from 'api/getOneTweet'
 import { useReplyContext } from 'contexts/ReplyContext'
 import ReplyModal from 'components/ReplyModal/ReplyModal'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { getUserData } from 'api/auth'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ReplyTweetContext } from 'contexts/ReplyTweetContext'
 
 const TweetItem = ({ tweet }) => {
   const { replyModalState, setReplyModalState } = useReplyContext()
   const [replyTweetData, setReplyTweetData] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
+  const navigate = useNavigate()
+  const setReplyTweetId = useContext(ReplyTweetContext)[1]
   const handleClickReply = async () => {
     const token = localStorage.getItem('token')
     if (!token) {
@@ -27,6 +31,12 @@ const TweetItem = ({ tweet }) => {
     setUserAvatar(userData.avatar)
     setReplyTweetData(data)
   }
+  // 雪央註: 導向回覆頁
+  const handleToReplyList = () => {
+    setReplyTweetId(tweet.id)
+    navigate('/main/replyList')
+  }
+  // 雪央註: 清空上一則欲回覆的推文內容
   useEffect(() => {
     if (!replyModalState) {
       setReplyTweetData('')
@@ -44,14 +54,17 @@ const TweetItem = ({ tweet }) => {
       ) : null}
       <img src={tweet.User.avatar} className={styles.Avatar} alt="avatar" />
       <div className={styles.Tweet}>
-        <span className={styles.UserName}>{tweet.User.name}</span>
-        <span className={styles.UserAccount}>
-          @{tweet.User.account}・{tweet.transferDateTime}
-        </span>
-        <div className={styles.TweetContent}>{tweet.description}</div>
+        <div className={styles.ClickableArea} onClick={handleToReplyList}>
+          <span className={styles.UserName}>{tweet.User.name}</span>
+          <span className={styles.UserAccount}>
+            @{tweet.User.account}・{tweet.transferDateTime}
+          </span>
+          <div className={styles.TweetContent}>{tweet.description}</div>
+        </div>
+
         <div className={styles.Icon}>
-          <div className={styles.Message}>
-            <Reply className={styles.Reply} onClick={handleClickReply} />
+          <div className={styles.Message} onClick={handleClickReply}>
+            <Reply className={styles.Reply} />
             <span className={styles.Number}>{tweet.totalReplies}</span>
           </div>
           <div className={styles.Heart}>

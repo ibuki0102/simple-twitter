@@ -19,3 +19,17 @@ export const replyTweet = async ({ token, userId, tweetId, comment }) => {
     return { error }
   }
 }
+
+export const getReplyList = async ({ token, tweetId }) => {
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: `${authURL}/tweets/${tweetId}/replies`,
+      headers: { Authorization: 'Bearer ' + token },
+    })
+    return data
+  } catch (error) {
+    console.error('[GetReplyList Failed]:', error)
+    return { error }
+  }
+}

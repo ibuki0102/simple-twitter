@@ -11,7 +11,7 @@ import { getMainPageUserTweets } from 'api/mainPageTweets'
 import { useEffect, useState } from 'react'
 import { useReplyContext } from 'contexts/ReplyContext'
 
-const MainPage = () => {
+const MainPage = ({ setReplyTweetId }) => {
   const navigate = useNavigate()
   const [tweets, setTweets] = useState([])
   const [modalState, setModalState] = useState(false)
