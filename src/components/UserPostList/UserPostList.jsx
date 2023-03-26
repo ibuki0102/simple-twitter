@@ -9,8 +9,9 @@ import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollect
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import { useEffect, useState } from 'react'
 
-const UserPostList = ({ tweets, page, setPage }) => {
+const UserPostList = ({ tweets, replyTweets, page, setPage }) => {
   const navigate = useNavigate()
+  // 管理個人資料頁面上方的個人資料
   const [userData, setUserData] = useState({
     account: '',
     name: '',
@@ -22,6 +23,7 @@ const UserPostList = ({ tweets, page, setPage }) => {
     tweetsCounts: 0,
   })
 
+  // 切換到'跟隨中'或'跟隨者'
   function handleChangePage(changePage) {
     if (changePage === 'followers') {
       setPage('followers')
@@ -32,6 +34,7 @@ const UserPostList = ({ tweets, page, setPage }) => {
     }
   }
 
+  // 渲染個人資料頁面上方的個人資料
   useEffect(() => {
     const UserData = async () => {
       try {
@@ -125,9 +128,11 @@ const UserPostList = ({ tweets, page, setPage }) => {
         </div>
       </div>
       {/* 推文 */}
-      <TweetItemCollection tweets={tweets} />
+      {page === 'userPost' && <TweetItemCollection tweets={tweets} />}
       {/* 回覆 */}
-      {/* <ReplyItemCollection /> */}
+      {page === 'userReply' && (
+        <ReplyItemCollection replyTweets={replyTweets} />
+      )}
     </div>
   )
 }

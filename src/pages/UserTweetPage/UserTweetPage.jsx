@@ -7,15 +7,22 @@ import UserPostList from 'components/UserPostList/UserPostList'
 import PopularUserList from 'components/PopularUserList/PopularUserList'
 
 import { useNavigate } from 'react-router-dom'
-import { getUserPostTweets } from 'api/userTweetPage'
+import { getUserPostTweets, getUserReplyTweets } from 'api/userTweetPage'
 import { useEffect, useState, useContext } from 'react'
 import { PageContext } from 'contexts/PageContext'
 
 const UserTweetPage = () => {
   const navigate = useNavigate()
+  // Jasmine 註: 串接'推文'使用 setTweets 管理資料
   const [tweets, setTweets] = useState([])
+
+  // Jasmine 註: 串接'回覆'使用 setReplyTweets 管理資料
+  const [replyTweets, setReplyTweets] = useState([])
+
+  // Jasmine 註: 紀錄當前頁面，使用 setPage 管理頁面
   const [page, setPage] = useContext(PageContext)
 
+  // 串接個人資料的'推文'
   useEffect(() => {
     const getTweets = async () => {
       try {
@@ -35,10 +42,35 @@ const UserTweetPage = () => {
     getTweets()
   }, [navigate])
 
+  // 串接個人資料的'回覆'
+  useEffect(() => {
+    const getReplyTweets = async () => {
+      try {
+        const token = localStorage.getItem('token')
+        const userId = localStorage.getItem('userId')
+        if (!token) {
+          navigate('/login')
+        }
+        const replyTweets = await getUserReplyTweets({ token, userId })
+        if (replyTweets) {
+          setReplyTweets(replyTweets)
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getReplyTweets()
+  }, [navigate])
+
   return (
     <div className={styles.UserTweetPageContainer}>
       <Sidebar page="user" type="user" />
-      <UserPostList tweets={tweets} page={page} setPage={setPage} />
+      <UserPostList
+        tweets={tweets}
+        replyTweets={replyTweets}
+        page={page}
+        setPage={setPage}
+      />
       <PopularUserList />
     </div>
   )
