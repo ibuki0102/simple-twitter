@@ -8,14 +8,14 @@ const LikeItem = ({ likeTweet }) => {
   return (
     <div className={styles.LikeItemContainer}>
       <img
-        src="https://i.imgur.com/ZyXrPxB.png"
+        src={likeTweet.Tweet.User.avatar}
         className={styles.Avatar}
         alt="avatar"
       />
       <div className={styles.Tweet}>
-        <span className={styles.UserName}>Apple</span>
-        <span className={styles.UserAcount}>
-          @apple・{likeTweet.transferDateTime}
+        <span className={styles.UserName}>{likeTweet.Tweet.User.name}</span>
+        <span className={styles.UserAccount}>
+          @{likeTweet.Tweet.User.account}・{likeTweet.transferDateTime}
         </span>
         <div className={styles.TweetContent}>{likeTweet.Tweet.description}</div>
         <div className={styles.Icon}>
