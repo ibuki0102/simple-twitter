@@ -14,13 +14,18 @@ import { useState } from 'react'
 
 // 帶入type這個props來決定要顯示前台的sidebar還是後台的，帶入user會顯示前台，admin會顯示後台
 // page可帶入的值: 'home','user','setting'，帶入的值會決定哪個選項會是active的樣式
-const Sidebar = ({ type, page }) => {
+const Sidebar = ({ type, page, setModalState }) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
     navigate('/login')
+  }
+  const handleTweet = () => {
+    if (page === 'home') {
+      setModalState(true)
+    }
   }
   const [homePath, setHomePath] = useState('/main')
   const [userPath, setUserPath] = useState('/user/self')
@@ -30,7 +35,9 @@ const Sidebar = ({ type, page }) => {
   if (type === 'admin' && userPath === '/user/self') {
     setUserPath('/admin/userList')
   }
-
+  if (type === 'admin' && userPath === '/user/self') {
+    setUserPath('/admin/userList')
+  }
   return (
     <div className={styles.SidebarContainer}>
       <div className={styles.SidebarMenuContainer}>
@@ -72,7 +79,9 @@ const Sidebar = ({ type, page }) => {
                   <span className={styles.Text}>設定</span>
                 </Link>
               </div>
-              <button className={styles.TweetButton}>推文</button>
+              <button className={styles.TweetButton} onClick={handleTweet}>
+                推文
+              </button>
             </>
           )}
         </div>
