@@ -70,3 +70,18 @@ export const getUserData = async ({ token, userId }) => {
     return { error }
   }
 }
+
+// 雪央新增 拿到top10受歡迎的使用者資料的API
+export const getPopularUserList = async ({ token }) => {
+  try {
+    const { data } = await axios.get(`${authURL}/users/top`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    return data.data.result
+  } catch (error) {
+    console.error('[GetPopularUserList Failed]:', error)
+    return { error }
+  }
+}
