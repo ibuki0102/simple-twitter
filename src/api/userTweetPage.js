@@ -36,3 +36,18 @@ export const getUserReplyTweets = async ({ token, userId }) => {
     return { error }
   }
 }
+
+// Jasmine 新增: 拿到使用者所有喜歡的推文
+export const getUserLikeTweets = async ({ token, userId }) => {
+  try {
+    const { data } = await axios.get(`${authURL}/users/${userId}/likes`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    return data
+  } catch (error) {
+    console.error('[GetUserTweets Failed]:', error)
+    return { error }
+  }
+}

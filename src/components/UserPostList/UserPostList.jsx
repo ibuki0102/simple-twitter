@@ -7,9 +7,10 @@ import { useNavigate } from 'react-router-dom'
 
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
+import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
 import { useEffect, useState } from 'react'
 
-const UserPostList = ({ tweets, replyTweets, page, setPage }) => {
+const UserPostList = ({ tweets, replyTweets, likeTweets, page, setPage }) => {
   const navigate = useNavigate()
   // 管理個人資料頁面上方的個人資料
   const [userData, setUserData] = useState({
@@ -133,6 +134,7 @@ const UserPostList = ({ tweets, replyTweets, page, setPage }) => {
       {page === 'userReply' && (
         <ReplyItemCollection replyTweets={replyTweets} />
       )}
+      <LikeItemCollection likeTweets={likeTweets} />
     </div>
   )
 }
