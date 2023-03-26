@@ -98,27 +98,23 @@ const UserPostList = ({ tweets, page, setPage }) => {
           </div>
           <div className={styles.Introduction}>{introduction}</div>
           <div className={styles.Follow}>
-            <div className={styles.Following}>
+            <div
+              className={styles.Following}
+              onClick={() => {
+                handleChangePage('followers')
+              }}
+            >
               <div className={styles.Number}>{followingCounts || 0} 個</div>
-              <div
-                className={styles.Text}
-                onClick={() => {
-                  handleChangePage('followers')
-                }}
-              >
-                跟隨中
-              </div>
+              <div className={styles.Text}>跟隨中</div>
             </div>
-            <div className={styles.Follower}>
+            <div
+              className={styles.Follower}
+              onClick={() => {
+                handleChangePage('followings')
+              }}
+            >
               <div className={styles.Number}>{followerCounts || 0} 位</div>
-              <div
-                className={styles.Text}
-                onClick={() => {
-                  handleChangePage('followings')
-                }}
-              >
-                跟隨者
-              </div>
+              <div className={styles.Text}>跟隨者</div>
             </div>
           </div>
         </div>
