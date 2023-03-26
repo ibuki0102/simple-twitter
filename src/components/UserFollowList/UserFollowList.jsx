@@ -5,17 +5,12 @@ import { ReactComponent as Back } from 'assets/icons/back.svg'
 
 import UserFollowItem from 'components/UserFollowItem/UserFollowItem'
 
-const UserFollowList = ({
-  followers,
-  followings,
-  followPage,
-  setFollowPage,
-}) => {
-  function handleFollowPage(page) {
-    if (page === 'followers') {
-      setFollowPage('followers')
+const UserFollowList = ({ followers, followings, page, setPage }) => {
+  function handleFollowPage(changePage) {
+    if (changePage === 'followers') {
+      setPage('followers')
     } else {
-      setFollowPage('followings')
+      setPage('followings')
     }
   }
 
@@ -31,9 +26,7 @@ const UserFollowList = ({
         </div>
         <div className={styles.Heading}>
           <div
-            className={
-              followPage === 'followers' ? styles.Active : styles.Title
-            }
+            className={page === 'followers' ? styles.Active : styles.Title}
             onClick={() => {
               handleFollowPage('followers')
             }}
@@ -41,9 +34,7 @@ const UserFollowList = ({
             追隨者
           </div>
           <div
-            className={
-              followPage === 'followings' ? styles.Active : styles.Title
-            }
+            className={page === 'followings' ? styles.Active : styles.Title}
             onClick={() => {
               handleFollowPage('followings')
             }}
@@ -53,11 +44,11 @@ const UserFollowList = ({
         </div>
       </div>
       <div>
-        {followPage === 'followers' &&
+        {page === 'followers' &&
           followers.map((follower) => {
             return <UserFollowItem key={follower.id} follow={follower} />
           })}
-        {followPage === 'followings' &&
+        {page === 'followings' &&
           followings.map((following) => {
             return <UserFollowItem key={following.id} follow={following} />
           })}

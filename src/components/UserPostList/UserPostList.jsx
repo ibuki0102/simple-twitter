@@ -9,7 +9,7 @@ import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollect
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import { useEffect, useState } from 'react'
 
-const UserPostList = ({ tweets }) => {
+const UserPostList = ({ tweets, page, setPage }) => {
   const navigate = useNavigate()
   const [userData, setUserData] = useState({
     account: '',
@@ -21,6 +21,16 @@ const UserPostList = ({ tweets }) => {
     cover: '',
     tweetsCounts: 0,
   })
+
+  function handleChangePage(changePage) {
+    if (changePage === 'followers') {
+      setPage('followers')
+      navigate('/user/follow')
+    } else {
+      setPage('followings')
+      navigate('/user/follow')
+    }
+  }
 
   useEffect(() => {
     const UserData = async () => {
@@ -90,11 +100,25 @@ const UserPostList = ({ tweets }) => {
           <div className={styles.Follow}>
             <div className={styles.Following}>
               <div className={styles.Number}>{followingCounts || 0} 個</div>
-              <div className={styles.Text}>跟隨中</div>
+              <div
+                className={styles.Text}
+                onClick={() => {
+                  handleChangePage('followers')
+                }}
+              >
+                跟隨中
+              </div>
             </div>
             <div className={styles.Follower}>
               <div className={styles.Number}>{followerCounts || 0} 位</div>
-              <div className={styles.Text}>跟隨者</div>
+              <div
+                className={styles.Text}
+                onClick={() => {
+                  handleChangePage('followings')
+                }}
+              >
+                跟隨者
+              </div>
             </div>
           </div>
         </div>

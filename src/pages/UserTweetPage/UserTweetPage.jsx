@@ -8,11 +8,13 @@ import PopularUserList from 'components/PopularUserList/PopularUserList'
 
 import { useNavigate } from 'react-router-dom'
 import { getUserPostTweets } from 'api/userTweetPagePostTweets'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { PageContext } from 'contexts/PageContext'
 
 const UserTweetPage = () => {
   const navigate = useNavigate()
   const [tweets, setTweets] = useState([])
+  const [page, setPage] = useContext(PageContext)
 
   useEffect(() => {
     const getTweets = async () => {
@@ -36,7 +38,7 @@ const UserTweetPage = () => {
   return (
     <div className={styles.UserTweetPageContainer}>
       <Sidebar page="user" type="user" />
-      <UserPostList tweets={tweets} page="userPostTweets" />
+      <UserPostList tweets={tweets} page={page} setPage={setPage} />
       <PopularUserList />
     </div>
   )
