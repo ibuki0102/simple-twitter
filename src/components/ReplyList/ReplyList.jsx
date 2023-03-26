@@ -22,6 +22,7 @@ const ReplyList = () => {
   const [replyTweetData, setReplyTweetData] = useState('')
   const [replyListData, setReplyListData] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
+  // 用Context取得要前往推文回覆頁面的推文id
   const tweetId = useContext(ReplyTweetContext)[0]
   const navigate = useNavigate()
 
@@ -61,6 +62,7 @@ const ReplyList = () => {
           setReplyModalState={setReplyModalState}
         />
       ) : null}
+      {/* 避免還沒有拿到資料就渲染，會產生錯誤 */}
       {replyTweetData.User !== undefined && (
         <div className={styles.ReplyListTopSection}>
           <div className={styles.Heading}>
@@ -99,6 +101,7 @@ const ReplyList = () => {
             </div>
           </div>
           <div className={styles.Icon}>
+            {/* 點擊就可以回覆 */}
             <Reply className={styles.Reply} onClick={handleClickReply} />
             {replyTweetData.isLiked ? (
               <Liked className={styles.Liked} />
@@ -108,6 +111,7 @@ const ReplyList = () => {
           </div>
         </div>
       )}
+      {/* 避免還沒有拿到回覆列表跟推文資料就渲染，會產生錯誤 */}
       {replyListData !== undefined && replyTweetData.User !== undefined ? (
         <ReplyItemCollection
           replyListData={replyListData}
