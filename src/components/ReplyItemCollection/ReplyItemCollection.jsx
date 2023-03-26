@@ -1,18 +1,15 @@
 // Jasmine
 
-import ReplyItem from "components/ReplyItem/ReplyItem";
+import ReplyItem from 'components/ReplyItem/ReplyItem'
 
-const ReplyItemCollection = () => {
+const ReplyItemCollection = ({ replyTweets }) => {
   return (
     <div>
-      <ReplyItem />
-      <ReplyItem />
-      <ReplyItem />
-      <ReplyItem />
-      <ReplyItem />
-      <ReplyItem />
+      {replyTweets.map((replyTweet) => {
+        return <ReplyItem key={replyTweet.id} replyTweet={replyTweet} />
+      })}
     </div>
-  );
-};
+  )
+}
 
-export default ReplyItemCollection;
+export default ReplyItemCollection

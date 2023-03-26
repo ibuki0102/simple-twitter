@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom'
 
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
+import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
 import { useEffect, useState } from 'react'
 
-const UserPostList = ({ tweets, page, setPage }) => {
+const UserPostList = ({ tweets, replyTweets, likeTweets, page, setPage }) => {
   const navigate = useNavigate()
+  // 管理個人資料頁面上方的個人資料
   const [userData, setUserData] = useState({
     account: '',
     name: '',
@@ -22,6 +24,7 @@ const UserPostList = ({ tweets, page, setPage }) => {
     tweetsCounts: 0,
   })
 
+  // 切換到'跟隨中'或'跟隨者'
   function handleChangePage(changePage) {
     if (changePage === 'followers') {
       setPage('followers')
@@ -32,6 +35,7 @@ const UserPostList = ({ tweets, page, setPage }) => {
     }
   }
 
+  // 渲染個人資料頁面上方的個人資料
   useEffect(() => {
     const UserData = async () => {
       try {
@@ -98,27 +102,23 @@ const UserPostList = ({ tweets, page, setPage }) => {
           </div>
           <div className={styles.Introduction}>{introduction}</div>
           <div className={styles.Follow}>
-            <div className={styles.Following}>
+            <div
+              className={styles.Following}
+              onClick={() => {
+                handleChangePage('followers')
+              }}
+            >
               <div className={styles.Number}>{followingCounts || 0} 個</div>
-              <div
-                className={styles.Text}
-                onClick={() => {
-                  handleChangePage('followers')
-                }}
-              >
-                跟隨中
-              </div>
+              <div className={styles.Text}>跟隨中</div>
             </div>
-            <div className={styles.Follower}>
+            <div
+              className={styles.Follower}
+              onClick={() => {
+                handleChangePage('followings')
+              }}
+            >
               <div className={styles.Number}>{followerCounts || 0} 位</div>
-              <div
-                className={styles.Text}
-                onClick={() => {
-                  handleChangePage('followings')
-                }}
-              >
-                跟隨者
-              </div>
+              <div className={styles.Text}>跟隨者</div>
             </div>
           </div>
         </div>
@@ -129,9 +129,12 @@ const UserPostList = ({ tweets, page, setPage }) => {
         </div>
       </div>
       {/* 推文 */}
-      <TweetItemCollection tweets={tweets} />
+      {page === 'userPost' && <TweetItemCollection tweets={tweets} />}
       {/* 回覆 */}
-      {/* <ReplyItemCollection /> */}
+      {page === 'userReply' && (
+        <ReplyItemCollection replyTweets={replyTweets} />
+      )}
+      <LikeItemCollection likeTweets={likeTweets} />
     </div>
   )
 }
