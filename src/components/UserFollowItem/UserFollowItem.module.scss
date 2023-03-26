@@ -1,6 +1,7 @@
 // Jasmine
 
 .UserFollowItemContainer {
+  padding-bottom: 16px;
   position: relative;
   width: 620px;
   max-height: 186px;
@@ -41,4 +42,8 @@
       line-height: 26px;
     }
   }
+}
+.None {
+  border: none;
+  border-top: 1px solid #e6ecf0;
 }
