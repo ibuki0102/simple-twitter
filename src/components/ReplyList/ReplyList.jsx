@@ -23,7 +23,7 @@ const ReplyList = () => {
   const [replyTweetData, setReplyTweetData] = useState('')
   const [replyListData, setReplyListData] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
-  
+
   // 管理貼文的喜歡狀態
   const [isLiked, setIsLiked] = useState(replyTweetData.isLiked)
 
@@ -46,8 +46,8 @@ const ReplyList = () => {
       setIsLiked(false)
     }
   }
-  
-   // 用Context取得要前往推文回覆頁面的推文id
+
+  // 用Context取得要前往推文回覆頁面的推文id
   const tweetId = useContext(ReplyTweetContext)[0]
   const navigate = useNavigate()
 
@@ -128,7 +128,7 @@ const ReplyList = () => {
           <div className={styles.Icon}>
             {/* 點擊就可以回覆 */}
             <Reply className={styles.Reply} onClick={handleClickReply} />
-            {isLiked ? (
+            {replyTweetData.isLiked ? (
               <Liked className={styles.Liked} onClick={handleUnLike} />
             ) : (
               <Like className={styles.Like} onClick={handleIsLiked} />
