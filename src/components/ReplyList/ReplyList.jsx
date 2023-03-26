@@ -14,6 +14,7 @@ import { getReplyList } from 'api/replyTweet'
 import { getUserData } from 'api/auth'
 import { useReplyContext } from 'contexts/ReplyContext'
 import ReplyModal from 'components/ReplyModal/ReplyModal'
+import { likeTweet, unLikeTweet } from 'api/like'
 
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 
@@ -22,7 +23,31 @@ const ReplyList = () => {
   const [replyTweetData, setReplyTweetData] = useState('')
   const [replyListData, setReplyListData] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
-  // 用Context取得要前往推文回覆頁面的推文id
+  
+  // 管理貼文的喜歡狀態
+  const [isLiked, setIsLiked] = useState(replyTweetData.isLiked)
+
+  // 喜歡貼文
+  const handleIsLiked = async () => {
+    const token = localStorage.getItem('token')
+    const id = replyTweetData.id
+    const data = await likeTweet({ token, id })
+    if (data) {
+      setIsLiked(true)
+    }
+  }
+
+  // 取消喜歡貼文
+  const handleUnLike = async () => {
+    const token = localStorage.getItem('token')
+    const id = replyTweetData.id
+    const data = await unLikeTweet({ token, id })
+    if (data) {
+      setIsLiked(false)
+    }
+  }
+  
+   // 用Context取得要前往推文回覆頁面的推文id
   const tweetId = useContext(ReplyTweetContext)[0]
   const navigate = useNavigate()
 
@@ -103,10 +128,10 @@ const ReplyList = () => {
           <div className={styles.Icon}>
             {/* 點擊就可以回覆 */}
             <Reply className={styles.Reply} onClick={handleClickReply} />
-            {replyTweetData.isLiked ? (
-              <Liked className={styles.Liked} />
+            {isLiked ? (
+              <Liked className={styles.Liked} onClick={handleUnLike} />
             ) : (
-              <Like className={styles.Like} />
+              <Like className={styles.Like} onClick={handleIsLiked} />
             )}
           </div>
         </div>
