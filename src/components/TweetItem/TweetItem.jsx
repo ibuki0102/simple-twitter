@@ -38,7 +38,7 @@ const TweetItem = ({ tweet }) => {
       <img src={tweet.User.avatar} className={styles.Avatar} alt="avatar" />
       <div className={styles.Tweet}>
         <span className={styles.UserName}>{tweet.User.name}</span>
-        <span className={styles.UserAcount}>
+        <span className={styles.UserAccount}>
           @{tweet.User.account}・{tweet.transferDateTime}
         </span>
         <div className={styles.TweetContent}>{tweet.description}</div>
