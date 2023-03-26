@@ -8,6 +8,7 @@ import { useReplyContext } from 'contexts/ReplyContext'
 import ReplyModal from 'components/ReplyModal/ReplyModal'
 import { useState } from 'react'
 import { getUserData } from 'api/auth'
+import { useEffect } from 'react'
 
 const TweetItem = ({ tweet }) => {
   const { replyModalState, setReplyModalState } = useReplyContext()
@@ -22,10 +23,16 @@ const TweetItem = ({ tweet }) => {
     const userId = localStorage.getItem('userId')
     const userData = await getUserData({ token, userId })
     const data = await getOneTweet({ token, tweetId })
-    setReplyTweetData(data)
-    setUserAvatar(userData.avatar)
     setReplyModalState(true)
+    setUserAvatar(userData.avatar)
+    setReplyTweetData(data)
   }
+  useEffect(() => {
+    if (!replyModalState) {
+      setReplyTweetData('')
+    }
+  }, [setReplyTweetData, replyModalState])
+
   return (
     <div className={styles.TweetItemContainer}>
       {replyModalState && replyTweetData.User !== undefined ? (
@@ -38,7 +45,7 @@ const TweetItem = ({ tweet }) => {
       <img src={tweet.User.avatar} className={styles.Avatar} alt="avatar" />
       <div className={styles.Tweet}>
         <span className={styles.UserName}>{tweet.User.name}</span>
-        <span className={styles.UserAcount}>
+        <span className={styles.UserAccount}>
           @{tweet.User.account}・{tweet.transferDateTime}
         </span>
         <div className={styles.TweetContent}>{tweet.description}</div>
