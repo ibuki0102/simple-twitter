@@ -17,6 +17,11 @@
     width: 528px;
     margin-top: 16px;
     margin-left: 8px;
+    .ClickableArea {
+      &:hover {
+        cursor: pointer;
+      }
+    }
     .UserName {
       font-weight: 700;
       margin-right: 8px;

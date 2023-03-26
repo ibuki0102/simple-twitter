@@ -2,14 +2,17 @@
 
 import ReplyItem from 'components/ReplyItem/ReplyItem'
 
-const ReplyItemCollection = ({ replyTweets }) => {
-  return (
-    <div>
-      {replyTweets.map((replyTweet) => {
-        return <ReplyItem key={replyTweet.id} replyTweet={replyTweet} />
-      })}
-    </div>
-  )
+const ReplyItemCollection = ({ replyListData, replyTweetData }) => {
+  const replyList = replyListData.map((replyTweet) => {
+    return (
+      <ReplyItem
+        key={replyTweet.TweetId}
+        replyTweet={replyTweet}
+        replyTweetData={replyTweetData}
+      />
+    )
+  })
+  return <div>{replyList}</div>
 }
 
 export default ReplyItemCollection
