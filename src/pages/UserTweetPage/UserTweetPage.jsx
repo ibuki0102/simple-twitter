@@ -7,7 +7,7 @@ import UserPostList from 'components/UserPostList/UserPostList'
 import PopularUserList from 'components/PopularUserList/PopularUserList'
 
 import { useNavigate } from 'react-router-dom'
-import { getUserPostTweets } from 'api/userTweetPagePostTweets'
+import { getUserPostTweets } from 'api/userTweetPage'
 import { useEffect, useState, useContext } from 'react'
 import { PageContext } from 'contexts/PageContext'
 
