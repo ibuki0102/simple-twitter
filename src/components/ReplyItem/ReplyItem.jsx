@@ -13,7 +13,7 @@ const ReplyItem = ({ replyTweet }) => {
         />
         <div className={styles.Reply}>
           <span className={styles.UserName}>{replyTweet.User.name}</span>
-          <span className={styles.UserAcount}>
+          <span className={styles.UserAccount}>
             @{replyTweet.User.account}・{replyTweet.transferDateTime}
           </span>
           <div className={styles.ReplyAndTag}>
