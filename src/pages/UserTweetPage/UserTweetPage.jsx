@@ -32,12 +32,11 @@ const UserTweetPage = () => {
   // 雪央註: 個人資訊頁下方換頁時需要重新整理畫面，需要確認資料成功回傳
   const [currentPage, setCurrentPage] = useState('userPost')
 
-  // 雪央註: 將token以及userId拿到外面提取
-  const token = localStorage.getItem('token')
-  const userId = localStorage.getItem('userId')
   // 串接個人資料的'推文'
   useEffect(() => {
     const getTweets = async () => {
+      const token = localStorage.getItem('token')
+      const userId = localStorage.getItem('userId')
       if (!token) {
         navigate('/login')
       }

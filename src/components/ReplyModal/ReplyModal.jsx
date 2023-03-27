@@ -12,7 +12,7 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
   const [comment, setComment] = useState('')
   const [submited, setSubmited] = useState(false)
   const handleClick = async () => {
-    if (description.length > 140 || description.length === 0) {
+    if (comment.length > 140 || comment.length === 0) {
       return setSubmited(true)
     }
     const userId = localStorage.getItem('userId')
@@ -63,6 +63,7 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
                 value={comment}
                 onChange={(contentInputValue) => {
                   setComment(contentInputValue.target.value)
+                  setSubmited(false)
                 }}
               ></textarea>
             </div>
