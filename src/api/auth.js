@@ -40,7 +40,6 @@ export const regist = async ({
       password,
       checkPassword,
     })
-    console.log(data)
     const { status } = data
     if (status === 'success') {
       return { success: true, ...data }
