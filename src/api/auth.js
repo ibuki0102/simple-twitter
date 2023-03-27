@@ -40,7 +40,6 @@ export const regist = async ({
       password,
       checkPassword,
     })
-    console.log(data)
     const { status } = data
     if (status === 'success') {
       return { success: true, ...data }
@@ -83,5 +82,25 @@ export const getPopularUserList = async ({ token }) => {
   } catch (error) {
     console.error('[GetPopularUserList Failed]:', error)
     return { error }
+  }
+}
+
+// Jasmine 新增: 後台登入用API
+export const adminLogin = async ({ account, password }) => {
+  try {
+    const { data } = await axios.post(`${authURL}/admin/signin`, {
+      account,
+      password,
+    })
+    const userId = data.data.user.id
+    const { token } = data.data
+    if (token) {
+      return { success: true, userId, token }
+    }
+    return data
+  } catch (error) {
+    const errorMessage = error.response.data.message
+    console.error('[Login Failed]:', error.response.data.message)
+    return { errorMessage }
   }
 }
