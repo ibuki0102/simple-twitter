@@ -29,65 +29,37 @@ const UserTweetPage = () => {
   // Jasmine 註: 紀錄當前頁面，使用 setPage 管理頁面
   const [page, setPage] = useContext(PageContext)
 
+  // 雪央註: 個人資訊頁下方換頁時需要重新整理畫面，需要確認資料成功回傳
+  const [currentPage, setCurrentPage] = useState('userPost')
+
+  // 雪央註: 將token以及userId拿到外面提取
+  const token = localStorage.getItem('token')
+  const userId = localStorage.getItem('userId')
   // 串接個人資料的'推文'
   useEffect(() => {
     const getTweets = async () => {
+      if (!token) {
+        navigate('/login')
+      }
       try {
-        const token = localStorage.getItem('token')
-        const userId = localStorage.getItem('userId')
-        if (!token) {
-          navigate('/login')
+        const tweetsList = await getUserPostTweets({ token, userId })
+        if (tweetsList) {
+          setTweets(tweetsList)
         }
-        const tweets = await getUserPostTweets({ token, userId })
-        if (tweets) {
-          setTweets(tweets)
+        const replyTweetsList = await getUserReplyTweets({ token, userId })
+        if (replyTweetsList) {
+          setReplyTweets(replyTweetsList)
+        }
+        const likeTweetsList = await getUserLikeTweets({ token, userId })
+        if (likeTweetsList) {
+          setLikeTweets(likeTweetsList)
         }
       } catch (error) {
         console.error(error)
       }
     }
     getTweets()
-  }, [navigate])
-
-  // 串接個人資料的'回覆'
-  useEffect(() => {
-    const getReplyTweets = async () => {
-      try {
-        const token = localStorage.getItem('token')
-        const userId = localStorage.getItem('userId')
-        if (!token) {
-          navigate('/login')
-        }
-        const replyTweets = await getUserReplyTweets({ token, userId })
-        if (replyTweets) {
-          setReplyTweets(replyTweets)
-        }
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    getReplyTweets()
-  }, [navigate])
-
-  // 串接個人資料的'喜歡的內容'
-  useEffect(() => {
-    const getLikeTweets = async () => {
-      try {
-        const token = localStorage.getItem('token')
-        const userId = localStorage.getItem('userId')
-        if (!token) {
-          navigate('/login')
-        }
-        const likeTweets = await getUserLikeTweets({ token, userId })
-        if (likeTweets) {
-          setLikeTweets(likeTweets)
-        }
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    getLikeTweets()
-  }, [navigate])
+  }, [navigate, currentPage])
 
   return (
     <div className={styles.UserTweetPageContainer}>
@@ -98,7 +70,10 @@ const UserTweetPage = () => {
         likeTweets={likeTweets}
         page={page}
         setPage={setPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
+
       <PopularUserList />
     </div>
   )
