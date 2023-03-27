@@ -12,6 +12,9 @@
     height: 50px;
     margin-top: 16px;
     margin-left: 24px;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .Tweet {
     width: 528px;

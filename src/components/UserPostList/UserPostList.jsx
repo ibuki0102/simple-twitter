@@ -53,7 +53,6 @@ const UserPostList = ({
     if (currentPage === 'userReply') {
       return
     }
-    console.log(replyTweets)
     setCurrentPage('userReply')
   }
   const handleLikePage = () => {
