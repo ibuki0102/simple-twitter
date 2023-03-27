@@ -3,7 +3,7 @@
 import styles from '../AdminTweetListItem/AdminTweetListItem.module.scss'
 import { ReactComponent as GrayCross } from 'assets/icons/gray_cross.svg'
 
-const AdminTweetListItem = ({ adminTweet }) => {
+const AdminTweetListItem = ({ adminTweet, onDeleteTweet }) => {
   return (
     <div className={styles.ListItemContainer}>
       <div className={styles.Avatar}>
@@ -18,7 +18,10 @@ const AdminTweetListItem = ({ adminTweet }) => {
             </span>
           </div>
           <div>
-            <GrayCross className={styles.GrayCross} />
+            <GrayCross
+              className={styles.GrayCross}
+              onClick={() => onDeleteTweet?.(adminTweet.id)}
+            />
           </div>
         </div>
         <div className={styles.tweetContentContainer}>

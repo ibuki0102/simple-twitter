@@ -6,6 +6,7 @@ import AdminTweetListItem from 'components/AdminTweetListItem/AdminTweetListItem
 import { getAdminTweetList } from 'api/admin'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { deleteTweet } from 'api/admin'
 
 const AdminTweetListPage = () => {
   const navigate = useNavigate()
@@ -33,6 +34,17 @@ const AdminTweetListPage = () => {
     getAdminTweets()
   }, [navigate])
 
+  // Jasmine 註: 刪除後台特定推文
+  const handleDeleteTweet = async (id) => {
+    const token = localStorage.getItem('token')
+    const data = await deleteTweet({ token, id })
+    if (data) {
+      setAdminTweets((prevTweets) =>
+        prevTweets.filter((tweet) => tweet.id !== id)
+      )
+    }
+  }
+
   return (
     <div className={styles.Container}>
       <div className={styles.Sidebar}>
@@ -43,7 +55,11 @@ const AdminTweetListPage = () => {
         <div className={styles.ListItemContainer}>
           {adminTweets.map((adminTweet) => {
             return (
-              <AdminTweetListItem key={adminTweet.id} adminTweet={adminTweet} />
+              <AdminTweetListItem
+                key={adminTweet.id}
+                adminTweet={adminTweet}
+                onDeleteTweet={handleDeleteTweet}
+              />
             )
           })}
         </div>

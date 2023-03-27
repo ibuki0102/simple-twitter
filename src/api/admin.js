@@ -33,3 +33,18 @@ export const getAdminUserList = async ({ token }) => {
     return { error }
   }
 }
+
+// Jasmine 新增: 刪除後台推文清單某一特定推文的 API
+export const deleteTweet = async ({ token, id }) => {
+  try {
+    const { data } = await axios({
+      method: 'delete',
+      url: `${authURL}/admin/tweets/${id}`,
+      headers: { Authorization: 'Bearer ' + token },
+    })
+    return data
+  } catch (error) {
+    console.error('[UnFollowUser Failed]:', error)
+    return { error }
+  }
+}
