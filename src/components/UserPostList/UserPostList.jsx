@@ -177,17 +177,17 @@ const UserPostList = ({
         </div>
       </div>
       {/* 推文 */}
-      {currentPage === 'userPost' && tweets !== undefined ? (
+      {currentPage === 'userPost' && (
         <TweetItemCollection tweets={tweets} type="userPage" />
-      ) : null}
+      )}
       {/* 回覆 */}
       {/* <ReplyItemCollection replyTweets={replyTweets} /> */}
-      {currentPage === 'userReply' ? (
+      {currentPage === 'userReply' && (
         <ReplyItemCollection replyTweets={replyTweets} type="userPage" />
-      ) : null}
-      {currentPage === 'userLike' && likeTweets !== undefined ? (
+      )}
+      {currentPage === 'userLike' && (
         <LikeItemCollection likeTweets={likeTweets} type="userPage" />
-      ) : null}
+      )}
     </div>
   )
 }
