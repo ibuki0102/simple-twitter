@@ -14,7 +14,7 @@ export const getOneTweet = async ({ token, tweetId }) => {
     })
     return data
   } catch (error) {
-    console.error('[Tweet Failed]:', error)
+    console.error('[GetOneTweet Failed]:', error)
     return { error }
   }
 }

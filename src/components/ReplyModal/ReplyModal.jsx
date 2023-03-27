@@ -4,7 +4,10 @@ import { useState } from 'react'
 import { replyTweet } from 'api/replyTweet'
 
 const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
-  const { avatar, account, name } = replyTweetData.User
+  const avatar = replyTweetData.User.avatar
+  const account = replyTweetData.User.account
+  const name = replyTweetData.User.name
+
   const { id, description, transferDateTimeformodel } = replyTweetData
   const [comment, setComment] = useState('')
   const [submited, setSubmited] = useState(false)

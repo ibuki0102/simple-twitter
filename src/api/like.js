@@ -11,9 +11,6 @@ export const likeTweet = async ({ token, id }) => {
       method: 'post',
       url: `${authURL}/tweets/${id}/like`,
       headers: { Authorization: 'Bearer ' + token },
-      data: {
-        id,
-      },
     })
     return data
   } catch (error) {
@@ -29,9 +26,6 @@ export const unLikeTweet = async ({ token, id }) => {
       method: 'post',
       url: `${authURL}/tweets/${id}/unlike`,
       headers: { Authorization: 'Bearer ' + token },
-      data: {
-        id,
-      },
     })
     return data
   } catch (error) {

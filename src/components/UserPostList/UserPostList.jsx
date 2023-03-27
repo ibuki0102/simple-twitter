@@ -10,7 +10,14 @@ import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollect
 import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
 import { useEffect, useState } from 'react'
 
-const UserPostList = ({ tweets, replyTweets, likeTweets, page, setPage }) => {
+const UserPostList = ({
+  tweets,
+  replyTweets,
+  likeTweets,
+  setPage,
+  currentPage,
+  setCurrentPage,
+}) => {
   const navigate = useNavigate()
   // 管理個人資料頁面上方的個人資料
   const [userData, setUserData] = useState({
@@ -33,6 +40,27 @@ const UserPostList = ({ tweets, replyTweets, likeTweets, page, setPage }) => {
       setPage('followings')
       navigate('/user/follow')
     }
+  }
+
+  // 變更個人資料頁面下方的推文列表
+  const handleTweetPage = () => {
+    if (currentPage === 'userPost') {
+      return
+    }
+    setCurrentPage('userPost')
+  }
+  const handleReplyPage = () => {
+    if (currentPage === 'userReply') {
+      return
+    }
+    console.log(replyTweets)
+    setCurrentPage('userReply')
+  }
+  const handleLikePage = () => {
+    if (currentPage === 'userLike') {
+      return
+    }
+    setCurrentPage('userLike')
   }
 
   // 渲染個人資料頁面上方的個人資料
@@ -123,18 +151,44 @@ const UserPostList = ({ tweets, replyTweets, likeTweets, page, setPage }) => {
           </div>
         </div>
         <div className={styles.Heading}>
-          <div className={`${styles.Title} ${styles.Active}`}>推文</div>
-          <div className={styles.Title}>回覆</div>
-          <div className={styles.Title}>喜歡的內容</div>
+          <div
+            className={
+              currentPage === 'userPost' ? styles.ActiveTitle : styles.Title
+            }
+            onClick={handleTweetPage}
+          >
+            推文
+          </div>
+          <div
+            className={
+              currentPage === 'userReply' ? styles.ActiveTitle : styles.Title
+            }
+            onClick={handleReplyPage}
+          >
+            回覆
+          </div>
+          <div
+            className={
+              currentPage === 'userLike' ? styles.ActiveTitle : styles.Title
+            }
+            onClick={handleLikePage}
+          >
+            喜歡的內容
+          </div>
         </div>
       </div>
       {/* 推文 */}
-      {page === 'userPost' && <TweetItemCollection tweets={tweets} />}
+      {currentPage === 'userPost' && tweets !== undefined ? (
+        <TweetItemCollection tweets={tweets} type="userPage" />
+      ) : null}
       {/* 回覆 */}
-      {page === 'userReply' && (
-        <ReplyItemCollection replyTweets={replyTweets} />
-      )}
-      <LikeItemCollection likeTweets={likeTweets} />
+      {/* <ReplyItemCollection replyTweets={replyTweets} /> */}
+      {currentPage === 'userReply' ? (
+        <ReplyItemCollection replyTweets={replyTweets} type="userPage" />
+      ) : null}
+      {currentPage === 'userLike' && likeTweets !== undefined ? (
+        <LikeItemCollection likeTweets={likeTweets} type="userPage" />
+      ) : null}
     </div>
   )
 }

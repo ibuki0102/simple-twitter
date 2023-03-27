@@ -2,7 +2,7 @@
 
 import styles from 'components/ReplyItem/ReplyItem.module.scss'
 
-const ReplyItem = ({ replyTweet, replyTweetData }) => {
+const ReplyItem = ({ replyTweet }) => {
   return (
     <div className={styles.ReplyItemContainer}>
       <div className={styles.ReplyUser}>
@@ -18,7 +18,9 @@ const ReplyItem = ({ replyTweet, replyTweetData }) => {
           </span>
           <div className={styles.ReplyAndTag}>
             <span className={styles.ReplyText}>回覆</span>
-            <span className={styles.Tag}>@{replyTweetData.User.account}</span>
+            <span className={styles.Tag}>
+              @{replyTweet.Tweet.User.ownerAccount}
+            </span>
           </div>
         </div>
       </div>
