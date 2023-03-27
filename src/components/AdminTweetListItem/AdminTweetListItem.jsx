@@ -2,7 +2,6 @@
 
 import styles from '../AdminTweetListItem/AdminTweetListItem.module.scss'
 import { ReactComponent as GrayCross } from 'assets/icons/gray_cross.svg'
-import defaultAvatar from 'assets/icons/default_avatar.svg'
 
 const AdminTweetListItem = ({ adminTweet }) => {
   return (

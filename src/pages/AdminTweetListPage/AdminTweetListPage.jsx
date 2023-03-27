@@ -13,7 +13,7 @@ const AdminTweetListPage = () => {
   // Jasmine 註: 管理後台推文
   const [adminTweets, setAdminTweets] = useState([])
 
-  // // Jasmine 註: 取得後台推文
+  // Jasmine 註: 取得後台推文
   useEffect(() => {
     const getAdminTweets = async () => {
       try {

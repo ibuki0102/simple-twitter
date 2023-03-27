@@ -5,51 +5,49 @@ import { ReactComponent as DefaultAvatar } from 'assets/icons/default_avatar.svg
 import { ReactComponent as Post } from 'assets/icons/post.svg'
 import { ReactComponent as Like } from 'assets/icons/like.svg'
 
-const AdminUserListItem = ({ userData }) => {
-  const {
-    name,
-    account,
-    avatar,
-    banner,
-    totalTweets,
-    totalLikes,
-    following,
-    follower,
-  } = userData
+const AdminUserListItem = ({ adminUser }) => {
   return (
     <div className={styles.ListItemContainer}>
       <div className={styles.Bg}>
-        <img src={banner} className={styles.Banner} alt={banner} />
+        {adminUser.cover === null ? (
+          <img
+            src="https://i.imgur.com/jXE6Mmp.png"
+            className={styles.Banner}
+            alt="banner"
+          />
+        ) : (
+          <img src={adminUser.cover} className={styles.Banner} alt="banner" />
+        )}
       </div>
       <div className={styles.AvatarAccountContainer}>
-        {avatar === null ? (
+        {adminUser.avatar === null ? (
           <DefaultAvatar className={styles.Avatar} />
         ) : (
-          <img src={avatar} className={styles.Avatar} alt={avatar} />
+          <img src={adminUser.avatar} className={styles.Avatar} alt="avatar" />
         )}
         <div className={styles.NameAccount}>
-          <span className={styles.Name}>{name}</span>
-          <span className={styles.Account}>@{account}</span>
+          <span className={styles.Name}>{adminUser.name}</span>
+          <span className={styles.Account}>@{adminUser.account}</span>
         </div>
       </div>
       <div className={styles.DetailInfoContainer}>
         <div className={styles.TweetsLikesContainer}>
           <div className={styles.PostContainer}>
             <Post className={styles.Post} />
-            <span>{totalTweets}</span>
+            <span>{adminUser.totalTweets}</span>
           </div>
           <div className={styles.LikeContainer}>
             <Like className={styles.Like} />
-            <span>{totalLikes}</span>
+            <span>{adminUser.totalLikes}</span>
           </div>
         </div>
         <div className={styles.FollowContainer}>
           <div className={styles.Following}>
-            <span>{following} 個</span>
+            <span>{adminUser.followingCount} 個</span>
             <span className={styles.GreyText}>跟隨中</span>
           </div>
           <div className={styles.Follower}>
-            <span>{follower} 位</span>
+            <span>{adminUser.followerCount} 位</span>
             <span className={styles.GreyText}>跟隨者</span>
           </div>
         </div>

@@ -18,3 +18,18 @@ export const getAdminTweetList = async ({ token }) => {
     return { error }
   }
 }
+
+// Jasmine 新增: 拿到後台使用者清單的 API
+export const getAdminUserList = async ({ token }) => {
+  try {
+    const { data } = await axios.get(`${authURL}/admin/users`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    })
+    return data
+  } catch (error) {
+    console.error('[GetUserData Failed]:', error)
+    return { error }
+  }
+}
