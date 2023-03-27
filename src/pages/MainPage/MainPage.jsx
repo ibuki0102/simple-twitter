@@ -8,8 +8,9 @@ import PopularUserList from 'components/PopularUserList/PopularUserList'
 
 import { useNavigate } from 'react-router-dom'
 import { getMainPageUserTweets } from 'api/mainPageTweets'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useReplyContext } from 'contexts/ReplyContext'
+import { UserContext } from 'contexts/UserContext'
 
 const MainPage = ({ setReplyTweetId }) => {
   const navigate = useNavigate()
@@ -17,6 +18,7 @@ const MainPage = ({ setReplyTweetId }) => {
   const [modalState, setModalState] = useState(false)
   const [updateTweetList, setUpdateTweetList] = useState(false)
   const { replyModalState, setReplyModalState } = useReplyContext()
+  const [user, setUser] = useContext(UserContext)
 
   useEffect(() => {
     const getTweets = async () => {
@@ -49,6 +51,8 @@ const MainPage = ({ setReplyTweetId }) => {
         setTweets={setTweets}
         modalState={modalState}
         setModalState={setModalState}
+        user={user}
+        setUser={setUser}
       />
       <PopularUserList
         updateTweetList={updateTweetList}

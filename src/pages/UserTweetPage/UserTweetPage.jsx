@@ -72,7 +72,6 @@ const UserTweetPage = () => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-
       <PopularUserList />
     </div>
   )

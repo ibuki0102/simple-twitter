@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ReplyTweetContext } from 'contexts/ReplyTweetContext'
 
-const TweetItem = ({ tweet }) => {
+const TweetItem = ({ tweet, user, setUser }) => {
   const { replyModalState, setReplyModalState } = useReplyContext()
   const [replyTweetData, setReplyTweetData] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
@@ -43,6 +43,12 @@ const TweetItem = ({ tweet }) => {
     }
   }, [setReplyTweetData, replyModalState])
 
+  // Jasmine 註: 點擊頭像獲取 id 並引導至個人資料頁
+  const handleChangeUser = (id) => {
+    setUser(id)
+    navigate('/user/other')
+  }
+
   return (
     <div className={styles.TweetItemContainer}>
       {replyModalState && replyTweetData.User !== undefined ? (
@@ -52,7 +58,12 @@ const TweetItem = ({ tweet }) => {
           setReplyModalState={setReplyModalState}
         />
       ) : null}
-      <img src={tweet.User.avatar} className={styles.Avatar} alt="avatar" />
+      <img
+        src={tweet.User.avatar}
+        className={styles.Avatar}
+        alt="avatar"
+        onClick={() => handleChangeUser?.(tweet.User.id)}
+      />
       <div className={styles.Tweet}>
         <div className={styles.ClickableArea} onClick={handleToReplyList}>
           <span className={styles.UserName}>{tweet.User.name}</span>

@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 
-const TweetList = ({ tweets, setTweets, modalState, setModalState }) => {
+const TweetList = ({ tweets, setTweets, modalState, setModalState, user, setUser }) => {
   const [avatar, setAvatar] = useState('')
   const navigate = useNavigate()
   useEffect(() => {
@@ -49,7 +49,7 @@ const TweetList = ({ tweets, setTweets, modalState, setModalState }) => {
       {modalState && (
         <TweetModal setModalState={setModalState} avatar={avatar} />
       )}
-      <TweetItemCollection tweets={tweets} />
+      <TweetItemCollection tweets={tweets} user={user} setUser={setUser} />
     </div>
   )
 }
