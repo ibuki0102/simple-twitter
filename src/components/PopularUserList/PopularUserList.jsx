@@ -7,7 +7,11 @@ import { getPopularUserList } from 'api/auth'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const PopularUserList = ({ updateTweetList, setUpdateTweetList }) => {
+const PopularUserList = ({
+  updateTweetList,
+  setUpdateTweetList,
+  profileModalState,
+}) => {
   const [popularUserList, setPopularUserList] = useState('')
   const navigate = useNavigate()
   useEffect(() => {
@@ -30,7 +34,7 @@ const PopularUserList = ({ updateTweetList, setUpdateTweetList }) => {
       setPopularUserList(dataList)
     }
     userList()
-  }, [navigate, updateTweetList, setUpdateTweetList])
+  }, [navigate, updateTweetList, setUpdateTweetList, profileModalState])
   return (
     <div className={styles.PopularUserListContainer}>
       <div className={styles.PopularUserContainer}>

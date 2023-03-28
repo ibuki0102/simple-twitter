@@ -9,15 +9,17 @@ import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollect
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
 import { useEffect, useState } from 'react'
+import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
 
 const UserPostList = ({
   tweets,
   replyTweets,
   likeTweets,
-  page,
   setPage,
   currentPage,
   setCurrentPage,
+  profileModalState,
+  setProfileModalState,
 }) => {
   const navigate = useNavigate()
   // 管理個人資料頁面上方的個人資料
@@ -41,6 +43,9 @@ const UserPostList = ({
       setPage('followings')
       navigate('/user/follow')
     }
+  }
+  const handleEditProfile = () => {
+    setProfileModalState(true)
   }
 
   // 變更個人資料頁面下方的推文列表
@@ -90,7 +95,7 @@ const UserPostList = ({
       }
     }
     UserData()
-  }, [navigate])
+  }, [navigate, profileModalState])
   const {
     account,
     name,
@@ -104,6 +109,12 @@ const UserPostList = ({
 
   return (
     <div className={styles.UserPostListContainer}>
+      {profileModalState && (
+        <ProfileEditModal
+          userData={userData}
+          setProfileModalState={setProfileModalState}
+        />
+      )}
       <div className={styles.UserPostListTopSection}>
         <div className={styles.Return}>
           <Back />
@@ -122,7 +133,9 @@ const UserPostList = ({
           className={styles.Photo}
           alt=""
         />
-        <button>編輯個人資料</button>
+        <button onClick={handleEditProfile} className={styles.EditProfile}>
+          編輯個人資料
+        </button>
         <div className={styles.UserIntroduction}>
           <div className={styles.User}>
             <h5 className={styles.UserName}>{name}</h5>
@@ -182,10 +195,10 @@ const UserPostList = ({
         <TweetItemCollection tweets={tweets} type="userPage" />
       )}
       {/* 回覆 */}
-      {/* <ReplyItemCollection replyTweets={replyTweets} /> */}
       {currentPage === 'userReply' && (
         <ReplyItemCollection replyTweets={replyTweets} type="userPage" />
       )}
+      {/* 喜歡 */}
       {currentPage === 'userLike' && (
         <LikeItemCollection likeTweets={likeTweets} type="userPage" />
       )}

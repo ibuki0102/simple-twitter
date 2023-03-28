@@ -32,6 +32,9 @@ const UserTweetPage = () => {
   // 雪央註: 個人資訊頁下方換頁時需要重新整理畫面，需要確認資料成功回傳
   const [currentPage, setCurrentPage] = useState('userPost')
 
+  // 雪央註: 用state管理編輯個人資訊的modal狀態
+  const [profileModalState, setProfileModalState] = useState(false)
+
   // 串接個人資料的'推文'
   useEffect(() => {
     const getTweets = async () => {
@@ -58,7 +61,7 @@ const UserTweetPage = () => {
       }
     }
     getTweets()
-  }, [navigate, currentPage])
+  }, [navigate, currentPage, profileModalState])
 
   return (
     <div className={styles.UserTweetPageContainer}>
@@ -71,8 +74,10 @@ const UserTweetPage = () => {
         setPage={setPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        profileModalState={profileModalState}
+        setProfileModalState={setProfileModalState}
       />
-      <PopularUserList />
+      <PopularUserList profileModalState={profileModalState} />
     </div>
   )
 }
