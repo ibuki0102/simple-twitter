@@ -70,6 +70,8 @@ const OtherTweetPage = () => {
         likeTweets={likeTweets}
         page={page}
         setPage={setPage}
+        user={user}
+        setUser={setUser}
       />
       <PopularUserList />
     </div>

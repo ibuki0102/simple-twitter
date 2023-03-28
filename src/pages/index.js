@@ -9,6 +9,7 @@ import SettingPage from './SettingPage/SettingPage'
 import UserTweetPage from './UserTweetPage/UserTweetPage'
 import UserFollowPage from './UserFollowPage/UserFollowPage'
 import OtherTweetPage from './OtherTweetPage/OtherTweetPage'
+import OtherUserFollowPage from './OtherUserFollowPage/OtherUserFollowPage'
 import Homepage from './Homepage/Homepage'
 
 export {
@@ -23,5 +24,6 @@ export {
   UserTweetPage,
   UserFollowPage,
   OtherTweetPage,
+  OtherUserFollowPage,
   Homepage,
 }

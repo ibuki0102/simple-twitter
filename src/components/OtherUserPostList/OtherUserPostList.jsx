@@ -12,7 +12,6 @@ import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollect
 import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
 
 import { useState, useContext, useEffect } from 'react'
-import { UserContext } from 'contexts/UserContext'
 
 const OtherUserPostList = ({
   tweets,
@@ -20,6 +19,8 @@ const OtherUserPostList = ({
   likeTweets,
   page,
   setPage,
+  user,
+  setUser,
 }) => {
   const navigate = useNavigate()
 
@@ -35,17 +36,14 @@ const OtherUserPostList = ({
     tweetsCounts: 0,
   })
 
-  // Jasmine 註: 紀錄使用者 id
-  const [user, setUser] = useContext(UserContext)
-
   // 切換到'跟隨中'或'跟隨者'
   function handleChangePage(changePage) {
     if (changePage === 'followers') {
       setPage('followers')
-      navigate('/user/follow')
+      navigate('/user/other/follow')
     } else {
       setPage('followings')
-      navigate('/user/follow')
+      navigate('/user/other/follow')
     }
   }
 
