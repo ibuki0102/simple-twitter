@@ -21,6 +21,8 @@ const OtherUserPostList = ({
   setPage,
   user,
   setUser,
+  choice,
+  setChoice,
 }) => {
   const navigate = useNavigate()
 
@@ -44,6 +46,17 @@ const OtherUserPostList = ({
     } else {
       setPage('followings')
       navigate('/user/other/follow')
+    }
+  }
+
+  // 切換'推文'、'回覆'、'喜歡的內容'
+  function handleChoose(changePage) {
+    if (changePage === 'userReply') {
+      setChoice('userReply')
+    } else if (changePage === 'userLike') {
+      setChoice('userLike')
+    } else {
+      setChoice('userPost')
     }
   }
 
@@ -85,7 +98,7 @@ const OtherUserPostList = ({
     cover,
     tweetsCounts,
   } = userData
-
+  // console.log(choice)
   return (
     <div className={styles.UserPostListContainer}>
       <div className={styles.UserPostListTopSection}>
@@ -138,14 +151,37 @@ const OtherUserPostList = ({
           </div>
         </div>
         <div className={styles.Heading}>
-          <div className={styles.Title}>推文</div>
-          <div className={styles.Title}>回覆</div>
-          <div className={styles.Title}>喜歡的內容</div>
+          <div
+            className={choice === 'userPost' ? styles.Active : styles.Title}
+            onClick={() => {
+              handleChoose('userPost')
+            }}
+          >
+            推文
+          </div>
+          <div
+            className={choice === 'userReply' ? styles.Active : styles.Title}
+            onClick={() => {
+              handleChoose('userReply')
+            }}
+          >
+            回覆
+          </div>
+          <div
+            className={choice === 'userLike' ? styles.Active : styles.Title}
+            onClick={() => {
+              handleChoose('userLike')
+            }}
+          >
+            喜歡的內容
+          </div>
         </div>
       </div>
-      <TweetItemCollection tweets={tweets} />
-      {/* <ReplyItemCollection replyTweets={replyTweets} /> */}
-      {/* <LikeItemCollection likeTweets={likeTweets}/> */}
+      {choice === 'userPost' && <TweetItemCollection tweets={tweets} />}
+      {choice === 'userReply' && (
+        <ReplyItemCollection replyTweets={replyTweets} />
+      )}
+      {choice === 'userLike' && <LikeItemCollection likeTweets={likeTweets} />}
     </div>
   )
 }
