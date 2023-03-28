@@ -75,20 +75,26 @@
         fill: white;
       }
     }
-    button {
+    .DefaultButton {
       position: absolute;
       top: 291px;
       right: 17px;
       padding: 8px 16px;
-      color: #ffffff;
-      background-color: #ff6600;
+      background: white;
+      color: #ff6600;
+      border: 1px solid #ff6600;
       line-height: 24px;
       font-weight: 400;
-      border: none;
       border-radius: 50px;
       &:hover {
         cursor: pointer;
       }
+    }
+    .ActiveButton {
+      @extend .DefaultButton;
+      background: #ff6600;
+      color: #ffffff;
+      border: none;
     }
     .UserIntroduction {
       margin-top: 72px;
