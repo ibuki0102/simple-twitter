@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { getUserFollowers, getUserFollowings } from 'api/userFollowPage'
 import { useEffect, useState, useContext } from 'react'
 import { PageContext } from 'contexts/PageContext'
+import { UserContext } from 'contexts/UserContext'
 
 const UserFollowPage = () => {
   const navigate = useNavigate()
@@ -21,6 +22,9 @@ const UserFollowPage = () => {
 
   // Jasmine 註: 紀錄當前頁面，使用 setPage 管理頁面
   const [page, setPage] = useContext(PageContext)
+
+  // Jasmine 註: 紀錄使用者 id
+  const [user, setUser] = useContext(UserContext)
 
   // 串接'追隨者'資料
   useEffect(() => {
@@ -66,10 +70,22 @@ const UserFollowPage = () => {
     <div className={styles.UserFollowPageContainer}>
       <Sidebar />
       {page === 'followers' && (
-        <UserFollowList followers={followers} page={page} setPage={setPage} />
+        <UserFollowList
+          followers={followers}
+          page={page}
+          setPage={setPage}
+          user={user}
+          seUser={setUser}
+        />
       )}
       {page === 'followings' && (
-        <UserFollowList followings={followings} page={page} setPage={setPage} />
+        <UserFollowList
+          followings={followings}
+          page={page}
+          setPage={setPage}
+          user={user}
+          seUser={setUser}
+        />
       )}
       <PopularUserList />
     </div>

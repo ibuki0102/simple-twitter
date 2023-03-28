@@ -20,7 +20,13 @@ const UserFollowItem = (follow) => {
       )}
       <div className={styles.Tweet}>
         <div className={styles.UserName}>{follow.follow.name}</div>
-        {follow.follow.avatar !== null && <button>正在跟隨</button>}
+        {follow.follow.isFollowed
+          ? follow.follow.avatar !== null && (
+              <button className={styles.ActiveButton}>正在跟隨</button>
+            )
+          : follow.follow.avatar !== null && (
+              <button className={styles.DefaultButton}>跟隨</button>
+            )}
         <div className={styles.TweetContent}>{follow.follow.introduction}</div>
       </div>
     </div>

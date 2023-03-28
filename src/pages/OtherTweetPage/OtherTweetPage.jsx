@@ -66,7 +66,7 @@ const OtherTweetPage = () => {
 
   return (
     <div className={styles.OtherTweetPageContainer}>
-      <Sidebar page="user" type="user" />
+      <Sidebar type="user" />
       <OtherUserPostList
         tweets={tweets}
         replyTweets={replyTweets}

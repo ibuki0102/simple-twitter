@@ -70,10 +70,22 @@ const OtherUserFollowPage = () => {
     <div className={styles.OtherUserFollowPageContainer}>
       <Sidebar />
       {page === 'followers' && (
-        <UserFollowList followers={followers} page={page} setPage={setPage} />
+        <UserFollowList
+          followers={followers}
+          page={page}
+          setPage={setPage}
+          user={user}
+          seUser={setUser}
+        />
       )}
       {page === 'followings' && (
-        <UserFollowList followings={followings} page={page} setPage={setPage} />
+        <UserFollowList
+          followings={followings}
+          page={page}
+          setPage={setPage}
+          user={user}
+          seUser={setUser}
+        />
       )}
       <PopularUserList />
     </div>

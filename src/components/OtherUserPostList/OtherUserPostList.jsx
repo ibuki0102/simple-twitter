@@ -11,7 +11,7 @@ import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollect
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
 
-import { useState, useContext, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 const OtherUserPostList = ({
   tweets,
@@ -36,6 +36,7 @@ const OtherUserPostList = ({
     avatar: '',
     cover: '',
     tweetsCounts: 0,
+    isFollowed: '',
   })
 
   // 切換到'跟隨中'或'跟隨者'
@@ -80,6 +81,7 @@ const OtherUserPostList = ({
             avatar: result.avatar,
             cover: result.cover,
             tweetsCounts: result.tweetsCounts,
+            isFollowed: result.isFollowed,
           })
         }
       } catch (error) {
@@ -97,13 +99,14 @@ const OtherUserPostList = ({
     avatar,
     cover,
     tweetsCounts,
+    isFollowed,
   } = userData
-  // console.log(choice)
+
   return (
     <div className={styles.UserPostListContainer}>
       <div className={styles.UserPostListTopSection}>
         <div className={styles.Return}>
-          <Back />
+          <Back className={styles.Back} onClick={() => navigate('/main')} />
           <div className={styles.UserName}>
             <h5 className={styles.Name}>{name}</h5>
             <div className={styles.TweetCount}>{tweetsCounts} 推文</div>
@@ -121,7 +124,11 @@ const OtherUserPostList = ({
         />
         <Mail className={styles.Mail} />
         <Bell className={styles.Bell} />
-        <button>正在跟隨</button>
+        {isFollowed ? (
+          <button className={styles.ActiveButton}>正在跟隨</button>
+        ) : (
+          <button className={styles.DefaultButton}>跟隨</button>
+        )}
 
         <div className={styles.UserIntroduction}>
           <div className={styles.User}>
