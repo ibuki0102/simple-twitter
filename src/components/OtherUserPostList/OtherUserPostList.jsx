@@ -11,7 +11,7 @@ import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollect
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
 
-import { useState, useContext, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 const OtherUserPostList = ({
   tweets,
@@ -106,7 +106,7 @@ const OtherUserPostList = ({
     <div className={styles.UserPostListContainer}>
       <div className={styles.UserPostListTopSection}>
         <div className={styles.Return}>
-          <Back />
+          <Back className={styles.Back} onClick={() => navigate('/main')} />
           <div className={styles.UserName}>
             <h5 className={styles.Name}>{name}</h5>
             <div className={styles.TweetCount}>{tweetsCounts} 推文</div>

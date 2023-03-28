@@ -7,9 +7,14 @@
   .UserFollowListTopSection {
     max-height: 140px;
     .Return {
+      border: 1px solid #e6ecf0;
+      border-bottom: none;
       display: flex;
       align-items: center;
       padding: 19px 0 17px 28px;
+      .Back:hover {
+        cursor: pointer;
+      }
       .UserName {
         display: flex;
         flex-direction: column;
