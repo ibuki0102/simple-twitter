@@ -14,6 +14,7 @@ const UserPostList = ({
   tweets,
   replyTweets,
   likeTweets,
+  page,
   setPage,
   currentPage,
   setCurrentPage,

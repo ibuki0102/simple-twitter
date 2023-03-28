@@ -14,7 +14,13 @@ import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from 'contexts/UserContext'
 
-const OtherUserPostList = ({ tweets, replyTweets, likeTweets, setPage }) => {
+const OtherUserPostList = ({
+  tweets,
+  replyTweets,
+  likeTweets,
+  page,
+  setPage,
+}) => {
   const navigate = useNavigate()
 
   // 管理個人資料頁面上方的個人資料
