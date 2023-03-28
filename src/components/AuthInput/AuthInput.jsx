@@ -51,7 +51,7 @@ const AuthInput = ({
   }
   if (errorMessage) {
     if (
-      inputLabel === '密碼確認' &&
+      (inputLabel === '密碼確認' || inputLabel === '密碼再確認') &&
       errorMessage === 'AssertionError: 密碼與確認密碼不一致'
     ) {
       wrongCheckPassword = true
@@ -64,13 +64,15 @@ const AuthInput = ({
     }
     if (
       inputLabel === 'Email' &&
-      errorMessage === 'AssertionError: email 已重複註冊！'
+      (errorMessage === 'AssertionError: email 已重複註冊！' ||
+        errorMessage === 'Error: Email 已存在！')
     ) {
       sameEmailExist = true
     }
     if (
       inputLabel === '帳號' &&
-      errorMessage === 'AssertionError: account 已重複註冊！'
+      (errorMessage === 'AssertionError: account 已重複註冊！' ||
+        errorMessage === 'Error: Account 已存在!')
     ) {
       sameAccountExist = true
     }

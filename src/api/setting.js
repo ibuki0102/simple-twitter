@@ -1,23 +1,23 @@
 // Jasmine
 
 import axios from 'axios'
+import defaultBanner from 'assets/images/default_banner.png'
 
 const authURL = 'https://enigmatic-refuge-29514.herokuapp.com/api'
 
 // Jasmine 新增: 編輯設定頁面'帳戶設定'的 API
+// 雪央新增 : 完成帳戶設定API
 export const patchInfo = async (payload) => {
   const { token, userId, account, name, email, password, checkPassword } =
     payload.payloadData
-  let payLoadData = { token, userId, name }
-  if (account) {
-    payLoadData = { ...payLoadData, account }
-  }
-  if (email) {
-    payLoadData = { ...payLoadData, email }
-  }
+  let payLoadData = { token, userId, name, account, email }
   if (password) {
-    payLoadData = { ...payLoadData, password, checkPassword }
+    payLoadData = { ...payLoadData, password }
   }
+  if (checkPassword) {
+    payLoadData = { ...payLoadData, checkPassword }
+  }
+  console.log(payLoadData)
   try {
     const { data } = await axios({
       method: 'put',
@@ -27,7 +27,34 @@ export const patchInfo = async (payload) => {
     })
     return data
   } catch (error) {
+    const errorMessage = error.response.data.message
     console.error('[PatchInfo Failed]:', error)
-    return { error }
+    return { errorMessage }
+  }
+}
+
+// 雪央新增: 修改個人資料API
+export const editUserProfile = async ({ payload }) => {
+  const { token, userId, introduction, name, avatar, cover } = payload
+  let formData = new FormData()
+  formData.append('name', name)
+  formData.append('introduction', introduction)
+  formData.append('avatar', avatar)
+  formData.append('cover', cover)
+  try {
+    const { data } = await axios({
+      method: 'put',
+      url: `${authURL}/users/${userId}`,
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'content-type': 'multipart/form-data',
+      },
+      data: formData,
+    })
+    return data
+  } catch (error) {
+    const errorMessage = error.response.data.message
+    console.error('[PatchInfo Failed]:', error)
+    return { errorMessage }
   }
 }

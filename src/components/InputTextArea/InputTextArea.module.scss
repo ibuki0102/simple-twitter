@@ -6,6 +6,7 @@
   background-color: #f5f8fa;
   padding: 5px 0;
   margin-bottom: 30px;
+
   .InputLabel {
     margin-left: 10px;
     font-size: 14px;
@@ -21,6 +22,7 @@
     padding-left: 10px;
     margin-top: 4px;
     font-size: 16px;
+    position: relative;
     border-bottom: 2px solid #657786;
     &:focus {
       outline: none;
@@ -32,5 +34,30 @@
     &::placeholder {
       color: #b5b5be;
     }
+  }
+  .ErrorTextArea {
+    @extend .TextArea;
+    border-bottom: 2px solid #fc5a5a;
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid #fc5a5a;
+    }
+    &:hover {
+      border-bottom: 2px solid #fc5a5a;
+    }
+  }
+  .IntroductionValue {
+    position: absolute;
+    bottom: 18px;
+    right: 16px;
+    font-size: 12px;
+    color: #696974;
+  }
+  .ErrorMessage {
+    position: absolute;
+    bottom: 18px;
+    left: 16px;
+    color: #fc5a5a;
+    font-size: 12px;
   }
 }
