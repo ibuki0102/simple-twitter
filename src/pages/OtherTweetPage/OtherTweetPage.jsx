@@ -33,6 +33,9 @@ const OtherTweetPage = () => {
   // Jasmine 註: 紀錄使用者 id
   const [user, setUser] = useContext(UserContext)
 
+  // Jasmine 註: 紀錄'推文'、'回覆'、'喜歡的內容'
+  const [choice, setChoice] = useState('userPost')
+
   // 串接個人資料的'推文'、'回覆'、'喜歡的內容'
   useEffect(() => {
     const getTweets = async () => {
@@ -70,6 +73,10 @@ const OtherTweetPage = () => {
         likeTweets={likeTweets}
         page={page}
         setPage={setPage}
+        user={user}
+        setUser={setUser}
+        choice={choice}
+        setChoice={setChoice}
       />
       <PopularUserList />
     </div>

@@ -1,6 +1,6 @@
 // Jasmine
 
-import styles from './UserFollowPage.module.scss'
+import styles from './OtherUserFollowPage.module.scss'
 
 import Sidebar from 'components/Sidebar/Sidebar'
 import PopularUserList from 'components/PopularUserList/PopularUserList'
@@ -10,8 +10,9 @@ import { useNavigate } from 'react-router-dom'
 import { getUserFollowers, getUserFollowings } from 'api/userFollowPage'
 import { useEffect, useState, useContext } from 'react'
 import { PageContext } from 'contexts/PageContext'
+import { UserContext } from 'contexts/UserContext'
 
-const UserFollowPage = () => {
+const OtherUserFollowPage = () => {
   const navigate = useNavigate()
   // Jasmine 註: 串接'追隨者'使用 setFollowers 管理資料
   const [followers, setFollowers] = useState([])
@@ -22,12 +23,15 @@ const UserFollowPage = () => {
   // Jasmine 註: 紀錄當前頁面，使用 setPage 管理頁面
   const [page, setPage] = useContext(PageContext)
 
+  // Jasmine 註: 紀錄使用者 id
+  const [user, setUser] = useContext(UserContext)
+
   // 串接'追隨者'資料
   useEffect(() => {
     const getFollowers = async () => {
       try {
         const token = localStorage.getItem('token')
-        const userId = localStorage.getItem('userId')
+        const userId = user
         if (!token) {
           navigate('/login')
         }
@@ -40,14 +44,14 @@ const UserFollowPage = () => {
       }
     }
     getFollowers()
-  }, [navigate])
+  }, [navigate, user])
 
   // 串接'正在追隨'資料
   useEffect(() => {
     const getFollowings = async () => {
       try {
         const token = localStorage.getItem('token')
-        const userId = localStorage.getItem('userId')
+        const userId = user
         if (!token) {
           navigate('/login')
         }
@@ -60,10 +64,10 @@ const UserFollowPage = () => {
       }
     }
     getFollowings()
-  }, [navigate])
+  }, [navigate, user])
 
   return (
-    <div className={styles.UserFollowPageContainer}>
+    <div className={styles.OtherUserFollowPageContainer}>
       <Sidebar />
       {page === 'followers' && (
         <UserFollowList followers={followers} page={page} setPage={setPage} />
@@ -76,4 +80,4 @@ const UserFollowPage = () => {
   )
 }
 
-export default UserFollowPage
+export default OtherUserFollowPage
