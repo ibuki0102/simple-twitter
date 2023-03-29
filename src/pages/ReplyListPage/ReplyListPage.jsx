@@ -10,6 +10,7 @@ import { useContext } from 'react'
 import { useState } from 'react'
 import { UserContext } from 'contexts/UserContext'
 
+
 const ReplyListPage = () => {
   // 用Context取得要前往推文回覆頁面的推文id
   const tweetId = useContext(ReplyTweetContext)[0]
@@ -25,7 +26,6 @@ const ReplyListPage = () => {
       <Sidebar />
       <ReplyList
         tweetId={tweetId}
-        replyTweetData={replyTweetData}
         user={user}
         setUser={setUser}
       />

@@ -26,12 +26,11 @@ const TweetModal = ({ setModalState, avatar }) => {
         </div>
         <div className={styles.MainContainer}>
           <div className={styles.Main}>
-            <div className={styles.Avatar}>
-              <img
-                src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
-                alt="avatar"
-              />
-            </div>
+            <img
+              src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
+              className={styles.Avatar}
+              alt="avatar"
+            />
             <div className={styles.TextAreaContainer}>
               <textarea
                 name=""
