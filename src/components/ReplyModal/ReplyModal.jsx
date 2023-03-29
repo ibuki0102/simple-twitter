@@ -3,7 +3,12 @@ import { ReactComponent as OrangeCross } from 'assets/icons/orange_cross.svg'
 import { useState } from 'react'
 import { replyTweet } from 'api/replyTweet'
 
-const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
+const ReplyModal = ({
+  replyTweetData,
+  userAvatar,
+  setReplyModalState,
+  setUpdateTweetList,
+}) => {
   const avatar = replyTweetData.User.avatar
   const account = replyTweetData.User.account
   const name = replyTweetData.User.name
@@ -21,6 +26,7 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
     const data = await replyTweet({ token, userId, tweetId, comment })
     console.log(data)
     setReplyModalState(false)
+    setUpdateTweetList(true)
   }
   return (
     <div className={styles.Overlay}>

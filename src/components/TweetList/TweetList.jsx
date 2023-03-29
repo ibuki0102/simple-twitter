@@ -4,13 +4,15 @@ import styles from '../TweetList/TweetList.module.scss'
 
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import TweetModal from 'components/TweetModal/TweetModal'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { TweetModalContext } from 'contexts/TweetModalContext'
 import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 
-const TweetList = ({ tweets, setTweets, modalState, setModalState, user, setUser }) => {
+const TweetList = ({ tweets, user, setUser, setUpdateTweetList }) => {
   const [avatar, setAvatar] = useState('')
   const navigate = useNavigate()
+  const [modalState, setModalState] = useContext(TweetModalContext)
   useEffect(() => {
     const userData = async () => {
       try {
@@ -49,7 +51,12 @@ const TweetList = ({ tweets, setTweets, modalState, setModalState, user, setUser
       {modalState && (
         <TweetModal setModalState={setModalState} avatar={avatar} />
       )}
-      <TweetItemCollection tweets={tweets} user={user} setUser={setUser} />
+      <TweetItemCollection
+        tweets={tweets}
+        user={user}
+        setUser={setUser}
+        setUpdateTweetList={setUpdateTweetList}
+      />
     </div>
   )
 }

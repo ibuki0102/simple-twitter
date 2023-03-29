@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ReplyTweetContext } from 'contexts/ReplyTweetContext'
 
-const TweetItem = ({ tweet, user, setUser }) => {
+const TweetItem = ({ tweet, user, setUser, setUpdateTweetList }) => {
   const { replyModalState, setReplyModalState } = useReplyContext()
   const [replyTweetData, setReplyTweetData] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
@@ -31,17 +31,19 @@ const TweetItem = ({ tweet, user, setUser }) => {
     setUserAvatar(userData.avatar)
     setReplyTweetData(data)
   }
+
   // 雪央註: 導向回覆頁
   const handleToReplyList = () => {
     setReplyTweetId(tweet.id)
     navigate('/main/replyList')
   }
   // 雪央註: 清空上一則欲回覆的推文內容
+  // 雪央註: 這東西會讓畫面重新渲染52次，需要改成context，之後優化再做
   useEffect(() => {
     if (!replyModalState) {
       setReplyTweetData('')
     }
-  }, [setReplyTweetData, replyModalState])
+  }, [replyModalState])
 
   // Jasmine 註: 點擊頭像獲取 id 並引導至個人資料頁
   const handleChangeUser = (id) => {
@@ -60,6 +62,7 @@ const TweetItem = ({ tweet, user, setUser }) => {
         <ReplyModal
           replyTweetData={replyTweetData}
           userAvatar={userAvatar}
+          setUpdateTweetList={setUpdateTweetList}
           setReplyModalState={setReplyModalState}
         />
       ) : null}
@@ -76,17 +79,16 @@ const TweetItem = ({ tweet, user, setUser }) => {
             @{tweet.User.account}・{tweet.transferDateTime}
           </span>
           <div className={styles.TweetContent}>{tweet.description}</div>
-
           <div className={styles.Icon}>
-            <div className={styles.Message} onClick={handleClickReply}>
-              <Reply className={styles.Reply} />
-              <span className={styles.Number}>{tweet.totalReplies}</span>
-            </div>
             <div className={styles.Heart}>
               <Like className={styles.Like} />
               <span className={styles.Number}>{tweet.totalLikes}</span>
             </div>
           </div>
+        </div>
+        <div className={styles.Message} onClick={handleClickReply}>
+          <Reply className={styles.Reply} />
+          <span className={styles.Number}>{tweet.totalReplies}</span>
         </div>
       </div>
     </div>
