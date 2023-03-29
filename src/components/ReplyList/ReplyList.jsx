@@ -16,7 +16,7 @@ import ReplyModal from 'components/ReplyModal/ReplyModal'
 import { likeTweet, unLikeTweet } from 'api/like'
 import ReplyItem from 'components/ReplyItem/ReplyItem'
 
-const ReplyList = ({ tweetId }) => {
+const ReplyList = ({ tweetId, user, setUser }) => {
   const { replyModalState, setReplyModalState } = useReplyContext()
   const [userAvatar, setUserAvatar] = useState('')
   const navigate = useNavigate()
@@ -84,7 +84,12 @@ const ReplyList = ({ tweetId }) => {
       {replyTweetData.replyTweet.User !== undefined && (
         <div className={styles.ReplyListTopSection}>
           <div className={styles.Heading}>
-            <Back className={styles.Back} onClick={() => navigate('/main')} />
+            <Back
+              className={styles.Back}
+              onClick={() => {
+                navigate(-1)
+              }}
+            />
             <div>推文</div>
           </div>
           <div>
@@ -98,7 +103,7 @@ const ReplyList = ({ tweetId }) => {
                 <div className={styles.UserName}>
                   {replyTweetData.replyTweet.User.name}
                 </div>
-                <div className={styles.UserAcount}>
+                <div className={styles.UserAccount}>
                   @{replyTweetData.replyTweet.User.account}
                 </div>
               </div>
@@ -140,16 +145,26 @@ const ReplyList = ({ tweetId }) => {
         <ReplyCollection
           replyListData={replyTweetData.replyListData}
           type="replyPage"
+          user={user}
+          setUser={setUser}
         />
       )}
     </div>
   )
 }
 
-const ReplyCollection = ({ replyListData, type }) => {
+const ReplyCollection = ({ replyListData, type, user, setUser }) => {
   let replyList
   replyList = replyListData.map((replyTweet) => {
-    return <ReplyItem key={replyTweet.id} replyTweet={replyTweet} type={type} />
+    return (
+      <ReplyItem
+        key={replyTweet.id}
+        replyTweet={replyTweet}
+        type={type}
+        user={user}
+        setUser={setUser}
+      />
+    )
   })
   return <div>{replyList}</div>
 }

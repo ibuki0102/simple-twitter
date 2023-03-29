@@ -43,11 +43,11 @@ const AdminUserListItem = ({ adminUser }) => {
         </div>
         <div className={styles.FollowContainer}>
           <div className={styles.Following}>
-            <span>{adminUser.followerCount} 個</span>
+            <span>{adminUser.followingCount} 個</span>
             <span className={styles.GreyText}>跟隨中</span>
           </div>
           <div className={styles.Follower}>
-            <span>{adminUser.followingCount} 位</span>
+            <span>{adminUser.followerCount} 位</span>
             <span className={styles.GreyText}>跟隨者</span>
           </div>
         </div>

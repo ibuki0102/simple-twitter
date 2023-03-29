@@ -1,8 +1,22 @@
 // Jasmine
 
 import styles from 'components/ReplyItem/ReplyItem.module.scss'
+import { useNavigate } from 'react-router-dom'
 
-const ReplyItem = ({ replyTweet }) => {
+const ReplyItem = ({ replyTweet, user, setUser }) => {
+  const navigate = useNavigate()
+
+  // Jasmine 註: 點擊頭像獲取 id 並引導至個人資料頁
+  const handleChangeUser = (id) => {
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    if (id !== userId) {
+      setUser(id)
+      navigate('/user/other')
+    } else {
+      navigate('/user/self')
+    }
+  }
+
   return (
     <>
       {replyTweet.Tweet.id !== null && (
@@ -12,6 +26,7 @@ const ReplyItem = ({ replyTweet }) => {
               src={replyTweet.User.avatar}
               className={styles.Avatar}
               alt="avatar"
+              onClick={() => handleChangeUser?.(replyTweet.User.id)}
             />
             <div className={styles.Reply}>
               <span className={styles.UserName}>{replyTweet.User.name}</span>
