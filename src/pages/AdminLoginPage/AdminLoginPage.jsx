@@ -32,6 +32,7 @@ const AdminLoginPage = () => {
       password,
     })
     if (success) {
+      console.log(role)
       localStorage.setItem('token', token)
       localStorage.setItem('userId', userId)
       localStorage.setItem('role', role)
