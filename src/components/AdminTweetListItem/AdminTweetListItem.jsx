@@ -6,9 +6,11 @@ import { ReactComponent as GrayCross } from 'assets/icons/gray_cross.svg'
 const AdminTweetListItem = ({ adminTweet, onDeleteTweet }) => {
   return (
     <div className={styles.ListItemContainer}>
-      <div className={styles.Avatar}>
-        <img src={adminTweet.User.avatar} alt="defaultAvatar" />
-      </div>
+      <img
+        src={adminTweet.User.avatar}
+        className={styles.Avatar}
+        alt="defaultAvatar"
+      />
       <div className={styles.ContentContainer}>
         <div className={styles.UserInfoContainer}>
           <div>

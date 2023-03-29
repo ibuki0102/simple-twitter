@@ -18,7 +18,7 @@ const ReplyListPage = () => {
   })
   return (
     <div className={styles.ReplyListPageContainer}>
-      <Sidebar />
+      <Sidebar page="reply" />
       <ReplyList tweetId={tweetId} replyTweetData={replyTweetData} />
       <PopularUserList />
     </div>
