@@ -41,11 +41,11 @@ const UserPostList = ({
     const userId = localStorage.getItem('userId')
     if (changePage === 'followers') {
       setUser(userId)
-      setPage('followers')
+      setPage('followings')
       navigate('/user/follow')
     } else {
       setUser(userId)
-      setPage('followings')
+      setPage('followers')
       navigate('/user/follow')
     }
   }
@@ -154,7 +154,7 @@ const UserPostList = ({
                 handleChangePage('followers')
               }}
             >
-              <div className={styles.Number}>{followingCounts || 0} 個</div>
+              <div className={styles.Number}>{followerCounts || 0} 個</div>
               <div className={styles.Text}>跟隨中</div>
             </div>
             <div
@@ -163,7 +163,7 @@ const UserPostList = ({
                 handleChangePage('followings')
               }}
             >
-              <div className={styles.Number}>{followerCounts || 0} 位</div>
+              <div className={styles.Number}>{followingCounts || 0} 位</div>
               <div className={styles.Text}>跟隨者</div>
             </div>
           </div>

@@ -42,10 +42,10 @@ const OtherUserPostList = ({
   // 切換到'跟隨中'或'跟隨者'
   function handleChangePage(changePage) {
     if (changePage === 'followers') {
-      setPage('followers')
+      setPage('followings')
       navigate('/user/other/follow')
     } else {
-      setPage('followings')
+      setPage('followers')
       navigate('/user/other/follow')
     }
   }
@@ -143,7 +143,7 @@ const OtherUserPostList = ({
                 handleChangePage('followers')
               }}
             >
-              <div className={styles.Number}>{followingCounts || 0} 個</div>
+              <div className={styles.Number}>{followerCounts || 0} 個</div>
               <div className={styles.Text}>跟隨中</div>
             </div>
             <div
@@ -152,7 +152,7 @@ const OtherUserPostList = ({
                 handleChangePage('followings')
               }}
             >
-              <div className={styles.Number}>{followerCounts || 0} 位</div>
+              <div className={styles.Number}>{followingCounts || 0} 位</div>
               <div className={styles.Text}>跟隨者</div>
             </div>
           </div>
