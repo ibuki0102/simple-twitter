@@ -8,20 +8,6 @@ import { editUserProfile } from 'api/setting'
 import { useState, useEffect } from 'react'
 import defaultBanner from 'assets/images/default_banner.png'
 
-// // 上傳大頭貼
-// function handleAvatarFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-//   const { files } = e.target
-//   if (files && files.length > 0) {
-//   // 這邊要確保是有接收到檔案且長度大於 0 ，若沒有這樣寫會導致使用者選擇圖片接著案取消時會出現錯誤
-//   // TypeError: Failed to execute 'createObjectURL' on 'URL': Overload resolution failed.
-
-//     const imageURL = window.URL.createObjectURL(files[0])
-//     setForm({ ...form, avatar: imageURL })
-//   } else {
-//     setForm({ ...form, avatar: getUser?.user?.avatar || '' })
-//   }
-// }
-
 const ProfileEditModal = ({ userData, setProfileModalState }) => {
   const { name, avatar, cover, introduction } = userData
   const [coverDataURL, setCoverDataURL] = useState(null)
