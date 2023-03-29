@@ -1,7 +1,8 @@
 // Jasmine
 
 .PopularUserListContainer {
-  max-width: 273px;
+  width: 273px;
+  min-width: 250px;
   max-height: 731px;
   position: sticky;
   top: 0;

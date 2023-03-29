@@ -36,6 +36,9 @@ const OtherTweetPage = () => {
   // Jasmine 註: 紀錄'推文'、'回覆'、'喜歡的內容'
   const [choice, setChoice] = useState('userPost')
 
+  // 雪央註: 偵測使用者點擊追隨或取消追隨
+  const [clickFollow, setClickFollow] = useState(false)
+
   // 串接個人資料的'推文'、'回覆'、'喜歡的內容'
   useEffect(() => {
     const getTweets = async () => {
@@ -62,7 +65,7 @@ const OtherTweetPage = () => {
       }
     }
     getTweets()
-  }, [navigate, user])
+  }, [navigate, user, clickFollow])
 
   return (
     <div className={styles.OtherTweetPageContainer}>
@@ -77,8 +80,9 @@ const OtherTweetPage = () => {
         setUser={setUser}
         choice={choice}
         setChoice={setChoice}
+        setClickFollow={setClickFollow}
       />
-      <PopularUserList />
+      <PopularUserList clickFollow={clickFollow} />
     </div>
   )
 }

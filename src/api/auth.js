@@ -12,9 +12,10 @@ export const login = async ({ account, password }) => {
       password,
     })
     const userId = data.data.user.id
+    const role = data.data.user.role
     const { token } = data.data
     if (token) {
-      return { success: true, userId, token }
+      return { success: true, userId, token, role }
     }
     return data
   } catch (error) {
@@ -93,9 +94,10 @@ export const adminLogin = async ({ account, password }) => {
       password,
     })
     const userId = data.data.user.id
+    const role = data.data.user.role
     const { token } = data.data
     if (token) {
-      return { success: true, userId, token }
+      return { success: true, userId, token, role }
     }
     return data
   } catch (error) {

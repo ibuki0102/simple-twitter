@@ -25,13 +25,14 @@ const LoginPage = () => {
   }, [navigate])
 
   const handleClick = async () => {
-    const { success, token, errorMessage, userId } = await login({
+    const { success, token, errorMessage, userId, role } = await login({
       account,
       password,
     })
     if (success) {
       localStorage.setItem('token', token)
       localStorage.setItem('userId', userId)
+      localStorage.setItem('role', role)
       Swal.fire({
         position: 'top',
         title: '登入成功！',

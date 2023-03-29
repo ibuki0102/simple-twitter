@@ -11,6 +11,7 @@ const PopularUserList = ({
   updateTweetList,
   setUpdateTweetList,
   profileModalState,
+  clickFollow,
 }) => {
   const [popularUserList, setPopularUserList] = useState('')
   const navigate = useNavigate()
@@ -34,7 +35,13 @@ const PopularUserList = ({
       setPopularUserList(dataList)
     }
     userList()
-  }, [navigate, updateTweetList, setUpdateTweetList, profileModalState])
+  }, [
+    navigate,
+    updateTweetList,
+    setUpdateTweetList,
+    profileModalState,
+    clickFollow,
+  ])
   return (
     <div className={styles.PopularUserListContainer}>
       <div className={styles.PopularUserContainer}>

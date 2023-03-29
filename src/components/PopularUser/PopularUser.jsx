@@ -40,7 +40,7 @@ const PopularUser = ({ userData, updateTweetList, setUpdateTweetList }) => {
         </div>
       </div>
 
-      {isFollowed ? (
+      {userData.isFollowed ? (
         <button className={styles.ActiveButton} onClick={handleClickUnFollow}>
           正在跟隨
         </button>

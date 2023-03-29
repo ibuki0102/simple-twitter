@@ -21,6 +21,7 @@ const Sidebar = ({ type, page }) => {
   const handleClick = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('userId')
+    localStorage.removeItem('role')
     navigate('/login')
   }
   const handleTweet = () => {
