@@ -18,6 +18,7 @@ import styles from 'App.module.scss'
 import { userData } from 'assets/userData'
 import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
 import { ContextProvider } from 'contexts/DataContext'
+import Notification from 'components/Notification/Notification'
 
 const basename = process.env.PUBLIC_URL
 
@@ -47,6 +48,7 @@ function App() {
               path="profileEditModal"
               element={<ProfileEditModal userData={userData} />}
             />
+            <Route path="/Notification" element={<Notification />} />
             <Route path="*" element={<Homepage />} />
           </Routes>
         </BrowserRouter>
