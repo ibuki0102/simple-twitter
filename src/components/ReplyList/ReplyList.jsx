@@ -98,7 +98,7 @@ const ReplyList = ({ tweetId }) => {
                 <div className={styles.UserName}>
                   {replyTweetData.replyTweet.User.name}
                 </div>
-                <div className={styles.UserAcount}>
+                <div className={styles.UserAccount}>
                   @{replyTweetData.replyTweet.User.account}
                 </div>
               </div>
