@@ -29,6 +29,16 @@ const UserFollowList = ({
     }
   }
 
+  // 追隨頁面上的返回鍵
+  function handleReturn() {
+    const userId = localStorage.getItem('userId')
+    if (user === userId) {
+      navigate('/user/self')
+    } else {
+      navigate('/user/other')
+    }
+  }
+
   // 取得目前使用者
   useEffect(() => {
     const userName = async () => {
@@ -56,7 +66,7 @@ const UserFollowList = ({
     <div className={styles.UserFollowListContainer}>
       <div className={styles.UserFollowListTopSection}>
         <div className={styles.Return}>
-          <Back className={styles.Back} />
+          <Back className={styles.Back} onClick={handleReturn} />
           <div className={styles.UserName}>
             <h5 className={styles.Name}>{userData.name}</h5>
             <div className={styles.TweetCount}>

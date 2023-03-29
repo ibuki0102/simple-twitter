@@ -184,7 +184,9 @@ const OtherUserPostList = ({
           </div>
         </div>
       </div>
-      {choice === 'userPost' && <TweetItemCollection tweets={tweets} />}
+      {choice === 'userPost' && (
+        <TweetItemCollection tweets={tweets} user={user} setUser={setUser} />
+      )}
       {choice === 'userReply' && (
         <ReplyItemCollection replyTweets={replyTweets} />
       )}

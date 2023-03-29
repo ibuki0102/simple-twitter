@@ -20,6 +20,8 @@ const UserPostList = ({
   setCurrentPage,
   profileModalState,
   setProfileModalState,
+  user,
+  setUser,
 }) => {
   const navigate = useNavigate()
   // 管理個人資料頁面上方的個人資料
@@ -36,10 +38,13 @@ const UserPostList = ({
 
   // 切換到'跟隨中'或'跟隨者'
   function handleChangePage(changePage) {
+    const userId = localStorage.getItem('userId')
     if (changePage === 'followers') {
+      setUser(userId)
       setPage('followers')
       navigate('/user/follow')
     } else {
+      setUser(userId)
       setPage('followings')
       navigate('/user/follow')
     }
@@ -117,7 +122,7 @@ const UserPostList = ({
       )}
       <div className={styles.UserPostListTopSection}>
         <div className={styles.Return}>
-          <Back />
+          <Back className={styles.Back} onClick={() => navigate('/main')} />
           <div className={styles.UserName}>
             <h5 className={styles.Name}>{name}</h5>
             <div className={styles.TweetCount}>{tweetsCounts} 推文</div>
@@ -192,7 +197,12 @@ const UserPostList = ({
       </div>
       {/* 推文 */}
       {currentPage === 'userPost' && (
-        <TweetItemCollection tweets={tweets} type="userPage" />
+        <TweetItemCollection
+          tweets={tweets}
+          type="userPage"
+          user={user}
+          setUser={setUser}
+        />
       )}
       {/* 回覆 */}
       {currentPage === 'userReply' && (
