@@ -48,7 +48,10 @@ function App() {
               path="profileEditModal"
               element={<ProfileEditModal userData={userData} />}
             />
-            <Route path="/Notification" element={<Notification />} />
+            <Route
+              path="/notification"
+              element={<Notification text="登入成功" type="success" />}
+            />
             <Route path="*" element={<Homepage />} />
           </Routes>
         </BrowserRouter>

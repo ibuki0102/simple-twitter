@@ -32,7 +32,8 @@ export const Tweet = async ({ token, userId, description }) => {
     })
     return data
   } catch (error) {
+    const errorMessage = error.response.data.message
     console.error('[Tweet Failed]:', error)
-    return { error }
+    return { errorMessage }
   }
 }

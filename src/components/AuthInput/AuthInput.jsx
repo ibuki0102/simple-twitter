@@ -9,6 +9,7 @@ const AuthInput = ({
   onChange,
   errorMessage,
   name,
+  onKeyDown,
 }) => {
   let nameLengthExceed,
     hasNameValue,
@@ -100,6 +101,7 @@ const AuthInput = ({
           value={value || ''}
           name={name}
           onChange={name ? onChange : (event) => onChange?.(event.target.value)}
+          onKeyDown={onKeyDown}
         />
         <div className={styles.Tips}>
           {/* // 錯誤訊息的判定跟顯示 */}

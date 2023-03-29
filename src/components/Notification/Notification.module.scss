@@ -1,12 +1,15 @@
 .NotiContainer {
-  position: relative;
-  margin: 15rem;
+  position: absolute;
   width: 394px;
   height: 96px;
+  top: -96px;
+  left: 40%;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04),
     0px 4px 16px rgba(51, 51, 51, 0.08);
   border-radius: 8px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.25, 1.35);
+  z-index: 5;
   .Context {
     display: inline-block;
     margin: 34px 0 34px 24px;
@@ -37,4 +40,10 @@
     @extend .NotiBlue;
     border: 2px solid #ffc542;
   }
+}
+.ActiveNotiContainer {
+  @extend .NotiContainer;
+  transform: translateX(-50%);
+  transform: translateY(calc(100% + 20px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.25, 1.35);
 }

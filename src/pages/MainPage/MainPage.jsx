@@ -49,6 +49,7 @@ const MainPage = () => {
         setTweets={setTweets}
         user={user}
         setUser={setUser}
+        updateTweetList={updateTweetList}
         setUpdateTweetList={setUpdateTweetList}
       />
       <PopularUserList
