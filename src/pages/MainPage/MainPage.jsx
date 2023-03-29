@@ -11,13 +11,14 @@ import { getMainPageUserTweets } from 'api/mainPageTweets'
 import { useEffect, useState, useContext } from 'react'
 import { useReplyContext } from 'contexts/ReplyContext'
 import { UserContext } from 'contexts/UserContext'
+import { TweetModalContext } from 'contexts/TweetModalContext'
 
-const MainPage = ({ setReplyTweetId }) => {
+const MainPage = () => {
   const navigate = useNavigate()
   const [tweets, setTweets] = useState([])
-  const [modalState, setModalState] = useState(false)
+  const modalState = useContext(TweetModalContext)[0]
   const [updateTweetList, setUpdateTweetList] = useState(false)
-  const { replyModalState, setReplyModalState } = useReplyContext()
+  const replyModalState = useReplyContext()[0]
   const [user, setUser] = useContext(UserContext)
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const MainPage = ({ setReplyTweetId }) => {
         const tweets = await getMainPageUserTweets({ token, userId })
         if (tweets) {
           setTweets(tweets)
+          setUpdateTweetList(false)
         }
       } catch (error) {
         console.error(error)
@@ -41,18 +43,13 @@ const MainPage = ({ setReplyTweetId }) => {
 
   return (
     <div className={styles.MainPageContainer}>
-      <Sidebar
-        page="home"
-        modalState={modalState}
-        setModalState={setModalState}
-      />
+      <Sidebar page="home" />
       <TweetList
         tweets={tweets}
         setTweets={setTweets}
-        modalState={modalState}
-        setModalState={setModalState}
         user={user}
         setUser={setUser}
+        setUpdateTweetList={setUpdateTweetList}
       />
       <PopularUserList
         updateTweetList={updateTweetList}

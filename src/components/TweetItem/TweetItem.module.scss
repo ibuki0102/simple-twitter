@@ -19,66 +19,48 @@
   }
   .Tweet {
     width: 520px;
+    min-height: 105px;
     margin-top: 16px;
     margin-left: 8px;
-    .ClickableArea {
+    position: relative;
+    .Message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 41.3px;
+      position: absolute;
+      z-index: 2;
+      bottom: 16px;
       &:hover {
         cursor: pointer;
       }
-      z-index: 1;
-    }
-    .UserName {
-      font-weight: 700;
-      margin-right: 8px;
-    }
-    .UserAccount {
-      color: #6c757d;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 22px;
-    }
-    .TweetContent {
-      margin-top: 8px;
-      margin-bottom: 9px;
-      font-weight: 400;
-      line-height: 26px;
+      .Reply {
+        width: 17px;
+        height: 17px;
+        margin-right: 9.44px;
+      }
+      .Number {
+        color: #6c757d;
+        font-size: 14px;
+        font-weight: 600;
+      }
     }
     .Icon {
       display: flex;
-      margin-bottom: 18px;
-      .Message {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 41.3px;
-        &:hover {
-          cursor: pointer;
-        }
-        .Reply {
-          width: 19px;
-          height: 19px;
-          margin-right: 9.44px;
-          z-index: 99;
-        }
-        .Number {
-          color: #6c757d;
-          font-size: 14px;
-          font-weight: 600;
-        }
-      }
       .Heart {
         display: flex;
         align-items: center;
         justify-content: center;
+        padding-left: 78px;
         .Like {
-          width: 15px;
-          height: 15px;
+          width: 14px;
+          height: 14px;
           margin-right: 9.3px;
           stroke: #6c757d;
         }
         .Liked {
-          width: 15px;
-          height: 15px;
+          width: 14px;
+          height: 14px;
           margin-right: 9.3px;
           stroke: #fc5a5a;
           fill: #fc5a5a;
@@ -88,6 +70,29 @@
           font-size: 14px;
           font-weight: 600;
         }
+      }
+    }
+    .ClickableArea {
+      &:hover {
+        cursor: pointer;
+      }
+      margin-bottom: 16px;
+      z-index: 1;
+      .UserName {
+        font-weight: 700;
+        margin-right: 8px;
+      }
+      .UserAccount {
+        color: #6c757d;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+      }
+      .TweetContent {
+        margin-top: 8px;
+        margin-bottom: 11px;
+        font-weight: 400;
+        line-height: 26px;
       }
     }
   }

@@ -11,7 +11,7 @@ export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(userId)
   const [modalState, setModalState] = useState(false)
   return (
-    <TweetModalContext.Provider value={[[modalState, setModalState]]}>
+    <TweetModalContext.Provider value={[modalState, setModalState]}>
       <UserContext.Provider value={[user, setUser]}>
         <PageContext.Provider value={[page, setPage]}>
           <ReplyTweetContext.Provider value={[replyTweetId, setReplyTweetId]}>
