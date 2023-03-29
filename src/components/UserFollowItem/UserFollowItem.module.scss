@@ -3,7 +3,7 @@
 .UserFollowItemContainer {
   padding-bottom: 16px;
   position: relative;
-  width: 620px;
+  width: 631px;
   max-height: 186px;
   border: 1px solid #e6ecf0;
   display: flex;
@@ -12,6 +12,7 @@
     height: 50px;
     margin-top: 16px;
     margin-left: 24px;
+    border-radius: 50%;
   }
   .Tweet {
     width: 528px;

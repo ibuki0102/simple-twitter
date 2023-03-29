@@ -2,9 +2,8 @@
 
 .UserPostListContainer {
   border: 1px solid #e6ecf0;
-  width: 620px;
+  width: 631px;
   height: 100%;
-  margin-left: 333px;
   .UserPostListTopSection {
     position: relative;
     max-height: 550px;
@@ -35,7 +34,7 @@
       }
     }
     .Banner {
-      width: 620px;
+      width: 631px;
     }
     .Photo {
       width: 141.1px;
@@ -57,6 +56,7 @@
       border-radius: 50%;
       padding: 8px;
       fill: #ff6600;
+      transition: 0.3s;
       &:hover {
         cursor: pointer;
         background-color: #ff6600;
@@ -74,6 +74,7 @@
       border-radius: 50%;
       padding: 6px;
       fill: #ff6600;
+      transition: 0.3s;
       &:hover {
         cursor: pointer;
         background-color: #ff6600;
@@ -92,6 +93,7 @@
       line-height: 24px;
       font-weight: 400;
       border-radius: 50px;
+      transition: 0.3s;
       &:hover {
         cursor: pointer;
       }

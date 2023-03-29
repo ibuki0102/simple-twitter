@@ -1,36 +1,39 @@
-.SettingFormContainer {
-  width: 641px;
-  margin-left: 333px;
-  .Header {
-    width: 641px;
-    font-size: 24px;
-    font-weight: 700;
-    padding: 20px;
-    border: 1px dashed #e6ecf0;
-    border-top: 0;
-    position: fixed;
-    background-color: white;
-  }
-  .FormContainer {
-    height: 100vh;
-    border: 1px dashed #e6ecf0;
-    .InputGroupContainer {
-      padding: 100px 24px 24px 24px;
-      display: flex;
-      flex-direction: column;
+.Container {
+  display: flex;
+  justify-content: center;
+  width: 1110px;
+  .SettingFormContainer {
+    width: 631px;
+    .Header {
+      width: 631px;
+      font-size: 24px;
+      font-weight: 700;
+      padding: 24px;
+      border: 1px dashed #e6ecf0;
+      border-top: 0;
+      position: fixed;
+      background-color: white;
     }
-    .SaveButton {
-      border: 0;
-      font-size: 20px;
-      height: 46px;
-      width: 88px;
-      background-color: #ff6600;
-      color: white;
-      border-radius: 50px;
-      margin-top: 10px;
-      align-self: flex-end;
-      &:hover {
-        cursor: pointer;
+    .FormContainer {
+      border: 1px dashed #e6ecf0;
+      .InputGroupContainer {
+        padding: 100px 24px 24px 24px;
+        display: flex;
+        flex-direction: column;
+      }
+      .SaveButton {
+        border: 0;
+        font-size: 20px;
+        height: 46px;
+        width: 88px;
+        background-color: #ff6600;
+        color: white;
+        border-radius: 50px;
+        margin-top: 10px;
+        align-self: flex-end;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
