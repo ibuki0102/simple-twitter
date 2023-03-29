@@ -6,7 +6,6 @@ const TweetItemCollection = ({ tweets, user, setUser, setUpdateTweetList }) => {
   return (
     <div>
       {tweets.map((tweet) => {
-        console.log('hi...')
         return (
           <TweetItem
             key={tweet.id}

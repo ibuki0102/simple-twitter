@@ -6,6 +6,7 @@ import { ReactComponent as Mail } from 'assets/icons/message.svg'
 import { ReactComponent as Bell } from 'assets/icons/noti.svg'
 import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
+import { followUser, unFollowUser } from 'api/follow'
 
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
@@ -23,6 +24,7 @@ const OtherUserPostList = ({
   setUser,
   choice,
   setChoice,
+  setClickFollow,
 }) => {
   const navigate = useNavigate()
 
@@ -38,6 +40,8 @@ const OtherUserPostList = ({
     tweetsCounts: 0,
     isFollowed: '',
   })
+  // 用來偵測使用者是否有點擊跟隨按紐
+  const [isFollowing, setIsFollowing] = useState(userData.isFollowed)
 
   // 切換到'跟隨中'或'跟隨者'
   function handleChangePage(changePage) {
@@ -58,6 +62,27 @@ const OtherUserPostList = ({
       setChoice('userLike')
     } else {
       setChoice('userPost')
+    }
+  }
+
+  // 點擊追隨
+  const handleClickFollow = async () => {
+    const token = localStorage.getItem('token')
+    const id = user
+    const data = await followUser({ token, id })
+    if (data) {
+      setIsFollowing(true)
+      setClickFollow(true)
+    }
+  }
+  // 點擊取消追隨
+  const handleClickUnFollow = async () => {
+    const token = localStorage.getItem('token')
+    const id = user
+    const data = await unFollowUser({ token, id })
+    if (data) {
+      setIsFollowing(false)
+      setClickFollow(false)
     }
   }
 
@@ -89,7 +114,8 @@ const OtherUserPostList = ({
       }
     }
     UserData()
-  }, [navigate, user])
+  }, [navigate, user, isFollowing])
+
   const {
     account,
     name,
@@ -125,9 +151,13 @@ const OtherUserPostList = ({
         <Mail className={styles.Mail} />
         <Bell className={styles.Bell} />
         {isFollowed ? (
-          <button className={styles.ActiveButton}>正在跟隨</button>
+          <button className={styles.ActiveButton} onClick={handleClickUnFollow}>
+            正在跟隨
+          </button>
         ) : (
-          <button className={styles.DefaultButton}>跟隨</button>
+          <button className={styles.DefaultButton} onClick={handleClickFollow}>
+            跟隨
+          </button>
         )}
 
         <div className={styles.UserIntroduction}>

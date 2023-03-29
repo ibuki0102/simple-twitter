@@ -65,7 +65,6 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
   }
 
   const handleSaveButton = async () => {
-    setLoading(true)
     const token = localStorage.getItem('token')
     const userId = localStorage.getItem('userId')
 
@@ -76,12 +75,19 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
       introduction: editUserData.introduction,
       avatar: editUserData.avatar,
     }
+    if (
+      editUserData.introduction.length > 160 ||
+      editUserData.name.length > 50
+    ) {
+      return
+    }
     if (defaultCover) {
       payload = { ...payload, cover: null }
     } else {
       payload = { ...payload, cover: editUserData.cover }
     }
     console.log(payload)
+    setLoading(true)
     const { data, errorMessage } = await editUserProfile({ payload })
     if (data) {
       setLoading(false)
