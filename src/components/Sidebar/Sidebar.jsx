@@ -26,6 +26,9 @@ const Sidebar = ({ type, page, setModalState }) => {
     if (page === 'home') {
       setModalState(true)
     }
+    if (page === 'reply') {
+      navigate('/main')
+    }
   }
   const [homePath, setHomePath] = useState('/main')
   const [userPath, setUserPath] = useState('/user/self')
