@@ -32,9 +32,12 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
           />
         </div>
         <div className={styles.ReplyTweetContainer}>
-          <div className={styles.TweetUserAvatar}>
-            <img src={avatar} alt="tweetUserAvatar" />
-          </div>
+          <div className={styles.GrayLine}></div>
+          <img
+            src={avatar}
+            className={styles.TweetUserAvatar}
+            alt="tweetUserAvatar"
+          />
           <div className={styles.ReplyTweetMain}>
             <div className={styles.TweetUserInfo}>
               <span className={styles.Name}>{name}</span>
@@ -51,9 +54,7 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
         </div>
         <div className={styles.MainContainer}>
           <div className={styles.Main}>
-            <div className={styles.Avatar}>
-              <img src={userAvatar} alt="avatar" />
-            </div>
+            <img src={userAvatar} className={styles.Avatar} alt="avatar" />
             <div className={styles.TextAreaContainer}>
               <textarea
                 name=""

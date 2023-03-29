@@ -15,6 +15,7 @@
     &:hover {
       cursor: pointer;
     }
+    border-radius: 50%;
   }
   .Tweet {
     width: 528px;
@@ -24,6 +25,7 @@
       &:hover {
         cursor: pointer;
       }
+      z-index: 1;
     }
     .UserName {
       font-weight: 700;
@@ -56,6 +58,7 @@
           width: 19px;
           height: 19px;
           margin-right: 9.44px;
+          z-index: 99;
         }
         .Number {
           color: #6c757d;

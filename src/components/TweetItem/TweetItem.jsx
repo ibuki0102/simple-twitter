@@ -71,16 +71,16 @@ const TweetItem = ({ tweet, user, setUser }) => {
             @{tweet.User.account}・{tweet.transferDateTime}
           </span>
           <div className={styles.TweetContent}>{tweet.description}</div>
-        </div>
 
-        <div className={styles.Icon}>
-          <div className={styles.Message} onClick={handleClickReply}>
-            <Reply className={styles.Reply} />
-            <span className={styles.Number}>{tweet.totalReplies}</span>
-          </div>
-          <div className={styles.Heart}>
-            <Like className={styles.Like} />
-            <span className={styles.Number}>{tweet.totalLikes}</span>
+          <div className={styles.Icon}>
+            <div className={styles.Message} onClick={handleClickReply}>
+              <Reply className={styles.Reply} />
+              <span className={styles.Number}>{tweet.totalReplies}</span>
+            </div>
+            <div className={styles.Heart}>
+              <Like className={styles.Like} />
+              <span className={styles.Number}>{tweet.totalLikes}</span>
+            </div>
           </div>
         </div>
       </div>
