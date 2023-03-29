@@ -31,16 +31,26 @@
     .ReplyTweetContainer {
       padding: 15px 15px 0 15px;
       position: relative;
+      .GrayLine {
+        position: absolute;
+        top: 82px;
+        left: 40px;
+        background-color: #ccd6dd;
+        width: 2px;
+        height: 100px;
+        z-index: 2;
+      }
       .TweetUserAvatar {
         position: absolute;
         height: 55px;
+        width: 55px;
+        border-radius: 50%;
         background-color: white;
       }
       .ReplyTweetMain {
         margin-left: 25px;
         padding-left: 35px;
-        border-left: 2px solid #ccd6dd;
-        height: 135px;
+        height: 170px;
         .TweetUserInfo {
           margin-bottom: 6px;
           .Name {
@@ -53,7 +63,7 @@
           }
         }
         .TweetContent {
-          height: 64px;
+          height: 95px;
         }
         .Footer {
           display: flex;
@@ -74,6 +84,11 @@
       flex-direction: column;
       .Main {
         display: flex;
+        .Avatar {
+          width: 55px;
+          height: 55px;
+          border-radius: 50%;
+        }
         .TextAreaContainer {
           margin: 10px 0 0 10px;
           textarea {

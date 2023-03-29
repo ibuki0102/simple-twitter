@@ -1,7 +1,6 @@
 // Jasmine
 
 import axios from 'axios'
-import defaultBanner from 'assets/images/default_banner.png'
 
 const authURL = 'https://enigmatic-refuge-29514.herokuapp.com/api'
 

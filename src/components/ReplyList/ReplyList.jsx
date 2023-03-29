@@ -89,7 +89,11 @@ const ReplyList = ({ tweetId }) => {
           </div>
           <div>
             <div className={styles.User}>
-              <DefaultAvatar className={styles.DefaultAvatar} />
+              <img
+                src={replyTweetData.replyTweet.User.avatar}
+                className={styles.DefaultAvatar}
+                alt="avatar"
+              />
               <div className={styles.ReplyUser}>
                 <div className={styles.UserName}>
                   {replyTweetData.replyTweet.User.name}
