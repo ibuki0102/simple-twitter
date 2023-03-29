@@ -45,8 +45,13 @@ const TweetItem = ({ tweet, user, setUser }) => {
 
   // Jasmine 註: 點擊頭像獲取 id 並引導至個人資料頁
   const handleChangeUser = (id) => {
-    setUser(id)
-    navigate('/user/other')
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    if (id !== userId) {
+      setUser(id)
+      navigate('/user/other')
+    } else {
+      navigate('/user/self')
+    }
   }
 
   return (

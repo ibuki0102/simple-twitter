@@ -12,6 +12,9 @@
       display: flex;
       align-items: center;
       padding: 19px 0 17px 28px;
+      .Back {
+        cursor: pointer;
+      }
       .UserName {
         display: flex;
         flex-direction: column;

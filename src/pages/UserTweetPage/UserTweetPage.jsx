@@ -14,6 +14,7 @@ import {
 } from 'api/userTweetPage'
 import { useEffect, useState, useContext } from 'react'
 import { PageContext } from 'contexts/PageContext'
+import { UserContext } from 'contexts/UserContext'
 
 const UserTweetPage = () => {
   const navigate = useNavigate()
@@ -34,6 +35,9 @@ const UserTweetPage = () => {
 
   // 雪央註: 用state管理編輯個人資訊的modal狀態
   const [profileModalState, setProfileModalState] = useState(false)
+
+  // Jasmine 註: 紀錄使用者 id
+  const [user, setUser] = useContext(UserContext)
 
   // 串接個人資料的'推文'
   useEffect(() => {
@@ -76,6 +80,8 @@ const UserTweetPage = () => {
         setCurrentPage={setCurrentPage}
         profileModalState={profileModalState}
         setProfileModalState={setProfileModalState}
+        user={user}
+        setUser={setUser}
       />
       <PopularUserList profileModalState={profileModalState} />
     </div>
