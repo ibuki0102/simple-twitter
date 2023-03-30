@@ -148,7 +148,7 @@ const OtherUserPostList = ({
       <div className={styles.UserPostListContainer}>
         <div className={styles.UserPostListTopSection}>
           <div className={styles.Return}>
-            <Back className={styles.Back} onClick={() => navigate(-1)} />
+            <Back className={styles.Back} onClick={() => navigate('/main')} />
             <div className={styles.UserName}>
               <h5 className={styles.Name}>{name}</h5>
               <div className={styles.TweetCount}>{tweetsCounts} 推文</div>
