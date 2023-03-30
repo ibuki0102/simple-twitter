@@ -18,11 +18,17 @@ const PopularUserList = ({
   useEffect(() => {
     const userList = async () => {
       const token = localStorage.getItem('token')
+      const userId = localStorage.getItem('userId')
       if (!token) {
         navigate('/login')
       }
       const data = await getPopularUserList({ token })
-      const dataList = data.map((userData) => {
+      // 將使用者本身從推薦列表中移除
+      const asArray = Object.entries(data)
+      const filtered = asArray.filter((data) => data[1].id !== Number(userId))
+      const filteredData = Object.fromEntries(filtered)
+      const finalData = Object.values(filteredData)
+      const dataList = finalData.map((userData) => {
         return (
           <PopularUser
             userData={userData}
