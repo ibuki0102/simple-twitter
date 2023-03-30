@@ -5,13 +5,18 @@ import Sidebar from 'components/Sidebar/Sidebar'
 import AuthInput from 'components/AuthInput/AuthInput'
 import { useNavigate } from 'react-router-dom'
 import { getUserData } from 'api/auth'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { patchInfo } from 'api/setting'
+import Notification from 'components/Notification/Notification'
+import { NotiContext } from 'contexts/NotiContext'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
 
 const SettingPage = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
   const [userData, setUserData] = useState({ account: '', name: '', email: '' })
+  const [notiState, setNotiState] = useContext(NotiContext)
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
   const [editUserData, setEditUserData] = useState({
     editAccount: '',
     editName: '',
@@ -47,7 +52,12 @@ const SettingPage = () => {
       }
     }
     UserData()
-  }, [navigate])
+    if (notiState) {
+      setTimeout(() => {
+        setNotiState(false)
+      }, 2500)
+    }
+  }, [navigate, notiState, setNotiState])
 
   const handleInputChange = (event) => {
     setEditUserData({
@@ -85,93 +95,109 @@ const SettingPage = () => {
     }
     // 如果帳號，名稱，email沒有值，就不送出
     if (editAccount === '' || editName === '' || editEmail === '') {
+      setNotiType('fail setting')
+      setNotiState(true)
       return
     }
     if (editAccount.length > 10 || editName.length > 50) {
+      setNotiType('fail setting')
+      setNotiState(true)
       return
     }
     const { data, errorMessage } = await patchInfo({ payloadData })
     if (data) {
       console.log(data)
+      setNotiType('setting')
+      setNotiState(true)
     }
     if (errorMessage) {
       setErrorMessage(errorMessage)
       console.log(errorMessage)
+      setNotiState(true)
+      setNotiType('fail setting')
     }
   }
 
   return (
-    <div className={styles.Container}>
-      <Sidebar type="user" page="setting" />
-      <div className={styles.SettingFormContainer}>
-        <div className={styles.Header}>帳戶設定</div>
-        <form action="">
-          <div className={styles.FormContainer}>
-            <div className={styles.InputGroupContainer}>
-              <AuthInput
-                inputLabel="帳號"
-                type="text"
-                value={editUserData.editAccount}
-                name="editAccount"
-                onChange={(e) => {
-                  handleInputChange(e)
-                  setErrorMessage('')
-                }}
-                errorMessage={errorMessage}
-              />
-              <AuthInput
-                inputLabel="名稱"
-                type="text"
-                value={editUserData.editName}
-                name="editName"
-                onChange={(e) => {
-                  handleInputChange(e)
-                  setErrorMessage('')
-                }}
-              />
-              <AuthInput
-                inputLabel="Email"
-                type="email"
-                value={editUserData.editEmail}
-                name="editEmail"
-                onChange={(e) => {
-                  handleInputChange(e)
-                  setErrorMessage('')
-                }}
-                errorMessage={errorMessage}
-              />
-              <AuthInput
-                inputLabel="密碼"
-                type="password"
-                name="editPassword"
-                placeholder="請設定密碼"
-                value={editUserData.editPassword}
-                onChange={(e) => {
-                  handleInputChange(e)
-                  setErrorMessage('')
-                }}
-                errorMessage={errorMessage}
-              />
-              <AuthInput
-                inputLabel="密碼再確認"
-                type="password"
-                name="editCheckPassword"
-                placeholder="請再次輸入密碼"
-                value={editUserData.editCheckPassword}
-                onChange={(e) => {
-                  handleInputChange(e)
-                  setErrorMessage('')
-                }}
-                errorMessage={errorMessage}
-              />
-              <button className={styles.SaveButton} onClick={handleClickSave}>
-                儲存
-              </button>
+    <>
+      {notiType === 'setting' && (
+        <Notification text="設定成功" type="success" notiState={notiState} />
+      )}
+      {notiType === 'fail setting' && (
+        <Notification text="設定失敗" type="failed" notiState={notiState} />
+      )}
+      <div className={styles.Container}>
+        <Sidebar type="user" page="setting" />
+        <div className={styles.SettingFormContainer}>
+          <div className={styles.Header}>帳戶設定</div>
+          <form action="">
+            <div className={styles.FormContainer}>
+              <div className={styles.InputGroupContainer}>
+                <AuthInput
+                  inputLabel="帳號"
+                  type="text"
+                  value={editUserData.editAccount}
+                  name="editAccount"
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setErrorMessage('')
+                  }}
+                  errorMessage={errorMessage}
+                />
+                <AuthInput
+                  inputLabel="名稱"
+                  type="text"
+                  value={editUserData.editName}
+                  name="editName"
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setErrorMessage('')
+                  }}
+                />
+                <AuthInput
+                  inputLabel="Email"
+                  type="email"
+                  value={editUserData.editEmail}
+                  name="editEmail"
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setErrorMessage('')
+                  }}
+                  errorMessage={errorMessage}
+                />
+                <AuthInput
+                  inputLabel="密碼"
+                  type="password"
+                  name="editPassword"
+                  placeholder="請設定密碼"
+                  value={editUserData.editPassword}
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setErrorMessage('')
+                  }}
+                  errorMessage={errorMessage}
+                />
+                <AuthInput
+                  inputLabel="密碼再確認"
+                  type="password"
+                  name="editCheckPassword"
+                  placeholder="請再次輸入密碼"
+                  value={editUserData.editCheckPassword}
+                  onChange={(e) => {
+                    handleInputChange(e)
+                    setErrorMessage('')
+                  }}
+                  errorMessage={errorMessage}
+                />
+                <button className={styles.SaveButton} onClick={handleClickSave}>
+                  儲存
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

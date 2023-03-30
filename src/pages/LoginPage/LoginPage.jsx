@@ -30,7 +30,7 @@ const LoginPage = () => {
     if (notiState) {
       setTimeout(() => {
         setNotiState(false)
-      }, 3000)
+      }, 2500)
     }
   }, [navigate, notiState, setNotiState])
 
