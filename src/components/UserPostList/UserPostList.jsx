@@ -8,8 +8,12 @@ import { useNavigate } from 'react-router-dom'
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
+import { NotiContext } from 'contexts/NotiContext'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
+import { ErrorMessageContext } from 'contexts/ErrorMessageContext'
+import Notification from 'components/Notification/Notification'
 
 const UserPostList = ({
   tweets,
@@ -24,6 +28,9 @@ const UserPostList = ({
   setUser,
 }) => {
   const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
+  const [notiState, setNotiState] = useContext(NotiContext)
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
   // 管理個人資料頁面上方的個人資料
   const [userData, setUserData] = useState({
     account: '',
@@ -100,7 +107,12 @@ const UserPostList = ({
       }
     }
     UserData()
-  }, [navigate, profileModalState])
+    if (notiState) {
+      setTimeout(() => {
+        setNotiState(false)
+      }, 2500)
+    }
+  }, [navigate, profileModalState, notiState, setNotiState])
   const {
     account,
     name,
@@ -113,106 +125,114 @@ const UserPostList = ({
   } = userData
 
   return (
-    <div className={styles.UserPostListContainer}>
-      {profileModalState && (
-        <ProfileEditModal
-          userData={userData}
-          setProfileModalState={setProfileModalState}
-        />
-      )}
-      <div className={styles.UserPostListTopSection}>
-        <div className={styles.Return}>
-          <Back className={styles.Back} onClick={() => navigate('main')} />
-          <div className={styles.UserName}>
-            <h5 className={styles.Name}>{name}</h5>
-            <div className={styles.TweetCount}>{tweetsCounts} 推文</div>
-          </div>
-        </div>
-        <img
-          src={cover || `https://i.imgur.com/jXE6Mmp.png`}
-          className={styles.Banner}
-          alt="banner"
-        />
-        <img
-          src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
-          className={styles.Photo}
-          alt=""
-        />
-        <button onClick={handleEditProfile} className={styles.EditProfile}>
-          編輯個人資料
-        </button>
-        <div className={styles.UserIntroduction}>
-          <div className={styles.User}>
-            <h5 className={styles.UserName}>{name}</h5>
-            <div className={styles.UserAcount}>@{account}</div>
-          </div>
-          <div className={styles.Introduction}>{introduction}</div>
-          <div className={styles.Follow}>
-            <div
-              className={styles.Following}
-              onClick={() => {
-                handleChangePage('followers')
-              }}
-            >
-              <div className={styles.Number}>{followerCounts || 0} 個</div>
-              <div className={styles.Text}>跟隨中</div>
-            </div>
-            <div
-              className={styles.Follower}
-              onClick={() => {
-                handleChangePage('followings')
-              }}
-            >
-              <div className={styles.Number}>{followingCounts || 0} 位</div>
-              <div className={styles.Text}>跟隨者</div>
+    <>
+      {notiType === 'reply' && !errorMessage ? (
+        <Notification text="回覆成功" type="success" notiState={notiState} />
+      ) : null}
+      {notiType === 'editProfile' && !errorMessage ? (
+        <Notification text="編輯成功" type="success" notiState={notiState} />
+      ) : null}
+      <div className={styles.UserPostListContainer}>
+        {profileModalState && (
+          <ProfileEditModal
+            userData={userData}
+            setProfileModalState={setProfileModalState}
+          />
+        )}
+        <div className={styles.UserPostListTopSection}>
+          <div className={styles.Return}>
+            <Back className={styles.Back} onClick={() => navigate('main')} />
+            <div className={styles.UserName}>
+              <h5 className={styles.Name}>{name}</h5>
+              <div className={styles.TweetCount}>{tweetsCounts} 推文</div>
             </div>
           </div>
+          <img
+            src={cover || `https://i.imgur.com/jXE6Mmp.png`}
+            className={styles.Banner}
+            alt="banner"
+          />
+          <img
+            src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
+            className={styles.Photo}
+            alt=""
+          />
+          <button onClick={handleEditProfile} className={styles.EditProfile}>
+            編輯個人資料
+          </button>
+          <div className={styles.UserIntroduction}>
+            <div className={styles.User}>
+              <h5 className={styles.UserName}>{name}</h5>
+              <div className={styles.UserAcount}>@{account}</div>
+            </div>
+            <div className={styles.Introduction}>{introduction}</div>
+            <div className={styles.Follow}>
+              <div
+                className={styles.Following}
+                onClick={() => {
+                  handleChangePage('followers')
+                }}
+              >
+                <div className={styles.Number}>{followerCounts || 0} 個</div>
+                <div className={styles.Text}>跟隨中</div>
+              </div>
+              <div
+                className={styles.Follower}
+                onClick={() => {
+                  handleChangePage('followings')
+                }}
+              >
+                <div className={styles.Number}>{followingCounts || 0} 位</div>
+                <div className={styles.Text}>跟隨者</div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.Heading}>
+            <div
+              className={
+                currentPage === 'userPost' ? styles.ActiveTitle : styles.Title
+              }
+              onClick={handleTweetPage}
+            >
+              推文
+            </div>
+            <div
+              className={
+                currentPage === 'userReply' ? styles.ActiveTitle : styles.Title
+              }
+              onClick={handleReplyPage}
+            >
+              回覆
+            </div>
+            <div
+              className={
+                currentPage === 'userLike' ? styles.ActiveTitle : styles.Title
+              }
+              onClick={handleLikePage}
+            >
+              喜歡的內容
+            </div>
+          </div>
         </div>
-        <div className={styles.Heading}>
-          <div
-            className={
-              currentPage === 'userPost' ? styles.ActiveTitle : styles.Title
-            }
-            onClick={handleTweetPage}
-          >
-            推文
-          </div>
-          <div
-            className={
-              currentPage === 'userReply' ? styles.ActiveTitle : styles.Title
-            }
-            onClick={handleReplyPage}
-          >
-            回覆
-          </div>
-          <div
-            className={
-              currentPage === 'userLike' ? styles.ActiveTitle : styles.Title
-            }
-            onClick={handleLikePage}
-          >
-            喜歡的內容
-          </div>
-        </div>
+        {/* 推文 */}
+        {currentPage === 'userPost' && (
+          <TweetItemCollection
+            tweets={tweets}
+            type="userPage"
+            user={user}
+            setUser={setUser}
+          />
+        )}
+        {/* 回覆 */}
+        {currentPage === 'userReply' && (
+          <ReplyItemCollection replyTweets={replyTweets} type="userPage" />
+        )}
+        {/* 喜歡 */}
+        {currentPage === 'userLike' && (
+          <LikeItemCollection likeTweets={likeTweets} type="userPage" />
+        )}
       </div>
-      {/* 推文 */}
-      {currentPage === 'userPost' && (
-        <TweetItemCollection
-          tweets={tweets}
-          type="userPage"
-          user={user}
-          setUser={setUser}
-        />
-      )}
-      {/* 回覆 */}
-      {currentPage === 'userReply' && (
-        <ReplyItemCollection replyTweets={replyTweets} type="userPage" />
-      )}
-      {/* 喜歡 */}
-      {currentPage === 'userLike' && (
-        <LikeItemCollection likeTweets={likeTweets} type="userPage" />
-      )}
-    </div>
+    </>
   )
 }
 

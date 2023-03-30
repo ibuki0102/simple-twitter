@@ -11,11 +11,15 @@ import { getUserData } from 'api/auth'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ReplyTweetContext } from 'contexts/ReplyTweetContext'
+import { ErrorMessageContext } from 'contexts/ErrorMessageContext'
+import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
-const TweetItem = ({ tweet, user, setUser, setUpdateTweetList }) => {
+const TweetItem = ({ tweet, user, setUser }) => {
   const { replyModalState, setReplyModalState } = useReplyContext()
   const [replyTweetData, setReplyTweetData] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
+  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
+  const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const navigate = useNavigate()
   const setReplyTweetId = useContext(ReplyTweetContext)[1]
   const handleClickReply = async () => {

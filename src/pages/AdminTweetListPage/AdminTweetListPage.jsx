@@ -4,15 +4,21 @@ import Sidebar from 'components/Sidebar/Sidebar'
 import styles from '../AdminTweetListPage/AdminTweetListPage.module.scss'
 import AdminTweetListItem from 'components/AdminTweetListItem/AdminTweetListItem'
 import { getAdminTweetList } from 'api/admin'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { deleteTweet } from 'api/admin'
+import { NotiContext } from 'contexts/NotiContext'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
+import Notification from 'components/Notification/Notification'
 
 const AdminTweetListPage = () => {
   const navigate = useNavigate()
 
   // Jasmine 註: 管理後台推文
   const [adminTweets, setAdminTweets] = useState([])
+
+  const [notiState, setNotiState] = useContext(NotiContext)
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
 
   // Jasmine 註: 取得後台推文
   useEffect(() => {
@@ -32,7 +38,12 @@ const AdminTweetListPage = () => {
       }
     }
     getAdminTweets()
-  }, [navigate])
+    if (notiState) {
+      setTimeout(() => {
+        setNotiState(false)
+      }, 2500)
+    }
+  }, [navigate, notiState, setNotiState])
 
   // Jasmine 註: 刪除後台特定推文
   const handleDeleteTweet = async (id) => {
@@ -46,25 +57,30 @@ const AdminTweetListPage = () => {
   }
 
   return (
-    <div className={styles.Container}>
-      <div className={styles.Sidebar}>
-        <Sidebar type="admin" page="home" />
-      </div>
-      <div className={styles.TweetListContainer}>
-        <div className={styles.Header}>推文清單</div>
-        <div className={styles.ListItemContainer}>
-          {adminTweets.map((adminTweet) => {
-            return (
-              <AdminTweetListItem
-                key={adminTweet.id}
-                adminTweet={adminTweet}
-                onDeleteTweet={handleDeleteTweet}
-              />
-            )
-          })}
+    <>
+      {notiType === 'admin' && (
+        <Notification text="登入成功" type="success" notiState={notiState} />
+      )}
+      <div className={styles.Container}>
+        <div className={styles.Sidebar}>
+          <Sidebar type="admin" page="home" />
+        </div>
+        <div className={styles.TweetListContainer}>
+          <div className={styles.Header}>推文清單</div>
+          <div className={styles.ListItemContainer}>
+            {adminTweets.map((adminTweet) => {
+              return (
+                <AdminTweetListItem
+                  key={adminTweet.id}
+                  adminTweet={adminTweet}
+                  onDeleteTweet={handleDeleteTweet}
+                />
+              )
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

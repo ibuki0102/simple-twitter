@@ -5,6 +5,7 @@ import styles from 'pages/UserTweetPage/UserTweetPage.module.scss'
 import Sidebar from 'components/Sidebar/Sidebar'
 import UserPostList from 'components/UserPostList/UserPostList'
 import PopularUserList from 'components/PopularUserList/PopularUserList'
+import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
 import { useNavigate } from 'react-router-dom'
 import {
@@ -36,6 +37,9 @@ const UserTweetPage = () => {
   // 雪央註: 用state管理編輯個人資訊的modal狀態
   const [profileModalState, setProfileModalState] = useState(false)
 
+  // 雪央註: 偵測是否自動更新推文內容用
+  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
+
   // Jasmine 註: 紀錄使用者 id
   const [user, setUser] = useContext(UserContext)
 
@@ -51,6 +55,7 @@ const UserTweetPage = () => {
         const tweetsList = await getUserPostTweets({ token, userId })
         if (tweetsList) {
           setTweets(tweetsList)
+          setUpdateTweetList(false)
         }
         const replyTweetsList = await getUserReplyTweets({ token, userId })
         if (replyTweetsList) {
@@ -65,7 +70,13 @@ const UserTweetPage = () => {
       }
     }
     getTweets()
-  }, [navigate, currentPage, profileModalState])
+  }, [
+    navigate,
+    currentPage,
+    profileModalState,
+    updateTweetList,
+    setUpdateTweetList,
+  ])
 
   return (
     <div className={styles.UserTweetPageContainer}>

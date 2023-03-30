@@ -7,12 +7,16 @@ import { ReactComponent as Bell } from 'assets/icons/noti.svg'
 import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 import { followUser, unFollowUser } from 'api/follow'
+import { NotiContext } from 'contexts/NotiContext'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
+import { ErrorMessageContext } from 'contexts/ErrorMessageContext'
+import Notification from 'components/Notification/Notification'
 
 import TweetItemCollection from 'components/TweetItemCollection/TweetItemCollection'
 import ReplyItemCollection from 'components/ReplyItemCollection/ReplyItemCollection'
 import LikeItemCollection from 'components/LikeItemCollection/LikeItemCollection'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 const OtherUserPostList = ({
   tweets,
@@ -27,6 +31,9 @@ const OtherUserPostList = ({
   setClickFollow,
 }) => {
   const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
+  const [notiState, setNotiState] = useContext(NotiContext)
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
 
   // 管理個人資料頁面上方的個人資料
   const [userData, setUserData] = useState({
@@ -114,7 +121,12 @@ const OtherUserPostList = ({
       }
     }
     UserData()
-  }, [navigate, user, isFollowing])
+    if (notiState) {
+      setTimeout(() => {
+        setNotiState(false)
+      }, 2500)
+    }
+  }, [navigate, user, isFollowing, notiState, setNotiState])
 
   const {
     account,
@@ -129,99 +141,112 @@ const OtherUserPostList = ({
   } = userData
 
   return (
-    <div className={styles.UserPostListContainer}>
-      <div className={styles.UserPostListTopSection}>
-        <div className={styles.Return}>
-          <Back className={styles.Back} onClick={() => navigate('/main')} />
-          <div className={styles.UserName}>
-            <h5 className={styles.Name}>{name}</h5>
-            <div className={styles.TweetCount}>{tweetsCounts} 推文</div>
+    <>
+      {notiType === 'reply' && !errorMessage ? (
+        <Notification text="回覆成功" type="success" notiState={notiState} />
+      ) : null}
+      <div className={styles.UserPostListContainer}>
+        <div className={styles.UserPostListTopSection}>
+          <div className={styles.Return}>
+            <Back className={styles.Back} onClick={() => navigate('/main')} />
+            <div className={styles.UserName}>
+              <h5 className={styles.Name}>{name}</h5>
+              <div className={styles.TweetCount}>{tweetsCounts} 推文</div>
+            </div>
           </div>
-        </div>
-        <img
-          src={cover || `https://i.imgur.com/jXE6Mmp.png`}
-          className={styles.Banner}
-          alt="banner"
-        />
-        <img
-          src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
-          className={styles.Photo}
-          alt=""
-        />
-        <Mail className={styles.Mail} />
-        <Bell className={styles.Bell} />
-        {isFollowed ? (
-          <button className={styles.ActiveButton} onClick={handleClickUnFollow}>
-            正在跟隨
-          </button>
-        ) : (
-          <button className={styles.DefaultButton} onClick={handleClickFollow}>
-            跟隨
-          </button>
-        )}
+          <img
+            src={cover || `https://i.imgur.com/jXE6Mmp.png`}
+            className={styles.Banner}
+            alt="banner"
+          />
+          <img
+            src={avatar || 'https://i.imgur.com/ZyXrPxB.png'}
+            className={styles.Photo}
+            alt=""
+          />
+          <Mail className={styles.Mail} />
+          <Bell className={styles.Bell} />
+          {isFollowed ? (
+            <button
+              className={styles.ActiveButton}
+              onClick={handleClickUnFollow}
+            >
+              正在跟隨
+            </button>
+          ) : (
+            <button
+              className={styles.DefaultButton}
+              onClick={handleClickFollow}
+            >
+              跟隨
+            </button>
+          )}
 
-        <div className={styles.UserIntroduction}>
-          <div className={styles.User}>
-            <h5 className={styles.UserName}>{name}</h5>
-            <div className={styles.UserAcount}>@{account}</div>
+          <div className={styles.UserIntroduction}>
+            <div className={styles.User}>
+              <h5 className={styles.UserName}>{name}</h5>
+              <div className={styles.UserAcount}>@{account}</div>
+            </div>
+            <div className={styles.Introduction}>{introduction}</div>
+            <div className={styles.Follow}>
+              <div
+                className={styles.Following}
+                onClick={() => {
+                  handleChangePage('followers')
+                }}
+              >
+                <div className={styles.Number}>{followerCounts || 0} 個</div>
+                <div className={styles.Text}>跟隨中</div>
+              </div>
+              <div
+                className={styles.Follower}
+                onClick={() => {
+                  handleChangePage('followings')
+                }}
+              >
+                <div className={styles.Number}>{followingCounts || 0} 位</div>
+                <div className={styles.Text}>跟隨者</div>
+              </div>
+            </div>
           </div>
-          <div className={styles.Introduction}>{introduction}</div>
-          <div className={styles.Follow}>
+          <div className={styles.Heading}>
             <div
-              className={styles.Following}
+              className={choice === 'userPost' ? styles.Active : styles.Title}
               onClick={() => {
-                handleChangePage('followers')
+                handleChoose('userPost')
               }}
             >
-              <div className={styles.Number}>{followerCounts || 0} 個</div>
-              <div className={styles.Text}>跟隨中</div>
+              推文
             </div>
             <div
-              className={styles.Follower}
+              className={choice === 'userReply' ? styles.Active : styles.Title}
               onClick={() => {
-                handleChangePage('followings')
+                handleChoose('userReply')
               }}
             >
-              <div className={styles.Number}>{followingCounts || 0} 位</div>
-              <div className={styles.Text}>跟隨者</div>
+              回覆
+            </div>
+            <div
+              className={choice === 'userLike' ? styles.Active : styles.Title}
+              onClick={() => {
+                handleChoose('userLike')
+              }}
+            >
+              喜歡的內容
             </div>
           </div>
         </div>
-        <div className={styles.Heading}>
-          <div
-            className={choice === 'userPost' ? styles.Active : styles.Title}
-            onClick={() => {
-              handleChoose('userPost')
-            }}
-          >
-            推文
-          </div>
-          <div
-            className={choice === 'userReply' ? styles.Active : styles.Title}
-            onClick={() => {
-              handleChoose('userReply')
-            }}
-          >
-            回覆
-          </div>
-          <div
-            className={choice === 'userLike' ? styles.Active : styles.Title}
-            onClick={() => {
-              handleChoose('userLike')
-            }}
-          >
-            喜歡的內容
-          </div>
-        </div>
+        {choice === 'userPost' && (
+          <TweetItemCollection tweets={tweets} user={user} setUser={setUser} />
+        )}
+        {choice === 'userReply' && (
+          <ReplyItemCollection replyTweets={replyTweets} />
+        )}
+        {choice === 'userLike' && (
+          <LikeItemCollection likeTweets={likeTweets} />
+        )}
       </div>
-      {choice === 'userPost' && (
-        <TweetItemCollection tweets={tweets} user={user} setUser={setUser} />
-      )}
-      {choice === 'userReply' && (
-        <ReplyItemCollection replyTweets={replyTweets} />
-      )}
-      {choice === 'userLike' && <LikeItemCollection likeTweets={likeTweets} />}
-    </div>
+    </>
   )
 }
 

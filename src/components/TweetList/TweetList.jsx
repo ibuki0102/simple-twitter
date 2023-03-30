@@ -10,6 +10,8 @@ import { getUserData } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 import { NotiContext } from 'contexts/NotiContext'
 import Notification from 'components/Notification/Notification'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
+import { ErrorMessageContext } from 'contexts/ErrorMessageContext'
 
 const TweetList = ({
   tweets,
@@ -21,8 +23,9 @@ const TweetList = ({
   const [avatar, setAvatar] = useState('')
   const navigate = useNavigate()
   const [modalState, setModalState] = useContext(TweetModalContext)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const [notiState, setNotiState] = useContext(NotiContext)
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
 
   useEffect(() => {
     const userData = async () => {
@@ -50,9 +53,15 @@ const TweetList = ({
 
   return (
     <>
-      {!errorMessage && (
-        <Notification text="推文成功" type="success" notiState={notiState} />
+      {notiType === 'login' && (
+        <Notification text="登入成功" type="success" notiState={notiState} />
       )}
+      {notiType === 'tweet' && !errorMessage ? (
+        <Notification text="推文成功" type="success" notiState={notiState} />
+      ) : null}
+      {notiType === 'reply' && !errorMessage ? (
+        <Notification text="回覆成功" type="success" notiState={notiState} />
+      ) : null}
       <div className={styles.TweetListContainer}>
         <div className={styles.TweetListTopSection}>
           <h4>首頁</h4>
@@ -69,20 +78,13 @@ const TweetList = ({
           </div>
         </div>
         {modalState && (
-          <TweetModal
-            setModalState={setModalState}
-            avatar={avatar}
-            errorMessage={errorMessage}
-            setErrorMessage={setErrorMessage}
-          />
+          <TweetModal setModalState={setModalState} avatar={avatar} />
         )}
         <TweetItemCollection
           tweets={tweets}
           user={user}
           setUser={setUser}
           setUpdateTweetList={setUpdateTweetList}
-          setErrorMessage={setErrorMessage}
-          errorMessage={errorMessage}
         />
       </div>
     </>

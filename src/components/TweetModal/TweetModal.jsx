@@ -1,20 +1,26 @@
 import styles from '../TweetModal/TweetModal.module.scss'
 import { ReactComponent as OrangeCross } from 'assets/icons/orange_cross.svg'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { Tweet } from 'api/mainPageTweets'
 import { NotiContext } from 'contexts/NotiContext'
 import { TweetModalContext } from 'contexts/TweetModalContext'
 import Notification from 'components/Notification/Notification'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
+import { ErrorMessageContext } from 'contexts/ErrorMessageContext'
 
-const TweetModal = ({ avatar, setErrorMessage, errorMessage }) => {
+const TweetModal = ({ avatar }) => {
   const [description, setDescription] = useState('')
   const [submited, setSubmited] = useState(false)
   const [notiState, setNotiState] = useContext(NotiContext)
+  const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const setModalState = useContext(TweetModalContext)[1]
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
 
   const handleClick = async () => {
+    setErrorMessage('')
     if (description.length > 140 || description.length === 0) {
       setSubmited(true)
+      setNotiType('tweet')
       setErrorMessage('字數不得超過或為空')
       setNotiState(true)
       return setTimeout(() => {
@@ -27,10 +33,12 @@ const TweetModal = ({ avatar, setErrorMessage, errorMessage }) => {
 
     if (errorMessage) {
       setErrorMessage(errorMessage)
+      setNotiType('tweet')
       setNotiState(true)
       setModalState(false)
     } else {
       setNotiState(true)
+      setNotiType('tweet')
       setModalState(false)
     }
   }

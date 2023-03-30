@@ -11,6 +11,7 @@ import { getUserFollowers, getUserFollowings } from 'api/userFollowPage'
 import { useEffect, useState, useContext } from 'react'
 import { PageContext } from 'contexts/PageContext'
 import { UserContext } from 'contexts/UserContext'
+import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
 const OtherUserFollowPage = () => {
   const navigate = useNavigate()
