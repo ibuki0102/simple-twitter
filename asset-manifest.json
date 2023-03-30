@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/simple-twitter/static/css/main.50a8bf75.css",
-    "main.js": "/simple-twitter/static/js/main.314e4e1d.js",
+    "main.css": "/simple-twitter/static/css/main.d9e9e98c.css",
+    "main.js": "/simple-twitter/static/js/main.f658045b.js",
     "static/media/Montserrat-Regular.ttf": "/simple-twitter/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
     "static/media/default_banner.png": "/simple-twitter/static/media/default_banner.e57aeb282b97953c83e5.png",
     "static/media/cog.svg": "/simple-twitter/static/media/cog.eb7d7939d1004ecdbd17c0d3f88535dc.svg",
@@ -10,6 +10,7 @@
     "static/media/noti.svg": "/simple-twitter/static/media/noti.49ac8ca65d9df38e0532503a83bb84bb.svg",
     "static/media/logo.svg": "/simple-twitter/static/media/logo.eea79863f987f0eb16f5291563e66e94.svg",
     "static/media/logout.svg": "/simple-twitter/static/media/logout.1955c27d4e552ee0057ec5f977f67a8f.svg",
+    "static/media/noti_red.svg": "/simple-twitter/static/media/noti_red.2ae789528057856c885952a138b1df13.svg",
     "static/media/user.svg": "/simple-twitter/static/media/user.c05d11cbcd8ce597865f9a3634940245.svg",
     "static/media/add_photo.svg": "/simple-twitter/static/media/add_photo.2306d70ec2141713789cb28266f321b9.svg",
     "static/media/home.svg": "/simple-twitter/static/media/home.26a9adb0b36a4bf008448a6827278b4b.svg",
@@ -20,16 +21,19 @@
     "static/media/white_cross.svg": "/simple-twitter/static/media/white_cross.6b7ce1627c4be36877a5dbcbf0a37b0c.svg",
     "static/media/message.svg": "/simple-twitter/static/media/message.3d049fc65b5c55c744ab40045580dca7.svg",
     "index.html": "/simple-twitter/index.html",
+    "static/media/noti_yellow.svg": "/simple-twitter/static/media/noti_yellow.76aa353c41c463805b3a88b31a36e09f.svg",
     "static/media/active_user.svg": "/simple-twitter/static/media/active_user.f09bdfd58228069e1d5b9210834626ef.svg",
     "static/media/orange_cross.svg": "/simple-twitter/static/media/orange_cross.ed768f79c23284b4eac38016a4364f3b.svg",
+    "static/media/noti_blue.svg": "/simple-twitter/static/media/noti_blue.6ea0dd3ff9cd5c7575412b6f5d0d2591.svg",
     "static/media/gray_cross.svg": "/simple-twitter/static/media/gray_cross.d18791b3615b8d712d996d56753775ed.svg",
     "static/media/back.svg": "/simple-twitter/static/media/back.e169b1300c856cfe4412b8be84a934de.svg",
     "static/media/heart.svg": "/simple-twitter/static/media/heart.00bf60db407e0dad7d357f5c7e920f26.svg",
-    "main.50a8bf75.css.map": "/simple-twitter/static/css/main.50a8bf75.css.map",
-    "main.314e4e1d.js.map": "/simple-twitter/static/js/main.314e4e1d.js.map"
+    "static/media/noti_green.svg": "/simple-twitter/static/media/noti_green.982763741e8472c1d1ce4c3ecbdf2c04.svg",
+    "main.d9e9e98c.css.map": "/simple-twitter/static/css/main.d9e9e98c.css.map",
+    "main.f658045b.js.map": "/simple-twitter/static/js/main.f658045b.js.map"
   },
   "entrypoints": [
-    "static/css/main.50a8bf75.css",
-    "static/js/main.314e4e1d.js"
+    "static/css/main.d9e9e98c.css",
+    "static/js/main.f658045b.js"
   ]
 }
