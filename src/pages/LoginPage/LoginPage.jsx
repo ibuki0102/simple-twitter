@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import Notification from 'components/Notification/Notification'
 import { NotiContext } from 'contexts/NotiContext'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
 
 import { useContext, useEffect, useState } from 'react'
 import { login } from 'api/auth'
@@ -18,6 +19,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [notiState, setNotiState] = useContext(NotiContext)
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
 
   // 雪央 新增 登入後自動轉向首頁
   useEffect(() => {
@@ -25,7 +27,12 @@ const LoginPage = () => {
     if (token) {
       navigate('/main')
     }
-  }, [navigate])
+    if (notiState) {
+      setTimeout(() => {
+        setNotiState(false)
+      }, 3000)
+    }
+  }, [navigate, notiState, setNotiState])
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -45,16 +52,15 @@ const LoginPage = () => {
       localStorage.setItem('token', token)
       localStorage.setItem('userId', userId)
       localStorage.setItem('role', role)
-      setNotiState(true)
-      setTimeout(() => {
-        setNotiState(false)
+      setNotiType('login')
+      navigate('/main')
+      return setTimeout(() => {
+        setNotiState(true)
       }, 1500)
-      setTimeout(() => {
-        navigate('/main')
-      }, 2500)
     } else if (errorMessage) {
-      setErrorMessage(errorMessage)
       setNotiState(true)
+      setNotiType('loginFailed')
+      setErrorMessage(errorMessage)
       setTimeout(() => {
         setNotiState(false)
       }, 1500)
@@ -63,10 +69,11 @@ const LoginPage = () => {
 
   return (
     <>
-      {errorMessage ? (
+      {notiType === 'regist' && (
+        <Notification text="註冊成功" type="success" notiState={notiState} />
+      )}
+      {notiType === 'loginFailed' && (
         <Notification text="登入失敗" type="failed" notiState={notiState} />
-      ) : (
-        <Notification text="登入成功" type="success" notiState={notiState} />
       )}
       <div className={styles.AuthContainer}>
         <img src={Logo} alt="logo" width="45px" />

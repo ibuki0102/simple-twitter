@@ -7,19 +7,21 @@ import AuthInput from 'components/AuthInput/AuthInput'
 import { Link, useNavigate } from 'react-router-dom'
 import Notification from 'components/Notification/Notification'
 import { NotiContext } from 'contexts/NotiContext'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
+import { ErrorMessageContext } from 'contexts/ErrorMessageContext'
 
 import { useEffect, useState, useContext } from 'react'
 import { adminLogin } from 'api/auth'
-import Swal from 'sweetalert2'
 
 const AdminLoginPage = () => {
   const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const [notiState, setNotiState] = useContext(NotiContext)
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
 
   // Jasmine 新增 useState & handleClick
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
 
   // 登入後自動轉向後台推文清單
   useEffect(() => {
@@ -48,12 +50,8 @@ const AdminLoginPage = () => {
       localStorage.setItem('userId', userId)
       localStorage.setItem('role', role)
       setNotiState(true)
-      setTimeout(() => {
-        setNotiState(false)
-      }, 1500)
-      setTimeout(() => {
-        navigate('/admin/tweetList')
-      }, 2500)
+      setNotiType('admin')
+      navigate('/admin/tweetList')
     } else if (errorMessage) {
       setErrorMessage(errorMessage)
       setNotiState(true)
@@ -65,10 +63,8 @@ const AdminLoginPage = () => {
 
   return (
     <>
-      {errorMessage ? (
+      {errorMessage && (
         <Notification text="登入失敗" type="failed" notiState={notiState} />
-      ) : (
-        <Notification text="登入成功" type="success" notiState={notiState} />
       )}
       <div className={styles.AuthContainer}>
         <img src={Logo} alt="logo" width="45px" />

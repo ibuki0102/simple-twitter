@@ -8,6 +8,7 @@ import { regist } from 'api/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import Notification from 'components/Notification/Notification'
 import { NotiContext } from 'contexts/NotiContext'
+import { NotiTypeContext } from 'contexts/NoitTypeContext'
 
 const RegistPage = () => {
   const [account, setAccount] = useState('')
@@ -18,12 +19,13 @@ const RegistPage = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
   const [notiState, setNotiState] = useContext(NotiContext)
+  const [notiType, setNotiType] = useContext(NotiTypeContext)
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleClick()
     } else {
-      setPassword(event.target.value)
+      setcheckPassword(event.target.value)
       return setErrorMessage('')
     }
   }
@@ -51,18 +53,18 @@ const RegistPage = () => {
       password,
       checkPassword,
     })
+    if (errorMessage) {
+      setErrorMessage(errorMessage)
+    }
     console.log(errorMessage)
     if (success) {
+      setNotiType('regist')
       setNotiState(true)
-      setTimeout(() => {
-        setNotiState(false)
-      }, 1500)
       setTimeout(() => {
         navigate('/login')
       }, 2500)
     }
     if (errorMessage) {
-      setErrorMessage(errorMessage)
       setNotiState(true)
       setTimeout(() => {
         setNotiState(false)
@@ -72,11 +74,10 @@ const RegistPage = () => {
 
   return (
     <>
-      {errorMessage ? (
+      {errorMessage && (
         <Notification text="註冊失敗" type="failed" notiState={notiState} />
-      ) : (
-        <Notification text="註冊成功" type="success" notiState={notiState} />
       )}
+
       <div className={styles.AuthContainer}>
         <img src={Logo} alt="logo" width="45px" />
         <h3 className={styles.Title}>建立你的帳號</h3>

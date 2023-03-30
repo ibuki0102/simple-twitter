@@ -15,6 +15,7 @@ import {
 import { useEffect, useState, useContext } from 'react'
 import { PageContext } from 'contexts/PageContext'
 import { UserContext } from 'contexts/UserContext'
+import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
 const OtherTweetPage = () => {
   const navigate = useNavigate()
@@ -39,6 +40,9 @@ const OtherTweetPage = () => {
   // 雪央註: 偵測使用者點擊追隨或取消追隨
   const [clickFollow, setClickFollow] = useState(false)
 
+  // 雪央註: 用來同步更新推文狀態
+  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
+
   // 串接個人資料的'推文'、'回覆'、'喜歡的內容'
   useEffect(() => {
     const getTweets = async () => {
@@ -51,6 +55,7 @@ const OtherTweetPage = () => {
         const tweetsList = await getUserPostTweets({ token, userId })
         if (tweetsList) {
           setTweets(tweetsList)
+          setUpdateTweetList(false)
         }
         const replyTweetsList = await getUserReplyTweets({ token, userId })
         if (replyTweetsList) {
@@ -65,7 +70,7 @@ const OtherTweetPage = () => {
       }
     }
     getTweets()
-  }, [navigate, user, clickFollow])
+  }, [navigate, user, clickFollow, updateTweetList, setUpdateTweetList])
 
   return (
     <div className={styles.OtherTweetPageContainer}>

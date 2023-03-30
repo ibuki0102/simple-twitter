@@ -12,12 +12,13 @@ import { useEffect, useState, useContext } from 'react'
 import { useReplyContext } from 'contexts/ReplyContext'
 import { UserContext } from 'contexts/UserContext'
 import { TweetModalContext } from 'contexts/TweetModalContext'
+import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
 const MainPage = () => {
   const navigate = useNavigate()
   const [tweets, setTweets] = useState([])
   const modalState = useContext(TweetModalContext)[0]
-  const [updateTweetList, setUpdateTweetList] = useState(false)
+  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
   const replyModalState = useReplyContext()[0]
   const [user, setUser] = useContext(UserContext)
 
@@ -39,7 +40,13 @@ const MainPage = () => {
       }
     }
     getTweets()
-  }, [navigate, modalState, updateTweetList, replyModalState])
+  }, [
+    navigate,
+    modalState,
+    updateTweetList,
+    replyModalState,
+    setUpdateTweetList,
+  ])
 
   return (
     <div className={styles.MainPageContainer}>
