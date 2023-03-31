@@ -49,12 +49,16 @@ const AdminLoginPage = () => {
       localStorage.setItem('token', token)
       localStorage.setItem('userId', userId)
       localStorage.setItem('role', role)
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setNotiType('admin')
       navigate('/admin/tweetList')
     } else if (errorMessage) {
       setErrorMessage(errorMessage)
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setTimeout(() => {
         setNotiState(false)
       }, 1500)

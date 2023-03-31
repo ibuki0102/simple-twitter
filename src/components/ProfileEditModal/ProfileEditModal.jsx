@@ -73,7 +73,9 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
       editUserData.name.length > 50 ||
       editUserData.name.length === 0
     ) {
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setNotiType('editProfile')
       return setErrorMessage('error')
     }

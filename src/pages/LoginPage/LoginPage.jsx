@@ -3,7 +3,7 @@
 import styles from './LoginPage.module.scss'
 import Logo from 'assets/icons/logo.svg'
 import AuthInput from 'components/AuthInput/AuthInput'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 import Notification from 'components/Notification/Notification'
 import { NotiContext } from 'contexts/NotiContext'
@@ -20,6 +20,9 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [notiState, setNotiState] = useContext(NotiContext)
   const [notiType, setNotiType] = useContext(NotiTypeContext)
+
+  const ifo = useLocation().pathname
+  console.log(ifo)
 
   // 雪央 新增 登入後自動轉向首頁
   useEffect(() => {
@@ -76,9 +79,6 @@ const LoginPage = () => {
       )}
       {notiType === 'loginFailed' && (
         <Notification text="登入失敗" type="failed" notiState={notiState} />
-      )}
-      {notiType === 'notLogin' && (
-        <Notification text="請先登入" type="failed" notiState={notiState} />
       )}
       <div className={styles.AuthContainer}>
         <img src={Logo} alt="logo" width="45px" />
