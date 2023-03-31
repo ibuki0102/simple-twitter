@@ -36,9 +36,16 @@ const PopularUser = ({ userData }) => {
           alt="avatar"
         />
         <div className={styles.PopularUserName}>
-          <div className={styles.UserName}>{userData.name || 'UserName'}</div>
-          <div className={styles.UserAcount}>
-            @{userData.account || 'UserAccount'}
+          <div className={styles.UserName}>
+            {userData.name.length > 6
+              ? userData.name.substr(0, 6) + '...' || 'UserName'
+              : userData.name || 'UserName'}
+          </div>
+          <div className={styles.UserAccount}>
+            @
+            {userData.account.length > 5
+              ? userData.account.substr(0, 5) + '...' || 'UserAccount'
+              : userData.account || 'UserAccount'}
           </div>
         </div>
       </div>
