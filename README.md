@@ -10,7 +10,7 @@ Simple Twitter 是一個可以讓使用者互相交流的社交網站。
 ![image](/public/查看所有推文.png)
 
 **編輯個人資料**
-![image](/public/查看所有推文.png)
+![image](/public/編輯個人資料.png)
 
 - 網站連結：[Simple Twitter](https://ibuki0102.github.io/simple-twitter/)
 - 前台測試帳號：`user1` 密碼：`12345678`
