@@ -19,10 +19,12 @@ import { userData } from 'assets/userData'
 import ProfileEditModal from 'components/ProfileEditModal/ProfileEditModal'
 import { ContextProvider } from 'contexts/DataContext'
 import Notification from 'components/Notification/Notification'
+import { useState } from 'react'
 
 const basename = process.env.PUBLIC_URL
 
 function App() {
+  const [firstEnter, setFirstEnter] = useState(true)
   return (
     <div className={styles.App}>
       <ContextProvider>
@@ -52,7 +54,15 @@ function App() {
               path="/notification"
               element={<Notification text="登入成功" type="success" />}
             />
-            <Route path="*" element={<Homepage />} />
+            <Route
+              path="*"
+              element={
+                <Homepage
+                  firstEnter={firstEnter}
+                  setFirstEnter={setFirstEnter}
+                />
+              }
+            />
           </Routes>
         </BrowserRouter>
       </ContextProvider>
