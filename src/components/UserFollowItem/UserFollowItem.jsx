@@ -3,6 +3,7 @@
 import styles from 'components/UserFollowItem/UserFollowItem.module.scss'
 
 const UserFollowItem = (follow) => {
+  const userId = JSON.parse(localStorage.getItem('userId'))
   return (
     <div
       className={
@@ -21,10 +22,12 @@ const UserFollowItem = (follow) => {
       <div className={styles.Tweet}>
         <div className={styles.UserName}>{follow.follow.name}</div>
         {follow.follow.isFollowed
-          ? follow.follow.avatar !== null && (
+          ? follow.follow.id !== userId &&
+            follow.follow.avatar !== null && (
               <button className={styles.ActiveButton}>正在跟隨</button>
             )
-          : follow.follow.avatar !== null && (
+          : follow.follow.id !== userId &&
+            follow.follow.avatar !== null && (
               <button className={styles.DefaultButton}>跟隨</button>
             )}
         <div className={styles.TweetContent}>{follow.follow.introduction}</div>
