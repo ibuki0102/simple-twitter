@@ -31,19 +31,22 @@ const RegistPage = () => {
   }
 
   const handleClick = async () => {
-    if (account.length === 0 || account.length > 10) {
-      return
-    }
-    if (name.length === 0 || name.length > 50) {
-      return
-    }
-    if (email.length === 0) {
-      return
-    }
-    if (password.length === 0) {
-      return
-    }
-    if (checkPassword.length === 0) {
+    if (
+      account.length === 0 ||
+      account.length > 10 ||
+      name.length === 0 ||
+      name.length > 50 ||
+      email.length === 0 ||
+      password.length === 0 ||
+      checkPassword.length === 0
+    ) {
+      setErrorMessage('error')
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
+      setTimeout(() => {
+        setNotiState(false)
+      }, 1500)
       return
     }
     const { success, errorMessage } = await regist({
@@ -59,13 +62,17 @@ const RegistPage = () => {
     console.log(errorMessage)
     if (success) {
       setNotiType('regist')
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setTimeout(() => {
         navigate('/login')
       }, 2500)
     }
     if (errorMessage) {
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setTimeout(() => {
         setNotiState(false)
       }, 1500)
