@@ -3,7 +3,7 @@
 import styles from 'components/ReplyItem/ReplyItem.module.scss'
 import { useNavigate } from 'react-router-dom'
 
-const ReplyItem = ({ replyTweet, user, setUser }) => {
+const ReplyItem = ({ replyTweet, setUser }) => {
   const navigate = useNavigate()
 
   // Jasmine 註: 點擊頭像獲取 id 並引導至個人資料頁

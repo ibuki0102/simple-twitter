@@ -37,7 +37,6 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
       })
     }
     if (targetName === 'cover') {
-      console.log(event.target.files[0])
       setEditUserData({
         ...editUserData,
         [event.target.name]: event.target.files[0],
@@ -62,7 +61,6 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
     setErrorMessage('')
     const token = localStorage.getItem('token')
     const userId = localStorage.getItem('userId')
-
     let payload = {
       token,
       userId,
@@ -81,21 +79,32 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
     }
     if (defaultCover) {
       payload = { ...payload, cover: null }
-    } else {
+    } else if (cover) {
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
+      setNotiType('editProfile')
+      setLoading(false)
+      setProfileModalState(false)
+      return
+    } else if (editUserData.cover) {
       payload = { ...payload, cover: editUserData.cover }
     }
-    console.log(payload)
     setLoading(true)
     const { data, errorMessage } = await editUserProfile({ payload })
     if (data) {
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setNotiType('editProfile')
       setLoading(false)
       setProfileModalState(false)
     }
     if (errorMessage) {
       setLoading(false)
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setNotiType('editProfile')
       setErrorMessage(errorMessage)
     }
