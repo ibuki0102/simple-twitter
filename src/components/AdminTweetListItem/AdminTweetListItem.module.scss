@@ -5,6 +5,11 @@
   width: 937px;
   padding: 16px 0px 16px 16px;
   border: 1px dashed #e6ecf0;
+  background-color: white;
+  transition: 0.3s;
+  &:hover {
+    margin-left: 5px;
+  }
   .Avatar {
     flex-grow: 0;
     margin-left: 9px;

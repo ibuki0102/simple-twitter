@@ -34,6 +34,7 @@
     .NameAccount {
       display: flex;
       flex-direction: column;
+      max-width: 150px;
       .Name {
         font-weight: 700;
         color: #171725;

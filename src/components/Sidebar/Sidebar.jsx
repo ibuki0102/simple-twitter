@@ -55,7 +55,11 @@ const Sidebar = ({ type, page }) => {
             }
           >
             <Link to={homePath}>
-              {page === 'home' ? <ActiveHome /> : <Home />}
+              {page === 'home' ? (
+                <ActiveHome />
+              ) : (
+                <Home className={styles.Icon} />
+              )}
               <span className={styles.Text}>
                 {type === 'admin' ? '推文清單' : '首頁'}
               </span>
@@ -67,7 +71,11 @@ const Sidebar = ({ type, page }) => {
             }
           >
             <Link to={userPath}>
-              {page === 'user' ? <ActiveUser /> : <User />}
+              {page === 'user' ? (
+                <ActiveUser />
+              ) : (
+                <User className={styles.Icon} />
+              )}
               <span className={styles.Text}>
                 {type === 'admin' ? '使用者列表' : '個人資料'}
               </span>
@@ -81,7 +89,11 @@ const Sidebar = ({ type, page }) => {
                 }
               >
                 <Link to="/setting">
-                  {page === 'setting' ? <ActiveCog /> : <Cog />}
+                  {page === 'setting' ? (
+                    <ActiveCog />
+                  ) : (
+                    <Cog className={styles.Icon} />
+                  )}
                   <span className={styles.Text}>設定</span>
                 </Link>
               </div>
@@ -93,7 +105,7 @@ const Sidebar = ({ type, page }) => {
         </div>
       </div>
       <div className={styles.LogoutLinkContainer}>
-        <Logout onClick={handleClick} />
+        <Logout onClick={handleClick} className={styles.Logout} />
         <span className={styles.Text} onClick={handleClick}>
           登出
         </span>

@@ -31,9 +31,11 @@
       border: 0px;
       border-radius: 50px;
       background-color: #ff6600;
+      transition: 0.3s;
       color: white;
       &:hover {
         cursor: pointer;
+        opacity: 0.8;
       }
     }
     .AuthLinkGroup {
@@ -44,8 +46,10 @@
       .AuthLink {
         color: #0062ff;
         text-decoration: underline;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          opacity: 0.7;
         }
       }
       .Dot {

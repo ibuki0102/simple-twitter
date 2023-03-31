@@ -98,13 +98,22 @@
         .Follower {
           display: flex;
           margin-right: 20px;
+          transition: 0.3s;
           &:hover {
             cursor: pointer;
           }
+          &:hover > .Number {
+            color: #ff6600;
+          }
+          &:hover > .Text {
+            color: #ff6600;
+          }
           .Number {
+            transition: 0.3s;
             color: #171725;
           }
           .Text {
+            transition: 0.3s;
             color: #6c757d;
           }
         }
@@ -119,8 +128,10 @@
         width: 140px;
         text-align: center;
         padding-bottom: 15px;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          color: #ff6600;
         }
       }
       .ActiveTitle {

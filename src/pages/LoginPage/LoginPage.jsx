@@ -3,7 +3,7 @@
 import styles from './LoginPage.module.scss'
 import Logo from 'assets/icons/logo.svg'
 import AuthInput from 'components/AuthInput/AuthInput'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Notification from 'components/Notification/Notification'
 import { NotiContext } from 'contexts/NotiContext'
@@ -20,9 +20,6 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [notiState, setNotiState] = useContext(NotiContext)
   const [notiType, setNotiType] = useContext(NotiTypeContext)
-
-  const ifo = useLocation().pathname
-  console.log(ifo)
 
   // 雪央 新增 登入後自動轉向首頁
   useEffect(() => {
