@@ -93,7 +93,7 @@ const Sidebar = ({ type, page }) => {
         </div>
       </div>
       <div className={styles.LogoutLinkContainer}>
-        <Logout />
+        <Logout onClick={handleClick} />
         <span className={styles.Text} onClick={handleClick}>
           登出
         </span>
