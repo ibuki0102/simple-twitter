@@ -14,15 +14,16 @@ const TweetModal = ({ avatar }) => {
   const [notiState, setNotiState] = useContext(NotiContext)
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const setModalState = useContext(TweetModalContext)[1]
-  const [notiType, setNotiType] = useContext(NotiTypeContext)
+  const setNotiType = useContext(NotiTypeContext)[1]
 
   const handleClick = async () => {
     setErrorMessage('')
     if (description.length > 140 || description.length === 0) {
-      setSubmited(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setNotiType('tweet')
       setErrorMessage('字數不得超過或為空')
-      setNotiState(true)
       return setTimeout(() => {
         setNotiState(false)
       }, 1500)
@@ -34,10 +35,14 @@ const TweetModal = ({ avatar }) => {
     if (errorMessage) {
       setErrorMessage(errorMessage)
       setNotiType('tweet')
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setModalState(false)
     } else {
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setNotiType('tweet')
       setModalState(false)
     }

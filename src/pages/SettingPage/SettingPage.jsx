@@ -90,23 +90,31 @@ const SettingPage = () => {
     // 如果帳號，名稱，email沒有值，就不送出
     if (editAccount === '' || editName === '' || editEmail === '') {
       setNotiType('fail setting')
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       return
     }
     if (editAccount.length > 10 || editName.length > 50) {
       setNotiType('fail setting')
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       return
     }
     const { data, errorMessage } = await patchInfo({ payloadData })
     if (data) {
       setNotiType('setting')
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
     }
     if (errorMessage) {
       setErrorMessage(errorMessage)
-      setNotiState(true)
       setNotiType('fail setting')
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
     }
   }
 

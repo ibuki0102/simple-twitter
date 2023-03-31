@@ -24,7 +24,9 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
   const handleClick = async () => {
     setErrorMessage('')
     if (comment.length > 140 || comment.length === 0) {
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setErrorMessage('error')
       setNotiType('reply')
       return setSubmited(true)
@@ -39,11 +41,15 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
       comment,
     })
     if (error) {
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setErrorMessage(error)
       setNotiType('reply')
     } else {
-      setNotiState(true)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       setNotiType('reply')
       setUpdateTweetList(true)
       setReplyModalState(false)

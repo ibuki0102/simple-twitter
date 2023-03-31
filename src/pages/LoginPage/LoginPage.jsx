@@ -58,12 +58,14 @@ const LoginPage = () => {
         setNotiState(true)
       }, 1500)
     } else if (errorMessage) {
-      setNotiState(true)
       setNotiType('loginFailed')
       setErrorMessage(errorMessage)
       setTimeout(() => {
+        setNotiState(true)
+      }, 300)
+      setTimeout(() => {
         setNotiState(false)
-      }, 1500)
+      }, 2500)
     }
   }
 
@@ -74,6 +76,9 @@ const LoginPage = () => {
       )}
       {notiType === 'loginFailed' && (
         <Notification text="登入失敗" type="failed" notiState={notiState} />
+      )}
+      {notiType === 'notLogin' && (
+        <Notification text="請先登入" type="failed" notiState={notiState} />
       )}
       <div className={styles.AuthContainer}>
         <img src={Logo} alt="logo" width="45px" />
