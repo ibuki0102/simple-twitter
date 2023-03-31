@@ -59,10 +59,7 @@ const MainPage = () => {
         updateTweetList={updateTweetList}
         setUpdateTweetList={setUpdateTweetList}
       />
-      <PopularUserList
-        updateTweetList={updateTweetList}
-        setUpdateTweetList={setUpdateTweetList}
-      />
+      <PopularUserList />
     </div>
   )
 }

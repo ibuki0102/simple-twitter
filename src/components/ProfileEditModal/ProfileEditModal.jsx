@@ -20,7 +20,7 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const [notiState, setNotiState] = useContext(NotiContext)
-  const [notiType, setNotiType] = useContext(NotiTypeContext)
+  const setNotiType = useContext(NotiTypeContext)[1]
   const [editUserData, setEditUserData] = useState({
     name: name,
     avatar: '',
@@ -175,7 +175,7 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
                 />
               ) : null}
               <div className={styles.CoverIcons}>
-                <label for="cover-upload" className="custom-file-upload">
+                <label htmlFor="cover-upload" className="custom-file-upload">
                   <AddPhoto className={styles.CoverIcon} />
                 </label>
                 <input
@@ -195,7 +195,7 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
             <div className={styles.Main}>
               <div className={styles.BlackBg}></div>
               <div className={styles.AddAvatarPhoto}>
-                <label for="avatar-upload" className="custom-file-upload">
+                <label htmlFor="avatar-upload" className="custom-file-upload">
                   <AddPhoto className={styles.Icon} />
                 </label>
                 <input

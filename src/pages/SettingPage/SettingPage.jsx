@@ -14,7 +14,6 @@ import { NotiTypeContext } from 'contexts/NoitTypeContext'
 const SettingPage = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
-  const [userData, setUserData] = useState({ account: '', name: '', email: '' })
   const [notiState, setNotiState] = useContext(NotiContext)
   const [notiType, setNotiType] = useContext(NotiTypeContext)
   const [editUserData, setEditUserData] = useState({
@@ -35,12 +34,7 @@ const SettingPage = () => {
           navigate('/login')
         }
         const result = await getUserData({ token, userId })
-        if (result) {
-          setUserData({
-            account: result.account,
-            name: result.name,
-            email: result.email,
-          })
+        if (result && notiType !== 'fail setting') {
           setEditUserData({
             editAccount: result.account,
             editName: result.name,
@@ -57,7 +51,7 @@ const SettingPage = () => {
         setNotiState(false)
       }, 2500)
     }
-  }, [navigate, notiState, setNotiState])
+  }, [navigate, notiState, setNotiState, notiType])
 
   const handleInputChange = (event) => {
     setEditUserData({
@@ -106,13 +100,11 @@ const SettingPage = () => {
     }
     const { data, errorMessage } = await patchInfo({ payloadData })
     if (data) {
-      console.log(data)
       setNotiType('setting')
       setNotiState(true)
     }
     if (errorMessage) {
       setErrorMessage(errorMessage)
-      console.log(errorMessage)
       setNotiState(true)
       setNotiType('fail setting')
     }

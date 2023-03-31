@@ -27,6 +27,8 @@ const OtherUserFollowPage = () => {
   // Jasmine 註: 紀錄使用者 id
   const [user, setUser] = useContext(UserContext)
 
+  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
+
   // 串接'追隨者'資料
   useEffect(() => {
     const getFollowers = async () => {
@@ -39,13 +41,14 @@ const OtherUserFollowPage = () => {
         const followers = await getUserFollowers({ token, userId })
         if (followers) {
           setFollowers(followers)
+          setUpdateTweetList(false)
         }
       } catch (error) {
         console.error(error)
       }
     }
     getFollowers()
-  }, [navigate, user])
+  }, [navigate, user, updateTweetList, setUpdateTweetList])
 
   // 串接'正在追隨'資料
   useEffect(() => {
@@ -59,13 +62,14 @@ const OtherUserFollowPage = () => {
         const followings = await getUserFollowings({ token, userId })
         if (followings) {
           setFollowings(followings)
+          setUpdateTweetList(false)
         }
       } catch (error) {
         console.error(error)
       }
     }
     getFollowings()
-  }, [navigate, user])
+  }, [navigate, user, updateTweetList, setUpdateTweetList])
 
   return (
     <div className={styles.OtherUserFollowPageContainer}>
