@@ -80,9 +80,6 @@ const LoginPage = () => {
       {notiType === 'loginFailed' && (
         <Notification text="登入失敗" type="failed" notiState={notiState} />
       )}
-      {notiType === 'notLogin' && (
-        <Notification text="請先登入" type="warning" notiState={notiState} />
-      )}
       <div className={styles.AuthContainer}>
         <img src={Logo} alt="logo" width="45px" />
         <h3 className={styles.Title}>登入 Alphitter</h3>
