@@ -2,7 +2,6 @@
 
 import styles from 'components/ReplyList/ReplyList.module.scss'
 import { ReactComponent as Back } from 'assets/icons/back.svg'
-import { ReactComponent as DefaultAvatar } from 'assets/icons/default_avatar.svg'
 import { ReactComponent as Reply } from 'assets/icons/reply.svg'
 import { ReactComponent as Like } from 'assets/icons/like.svg'
 import { ReactComponent as Liked } from 'assets/icons/heart.svg'
@@ -25,7 +24,7 @@ const ReplyList = ({ tweetId, user, setUser }) => {
   const [userAvatar, setUserAvatar] = useState('')
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const [notiState, setNotiState] = useContext(NotiContext)
-  const [notiType, setNotiType] = useContext(NotiTypeContext)
+  const notiType = useContext(NotiTypeContext)[0]
   const navigate = useNavigate()
   const [replyTweetData, setReplyTweetData] = useState({
     replyTweet: '',
@@ -54,6 +53,7 @@ const ReplyList = ({ tweetId, user, setUser }) => {
     }
   }
 
+  // 點擊回覆
   const handleClickReply = async () => {
     const token = localStorage.getItem('token')
     if (!token) {
@@ -63,6 +63,17 @@ const ReplyList = ({ tweetId, user, setUser }) => {
     const userData = await getUserData({ token, userId })
     setReplyModalState(true)
     setUserAvatar(userData.avatar)
+  }
+
+  // 點擊頭像獲取 id 並引導至個人資料頁
+  const handleChangeUser = (id) => {
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    if (id !== userId) {
+      setUser(id)
+      navigate('/user/other')
+    } else {
+      navigate('/user/self')
+    }
   }
 
   useEffect(() => {
@@ -116,6 +127,9 @@ const ReplyList = ({ tweetId, user, setUser }) => {
                   src={replyTweetData.replyTweet.User.avatar}
                   className={styles.DefaultAvatar}
                   alt="avatar"
+                  onClick={() =>
+                    handleChangeUser?.(replyTweetData.replyTweet.User.id)
+                  }
                 />
                 <div className={styles.ReplyUser}>
                   <div className={styles.UserName}>

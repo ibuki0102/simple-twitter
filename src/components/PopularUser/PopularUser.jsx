@@ -2,17 +2,20 @@
 
 import styles from 'components/PopularUser/PopularUser.module.scss'
 import { followUser, unFollowUser } from 'api/follow'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
-const PopularUser = ({ userData, updateTweetList, setUpdateTweetList }) => {
+const PopularUser = ({ userData }) => {
+  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
   const [isFollowed, setIsFollow] = useState(userData.isFollowed)
+  const userId = localStorage.getItem('userId')
   const handleClickFollow = async () => {
     const token = localStorage.getItem('token')
     const id = userData.id
     const data = await followUser({ token, id })
     if (data) {
       setIsFollow(true)
-      setUpdateTweetList(!updateTweetList)
+      setUpdateTweetList(true)
     }
   }
   const handleClickUnFollow = async () => {
@@ -21,7 +24,7 @@ const PopularUser = ({ userData, updateTweetList, setUpdateTweetList }) => {
     const data = await unFollowUser({ token, id })
     if (data) {
       setIsFollow(false)
-      setUpdateTweetList(!updateTweetList)
+      setUpdateTweetList(true)
     }
   }
   return (
@@ -40,15 +43,23 @@ const PopularUser = ({ userData, updateTweetList, setUpdateTweetList }) => {
         </div>
       </div>
 
-      {userData.isFollowed ? (
-        <button className={styles.ActiveButton} onClick={handleClickUnFollow}>
-          正在跟隨
-        </button>
-      ) : (
-        <button className={styles.DefaultButton} onClick={handleClickFollow}>
-          跟隨
-        </button>
-      )}
+      {userData.isFollowed
+        ? userData.id !== Number(userId) && (
+            <button
+              className={styles.ActiveButton}
+              onClick={handleClickUnFollow}
+            >
+              正在跟隨
+            </button>
+          )
+        : userData.id !== Number(userId) && (
+            <button
+              className={styles.DefaultButton}
+              onClick={handleClickFollow}
+            >
+              跟隨
+            </button>
+          )}
     </div>
   )
 }

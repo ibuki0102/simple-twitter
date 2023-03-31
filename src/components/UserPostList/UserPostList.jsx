@@ -28,9 +28,9 @@ const UserPostList = ({
   setUser,
 }) => {
   const navigate = useNavigate()
-  const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
+  const errorMessage = useContext(ErrorMessageContext)[0]
   const [notiState, setNotiState] = useContext(NotiContext)
-  const [notiType, setNotiType] = useContext(NotiTypeContext)
+  const notiType = useContext(NotiTypeContext)[0]
   // 管理個人資料頁面上方的個人資料
   const [userData, setUserData] = useState({
     account: '',

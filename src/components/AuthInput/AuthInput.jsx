@@ -102,6 +102,7 @@ const AuthInput = ({
           name={name}
           onChange={name ? onChange : (event) => onChange?.(event.target.value)}
           onKeyDown={onKeyDown}
+          autoComplete="off"
         />
         <div className={styles.Tips}>
           {/* // 錯誤訊息的判定跟顯示 */}

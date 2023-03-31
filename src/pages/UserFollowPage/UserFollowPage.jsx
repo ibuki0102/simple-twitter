@@ -11,6 +11,7 @@ import { getUserFollowers, getUserFollowings } from 'api/userFollowPage'
 import { useEffect, useState, useContext } from 'react'
 import { PageContext } from 'contexts/PageContext'
 import { UserContext } from 'contexts/UserContext'
+import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
 const UserFollowPage = () => {
   const navigate = useNavigate()
@@ -26,6 +27,8 @@ const UserFollowPage = () => {
   // Jasmine 註: 紀錄使用者 id
   const [user, setUser] = useContext(UserContext)
 
+  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
+
   // 串接'追隨者'資料
   useEffect(() => {
     const getFollowers = async () => {
@@ -38,13 +41,14 @@ const UserFollowPage = () => {
         const followers = await getUserFollowers({ token, userId })
         if (followers) {
           setFollowers(followers)
+          setUpdateTweetList(false)
         }
       } catch (error) {
         console.error(error)
       }
     }
     getFollowers()
-  }, [navigate])
+  }, [navigate, updateTweetList, setUpdateTweetList])
 
   // 串接'正在追隨'資料
   useEffect(() => {
@@ -58,13 +62,14 @@ const UserFollowPage = () => {
         const followings = await getUserFollowings({ token, userId })
         if (followings) {
           setFollowings(followings)
+          setUpdateTweetList(false)
         }
       } catch (error) {
         console.error(error)
       }
     }
     getFollowings()
-  }, [navigate])
+  }, [navigate, updateTweetList, setUpdateTweetList])
 
   return (
     <div className={styles.UserFollowPageContainer}>
