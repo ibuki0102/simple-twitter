@@ -11,19 +11,12 @@ const Homepage = () => {
   useEffect(() => {
     const token = localStorage.getItem('token')
     const role = localStorage.getItem('role')
-    const currentPage = localStorage.getItem('currentPage')
     if (!token) {
       setNotiType('notLogin')
       navigate('/login')
-      if (!currentPage) {
-        localStorage.setItem('currentPage', 'login')
-      } else if (currentPage === 'login') {
-        return
-      } else {
-        setTimeout(() => {
-          setNotiState(true)
-        }, 300)
-      }
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
       return
     }
     if (role === 'user') {
