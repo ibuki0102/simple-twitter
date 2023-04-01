@@ -3,7 +3,7 @@
 import styles from 'components/ReplyList/ReplyList.module.scss'
 import { ReactComponent as Back } from 'assets/icons/back.svg'
 import { ReactComponent as Reply } from 'assets/icons/reply.svg'
-import { ReactComponent as Like } from 'assets/icons/like.svg'
+import { ReactComponent as Like } from 'assets/icons/heart.svg'
 import { ReactComponent as Liked } from 'assets/icons/heart.svg'
 import { useState, useEffect, useContext } from 'react'
 import { getOneTweet } from 'api/getOneTweet'
