@@ -12,11 +12,12 @@
       align-items: center;
       padding: 19px 0 17px 28px;
       .Back {
+        fill: black;
         transition: 0.3s;
       }
       .Back:hover {
         cursor: pointer;
-        opacity: 0.7;
+        fill: #ff6600;
       }
       .UserName {
         display: flex;

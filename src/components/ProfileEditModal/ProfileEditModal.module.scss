@@ -24,10 +24,11 @@
       align-items: center;
       justify-content: space-between;
       .Close {
+        fill: #ff6600;
         transition: 0.3s;
         &:hover {
           cursor: pointer;
-          opacity: 0.7;
+          fill: black;
         }
       }
       .Header {
