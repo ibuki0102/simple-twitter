@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   .UserInfoContainer {
     display: flex;
   }
@@ -29,6 +30,8 @@
     }
   }
   .ActiveButton {
+    position: absolute;
+    right: 0px;
     padding: 0 16px;
     height: 40px;
     background: #ff6600;
