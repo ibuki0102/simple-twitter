@@ -23,9 +23,11 @@
       border-bottom: 1px solid #e6ecf0;
       transition: 0.3s;
       .Close {
+        fill: #ff6600;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
-          opacity: 0.7;
+          fill: black;
         }
       }
     }

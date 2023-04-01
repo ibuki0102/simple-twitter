@@ -21,8 +21,11 @@
       border-bottom: 1px solid #e6ecf0;
       .Back {
         margin-right: 19px;
+        fill: black;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          fill: #ff6600;
         }
       }
     }

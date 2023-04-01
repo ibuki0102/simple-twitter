@@ -13,6 +13,12 @@
       padding: 19px 0 17px 28px;
       .Back {
         cursor: pointer;
+        fill: black;
+        border-radius: 50%;
+        transition: 0.3s;
+        &:hover {
+          fill: #ff6600;
+        }
       }
       .UserName {
         display: flex;
