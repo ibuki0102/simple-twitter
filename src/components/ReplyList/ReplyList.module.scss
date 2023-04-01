@@ -124,8 +124,10 @@
         height: 20px;
         fill: #fc5a5a;
         stroke: #fc5a5a;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          opacity: 0.7;
         }
       }
     }
