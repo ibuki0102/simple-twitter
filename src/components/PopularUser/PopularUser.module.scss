@@ -32,16 +32,20 @@
     padding: 0 16px;
     height: 40px;
     background: #ff6600;
+    border: 1px solid #ff6600;
     border-radius: 50px;
-    border: none;
     color: #ffffff;
     font-weight: 400;
     line-height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
     &:hover {
       cursor: pointer;
+      background: white;
+      color: #ff6600;
+      border: 1px solid #ff6600;
     }
     &:focus {
       border: 1px solid #ff6600;
@@ -52,5 +56,11 @@
     background: white;
     color: #ff6600;
     border: 1px solid #ff6600;
+    &:hover {
+      cursor: pointer;
+      background: #ff6600;
+      border: 1px solid #ff6600;
+      color: #ffffff;
+    }
   }
 }

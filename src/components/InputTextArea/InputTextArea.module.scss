@@ -6,7 +6,6 @@
   background-color: #f5f8fa;
   padding: 5px 0;
   margin-bottom: 30px;
-
   .InputLabel {
     margin-left: 10px;
     font-size: 14px;
@@ -24,6 +23,7 @@
     font-size: 16px;
     position: relative;
     border-bottom: 2px solid #657786;
+    transition: 0.2s;
     &:focus {
       outline: none;
       border-bottom: 2px solid #50b5ff;

@@ -3,11 +3,13 @@
 .ReplyListContainer {
   width: 631px;
   height: 100%;
+  background-color: #e6ecf0;
   .ReplyListTopSection {
     position: relative;
     max-height: 650px;
     border: 1px solid #e6ecf0;
     border-top: none;
+    background-color: white;
     .Heading {
       display: flex;
       align-items: center;
@@ -32,8 +34,10 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          opacity: 0.7;
         }
       }
       .ReplyUser {
@@ -97,16 +101,22 @@
         margin-right: 133px;
         width: 25px;
         height: 25px;
+        fill: #6c757d;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          fill: #ff6600;
         }
       }
       .Like {
         padding-right: 3px;
         width: 27px;
         height: 27px;
+        fill: #6c757d;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          fill: #fc5a5a;
         }
       }
       .Liked {

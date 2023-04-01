@@ -26,7 +26,12 @@ const AdminUserListItem = ({ adminUser }) => {
           <img src={adminUser.avatar} className={styles.Avatar} alt="avatar" />
         )}
         <div className={styles.NameAccount}>
-          <span className={styles.Name}>{adminUser.name}</span>
+          <span className={styles.Name}>
+            {' '}
+            {adminUser.name.length > 6
+              ? adminUser.name.substr(0, 6) + '...' || 'UserName'
+              : adminUser.name || 'UserName'}
+          </span>
           <span className={styles.Account}>@{adminUser.account}</span>
         </div>
       </div>

@@ -11,8 +11,12 @@
       display: flex;
       align-items: center;
       padding: 19px 0 17px 28px;
+      .Back {
+        transition: 0.3s;
+      }
       .Back:hover {
         cursor: pointer;
+        opacity: 0.7;
       }
       .UserName {
         display: flex;
@@ -46,8 +50,10 @@
         color: #657786;
         width: 140px;
         padding: 15px 0;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          color: #ff6600;
         }
       }
       .Active {

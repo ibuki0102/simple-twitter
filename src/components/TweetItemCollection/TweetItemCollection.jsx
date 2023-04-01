@@ -1,10 +1,11 @@
 // Jasmine
 
 import TweetItem from 'components/TweetItem/TweetItem'
+import styles from 'components/TweetItemCollection/TweetItemCollection.module.scss'
 
 const TweetItemCollection = ({ tweets, user, setUser, setUpdateTweetList }) => {
   return (
-    <div>
+    <div className={styles.TweetItemContainer}>
       {tweets.map((tweet) => {
         return (
           <TweetItem

@@ -34,15 +34,25 @@
       padding: 8px 16px;
       font-weight: 400;
       line-height: 24px;
+      transition: 0.3s;
       &:hover {
         cursor: pointer;
+        background: #ff6600;
+        color: #ffffff;
+        border: 1px solid #ff6600;
       }
     }
     .ActiveButton {
       @extend .DefaultButton;
       background: #ff6600;
       color: #ffffff;
-      border: none;
+      border: 1px solid #ff6600;
+      &:hover {
+        cursor: pointer;
+        background: white;
+        color: #ff6600;
+        border: 1px solid #ff6600;
+      }
     }
     .TweetContent {
       color: #171725;

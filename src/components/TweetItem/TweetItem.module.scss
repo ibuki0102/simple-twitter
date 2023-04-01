@@ -6,13 +6,44 @@
   outline: 1px solid #e6ecf0;
   background-color: white;
   display: flex;
+  position: relative;
+  transition: 0.3s;
+  &:has(.ClickableArea:hover) {
+    margin-left: 5px;
+  }
+  .ClickableArea {
+    transition: 0.3s;
+    &:hover {
+      cursor: pointer;
+    }
+    margin-bottom: 16px;
+    z-index: 1;
+    .UserName {
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .UserAccount {
+      color: #6c757d;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+    }
+    .TweetContent {
+      margin-top: 8px;
+      margin-bottom: 11px;
+      font-weight: 400;
+      line-height: 26px;
+    }
+  }
   .Avatar {
     width: 50px;
     height: 50px;
     margin-top: 16px;
     margin-left: 24px;
+    transition: 0.3s;
     &:hover {
       cursor: pointer;
+      opacity: 0.7;
     }
     border-radius: 50%;
   }
@@ -30,20 +61,31 @@
       position: absolute;
       z-index: 2;
       bottom: 17px;
+      transition: 0.3s;
       &:hover {
         cursor: pointer;
+      }
+      &:hover > .Reply {
+        fill: #ff6600;
+      }
+      &:hover > .Number {
+        color: #ff6600;
       }
       .Reply {
         width: 17px;
         height: 17px;
         margin-right: 9.44px;
+        transition: 0.3s;
+        fill: #6c757d;
       }
       .Number {
         color: #6c757d;
         font-size: 14px;
         font-weight: 600;
+        transition: 0.3s;
       }
     }
+
     .Icon {
       display: flex;
       .Heart {
@@ -69,29 +111,6 @@
           font-size: 14px;
           font-weight: 600;
         }
-      }
-    }
-    .ClickableArea {
-      &:hover {
-        cursor: pointer;
-      }
-      margin-bottom: 16px;
-      z-index: 1;
-      .UserName {
-        font-weight: 700;
-        margin-right: 8px;
-      }
-      .UserAccount {
-        color: #6c757d;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 22px;
-      }
-      .TweetContent {
-        margin-top: 8px;
-        margin-bottom: 11px;
-        font-weight: 400;
-        line-height: 26px;
       }
     }
   }

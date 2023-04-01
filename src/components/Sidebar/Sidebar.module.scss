@@ -25,10 +25,22 @@
         margin: 8px 0;
         font-size: 18px;
         color: #44444f;
+        transition: 0.3s;
+        &:hover > a > .Icon {
+          fill: #ff6600;
+        }
+        &:hover > a > .Text {
+          color: #ff6600;
+        }
         &:hover {
           cursor: pointer;
         }
+        .Icon {
+          transition: 0.3s;
+          fill: #171725;
+        }
         .Text {
+          transition: 0.3s;
           margin-left: 16px;
         }
       }
@@ -44,8 +56,10 @@
         color: white;
         border-radius: 50px;
         font-size: 20px;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          opacity: 0.7;
         }
       }
     }
@@ -57,8 +71,18 @@
     font-weight: 700;
     &:hover {
       cursor: pointer;
+      color: #ff6600;
+      fill: #ff6600;
+    }
+    &:hover > .Logout {
+      fill: #ff6600;
+    }
+    .Logout {
+      transition: 0.3s;
+      fill: #171725;
     }
     .Text {
+      transition: 0.3s;
       margin-left: 10px;
       font-size: 18px;
     }

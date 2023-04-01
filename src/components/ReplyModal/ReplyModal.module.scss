@@ -23,8 +23,10 @@
       padding: 15px;
       border-bottom: 1px solid #e6ecf0;
       .Close {
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          opacity: 0.7;
         }
       }
     }
@@ -129,8 +131,10 @@
           color: white;
           border: 0;
           border-radius: 100px;
+          transition: 0.3s;
           &:hover {
             cursor: pointer;
+            opacity: 0.7;
           }
         }
       }

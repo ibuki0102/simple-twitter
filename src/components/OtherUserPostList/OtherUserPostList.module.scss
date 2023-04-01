@@ -96,13 +96,20 @@
       transition: 0.3s;
       &:hover {
         cursor: pointer;
+        background: #ff6600;
+        color: #ffffff;
       }
     }
     .ActiveButton {
       @extend .DefaultButton;
       background: #ff6600;
       color: #ffffff;
-      border: none;
+      border: 1px solid white;
+      &:hover {
+        background: white;
+        color: #ff6600;
+        border: 1px solid #ff6600;
+      }
     }
     .UserIntroduction {
       margin-top: 72px;
@@ -139,10 +146,18 @@
           &:hover {
             cursor: pointer;
           }
+          &:hover > .Number {
+            color: #ff6600;
+          }
+          &:hover > .Text {
+            color: #ff6600;
+          }
           .Number {
+            transition: 0.3s;
             color: #171725;
           }
           .Text {
+            transition: 0.3s;
             color: #6c757d;
           }
         }
@@ -157,8 +172,10 @@
         width: 140px;
         text-align: center;
         padding-bottom: 15px;
+        transition: 0.3s;
         &:hover {
           cursor: pointer;
+          color: #ff6600;
         }
       }
       .Active {

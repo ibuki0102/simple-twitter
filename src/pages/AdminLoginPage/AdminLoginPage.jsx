@@ -17,7 +17,7 @@ const AdminLoginPage = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const [notiState, setNotiState] = useContext(NotiContext)
-  const [notiType, setNotiType] = useContext(NotiTypeContext)
+  const setNotiType = useContext(NotiTypeContext)[1]
 
   // Jasmine 新增 useState & handleClick
   const [account, setAccount] = useState('')

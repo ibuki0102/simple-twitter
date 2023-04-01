@@ -14,8 +14,10 @@
     .TweetArea {
       width: 620px;
       height: 130px;
+      transition: 0.3s;
       &:hover {
         cursor: pointer;
+        opacity: 0.7;
       }
     }
     h4 {

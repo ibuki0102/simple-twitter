@@ -19,7 +19,7 @@ const RegistPage = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
   const [notiState, setNotiState] = useContext(NotiContext)
-  const [notiType, setNotiType] = useContext(NotiTypeContext)
+  const setNotiType = useContext(NotiTypeContext)[1]
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
