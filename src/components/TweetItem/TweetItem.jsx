@@ -80,7 +80,7 @@ const TweetItem = ({ tweet, user, setUser }) => {
         <div className={styles.ClickableArea} onClick={handleToReplyList}>
           <span className={styles.UserName}>{tweet.User.name}</span>
           <span className={styles.UserAccount}>
-            @{tweet.User.account}・{tweet.transferDateTime}
+            @{tweet.User.account}・{tweet.transferDateTimeformodel}
           </span>
           <div className={styles.TweetContent}>{tweet.description}</div>
           <div className={styles.Icon}>
