@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/simple-twitter/static/css/main.1537bcf4.css",
-    "main.js": "/simple-twitter/static/js/main.0671f166.js",
+    "main.js": "/simple-twitter/static/js/main.83ec9451.js",
     "static/media/Montserrat-Regular.ttf": "/simple-twitter/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
     "static/media/default_banner.png": "/simple-twitter/static/media/default_banner.e57aeb282b97953c83e5.png",
     "static/media/cog.svg": "/simple-twitter/static/media/cog.ae561eff87c693001d691060d5032307.svg",
@@ -30,10 +30,10 @@
     "static/media/heart.svg": "/simple-twitter/static/media/heart.00bf60db407e0dad7d357f5c7e920f26.svg",
     "static/media/noti_green.svg": "/simple-twitter/static/media/noti_green.982763741e8472c1d1ce4c3ecbdf2c04.svg",
     "main.1537bcf4.css.map": "/simple-twitter/static/css/main.1537bcf4.css.map",
-    "main.0671f166.js.map": "/simple-twitter/static/js/main.0671f166.js.map"
+    "main.83ec9451.js.map": "/simple-twitter/static/js/main.83ec9451.js.map"
   },
   "entrypoints": [
     "static/css/main.1537bcf4.css",
-    "static/js/main.0671f166.js"
+    "static/js/main.83ec9451.js"
   ]
 }
