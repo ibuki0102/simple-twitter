@@ -59,7 +59,6 @@ const TweetItem = ({ tweet, user, setUser }) => {
       navigate('/user/self')
     }
   }
-
   return (
     <div className={styles.TweetItemContainer}>
       {replyModalState && replyTweetData.User !== undefined ? (
@@ -80,7 +79,10 @@ const TweetItem = ({ tweet, user, setUser }) => {
         <div className={styles.ClickableArea} onClick={handleToReplyList}>
           <span className={styles.UserName}>{tweet.User.name}</span>
           <span className={styles.UserAccount}>
-            @{tweet.User.account}・{tweet.transferDateTimeformodel}
+            @{tweet.User.account}・
+            {tweet.transferDateTimeformodel
+              ? tweet.transferDateTimeformodel
+              : tweet.transferDateTime}
           </span>
           <div className={styles.TweetContent}>{tweet.description}</div>
           <div className={styles.Icon}>
