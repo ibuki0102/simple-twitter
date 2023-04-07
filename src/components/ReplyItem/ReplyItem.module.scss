@@ -55,7 +55,8 @@
     }
   }
   .ReplyContent {
-    width: 500px;
+    word-wrap: break-word;
+    width: 520px;
     margin: 8px 0 0 80px;
     padding-bottom: 18px;
   }
