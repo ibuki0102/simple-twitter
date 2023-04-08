@@ -19,6 +19,7 @@ const RegistPage = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
   const [notiState, setNotiState] = useContext(NotiContext)
+  // 僅取用setNotiType的function
   const setNotiType = useContext(NotiTypeContext)[1]
 
   const handleKeyDown = (event) => {
@@ -29,8 +30,9 @@ const RegistPage = () => {
       return setErrorMessage('')
     }
   }
-
+  // 按下註冊後觸發的事件
   const handleClick = async () => {
+    // 輸入值為0或是超過字數的例外處理
     if (
       account.length === 0 ||
       account.length > 10 ||
@@ -40,6 +42,7 @@ const RegistPage = () => {
       password.length === 0 ||
       checkPassword.length === 0
     ) {
+      // 錯誤訊息的通知處理
       setErrorMessage('error')
       setTimeout(() => {
         setNotiState(true)
@@ -49,6 +52,7 @@ const RegistPage = () => {
       }, 1500)
       return
     }
+    // 發送註冊api並取得回傳資料
     const { success, errorMessage } = await regist({
       account,
       name,
@@ -56,10 +60,17 @@ const RegistPage = () => {
       password,
       checkPassword,
     })
+    // 如果有錯誤訊息就執行錯誤訊息通知
     if (errorMessage) {
       setErrorMessage(errorMessage)
+      setTimeout(() => {
+        setNotiState(true)
+      }, 300)
+      setTimeout(() => {
+        setNotiState(false)
+      }, 1500)
     }
-    console.log(errorMessage)
+    // 成功註冊就導回登入頁並顯示註冊成功通知
     if (success) {
       setNotiType('regist')
       setTimeout(() => {
@@ -69,14 +80,6 @@ const RegistPage = () => {
         navigate('/login')
       }, 2500)
     }
-    if (errorMessage) {
-      setTimeout(() => {
-        setNotiState(true)
-      }, 300)
-      setTimeout(() => {
-        setNotiState(false)
-      }, 1500)
-    }
   }
 
   return (
@@ -84,7 +87,6 @@ const RegistPage = () => {
       {errorMessage && (
         <Notification text="註冊失敗" type="failed" notiState={notiState} />
       )}
-
       <div className={styles.AuthContainer}>
         <img src={Logo} alt="logo" width="45px" />
         <h3 className={styles.Title}>建立你的帳號</h3>
