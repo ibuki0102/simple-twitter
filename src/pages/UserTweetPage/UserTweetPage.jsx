@@ -43,7 +43,7 @@ const UserTweetPage = () => {
   // Jasmine 註: 紀錄使用者 id
   const [user, setUser] = useContext(UserContext)
 
-  // 串接個人資料的'推文'
+  // 串接個人資料的'推文'、'回覆'、'喜歡的內容'
   useEffect(() => {
     const getTweets = async () => {
       const token = localStorage.getItem('token')
