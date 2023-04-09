@@ -14,15 +14,19 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
   const name = replyTweetData.User.name
 
   const { id, description, transferDateTimeformodel } = replyTweetData
+  // 管理回覆內容
   const [comment, setComment] = useState('')
+  // 管理是否按下回復
   const [submited, setSubmited] = useState(false)
   const [notiState, setNotiState] = useContext(NotiContext)
-  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
   const [notiType, setNotiType] = useContext(NotiTypeContext)
+  const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
 
+  // 按下回復後觸發的事件
   const handleClick = async () => {
     setErrorMessage('')
+    // 管理錯誤情形
     if (comment.length > 140 || comment.length === 0) {
       setTimeout(() => {
         setNotiState(true)
@@ -51,7 +55,9 @@ const ReplyModal = ({ replyTweetData, userAvatar, setReplyModalState }) => {
         setNotiState(true)
       }, 300)
       setNotiType('reply')
+      // 更新推文列表
       setUpdateTweetList(true)
+      // 把推文modal關掉
       setReplyModalState(false)
     }
   }

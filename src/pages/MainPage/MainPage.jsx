@@ -18,6 +18,7 @@ const MainPage = () => {
   const navigate = useNavigate()
   const [tweets, setTweets] = useState([])
   const modalState = useContext(TweetModalContext)[0]
+  // 控制是否更新推文列表
   const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
   const replyModalState = useReplyContext()[0]
   const [user, setUser] = useContext(UserContext)

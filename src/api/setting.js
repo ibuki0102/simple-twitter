@@ -16,7 +16,6 @@ export const patchInfo = async (payload) => {
   if (checkPassword) {
     payLoadData = { ...payLoadData, checkPassword }
   }
-  console.log(payLoadData)
   try {
     const { data } = await axios({
       method: 'put',

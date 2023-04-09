@@ -16,6 +16,7 @@ const SettingPage = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [notiState, setNotiState] = useContext(NotiContext)
   const [notiType, setNotiType] = useContext(NotiTypeContext)
+  // 儲存使用者編輯過的資料
   const [editUserData, setEditUserData] = useState({
     editAccount: '',
     editName: '',
@@ -53,12 +54,14 @@ const SettingPage = () => {
     }
   }, [navigate, notiState, setNotiState, notiType])
 
+  // 使用者編輯資料時觸發的事件
   const handleInputChange = (event) => {
     setEditUserData({
       ...editUserData,
       [event.target.name]: event.target.value,
     })
   }
+  // 使用者點擊儲存觸發的事件
   const handleClickSave = async (event) => {
     event.preventDefault()
     const {
@@ -95,6 +98,7 @@ const SettingPage = () => {
       }, 300)
       return
     }
+    // 帳號或名稱字數超過，就不送出
     if (editAccount.length > 10 || editName.length > 50) {
       setNotiType('fail setting')
       setTimeout(() => {
