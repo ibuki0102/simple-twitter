@@ -15,13 +15,18 @@ import { ErrorMessageContext } from 'contexts/ErrorMessageContext'
 import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
 const TweetItem = ({ tweet, user, setUser }) => {
+  // 控制回復modal的狀態，開或關
   const { replyModalState, setReplyModalState } = useReplyContext()
+  // 控制回覆推文的內容
   const [replyTweetData, setReplyTweetData] = useState('')
+  // 控制使用者的頭貼
   const [userAvatar, setUserAvatar] = useState('')
+  // 控制是否要更新推文列表的內容
   const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const navigate = useNavigate()
   const setReplyTweetId = useContext(ReplyTweetContext)[1]
+  // 點下回復icon後打開回復modal
   const handleClickReply = async () => {
     const token = localStorage.getItem('token')
     if (!token) {
@@ -29,9 +34,13 @@ const TweetItem = ({ tweet, user, setUser }) => {
     }
     const tweetId = tweet.id
     const userId = localStorage.getItem('userId')
+    // 取得當前使用者的頭貼
     const userData = await getUserData({ token, userId })
+    // 取得回覆的推文的資料
     const data = await getOneTweet({ token, tweetId })
+    // 打開回復modal
     setReplyModalState(true)
+    // 設定要在modal裡顯示的資訊(頭貼 & 回覆推文內容)
     setUserAvatar(userData.avatar)
     setReplyTweetData(data)
   }
@@ -42,7 +51,6 @@ const TweetItem = ({ tweet, user, setUser }) => {
     navigate('/main/replyList')
   }
   // 雪央註: 清空上一則欲回覆的推文內容
-  // 雪央註: 這東西會讓畫面重新渲染52次，需要改成context，之後優化再做
   useEffect(() => {
     if (!replyModalState) {
       setReplyTweetData('')

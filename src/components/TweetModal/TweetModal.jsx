@@ -9,15 +9,19 @@ import { NotiTypeContext } from 'contexts/NoitTypeContext'
 import { ErrorMessageContext } from 'contexts/ErrorMessageContext'
 
 const TweetModal = ({ avatar }) => {
+  // 推文內容
   const [description, setDescription] = useState('')
+  // 是否按下發送推文
   const [submited, setSubmited] = useState(false)
   const [notiState, setNotiState] = useContext(NotiContext)
+  const setNotiType = useContext(NotiTypeContext)[1]
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const setModalState = useContext(TweetModalContext)[1]
-  const setNotiType = useContext(NotiTypeContext)[1]
-
+  // 按下發送推文
   const handleClick = async () => {
+    setSubmited(true)
     setErrorMessage('')
+    // 如果字數>140或為空的錯誤處理
     if (description.length > 140 || description.length === 0) {
       setTimeout(() => {
         setNotiState(true)
@@ -44,6 +48,7 @@ const TweetModal = ({ avatar }) => {
         setNotiState(true)
       }, 300)
       setNotiType('tweet')
+      // 關掉modal
       setModalState(false)
     }
   }

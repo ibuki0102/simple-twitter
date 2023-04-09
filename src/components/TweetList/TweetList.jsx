@@ -22,12 +22,14 @@ const TweetList = ({
 }) => {
   const [avatar, setAvatar] = useState('')
   const navigate = useNavigate()
+  // 控制推文modal的狀態，開啟或關閉(true or false)
   const [modalState, setModalState] = useContext(TweetModalContext)
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const [notiState, setNotiState] = useContext(NotiContext)
   const [notiType, setNotiType] = useContext(NotiTypeContext)
 
   useEffect(() => {
+    // 取得當前使用者頭貼
     const userData = async () => {
       try {
         const token = localStorage.getItem('token')
@@ -65,6 +67,7 @@ const TweetList = ({
       <div className={styles.TweetListContainer}>
         <div className={styles.TweetListTopSection}>
           <h4>首頁</h4>
+          {/* // 點選這個區域就會顯示推文modal */}
           <div onClick={() => setModalState(true)} className={styles.TweetArea}>
             <div className={styles.Post}>
               <img
@@ -77,6 +80,7 @@ const TweetList = ({
             <button>推文</button>
           </div>
         </div>
+        {/* // 如果推文modal的state是true就會顯示 */}
         {modalState && (
           <TweetModal setModalState={setModalState} avatar={avatar} />
         )}
