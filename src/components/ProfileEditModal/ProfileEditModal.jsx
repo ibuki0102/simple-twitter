@@ -14,13 +14,17 @@ import Notification from 'components/Notification/Notification'
 
 const ProfileEditModal = ({ userData, setProfileModalState }) => {
   const { name, avatar, cover, introduction } = userData
+  // 管理預覽的背景圖片/頭貼圖片的網址
   const [coverDataURL, setCoverDataURL] = useState(null)
   const [avatarDataURL, setAvatarDataURL] = useState(null)
+  // 判定使用者是否要還原成預設的背景圖片
   const [defaultCover, setDefaultCover] = useState('')
+  // 控制要不要顯示更新中請稍後的字幕
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useContext(ErrorMessageContext)
   const [notiState, setNotiState] = useContext(NotiContext)
   const setNotiType = useContext(NotiTypeContext)[1]
+  // 管理使用者編輯過的資料
   const [editUserData, setEditUserData] = useState({
     name: name,
     avatar: '',
@@ -51,12 +55,14 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
     }
   }
 
+  // 使用者點擊背景圖片裡的X觸發的事件
   const handleResetCover = (event) => {
     setDefaultCover('')
     event.target.value = null
     setDefaultCover(defaultBanner)
   }
 
+  // 使用者點擊儲存觸發的事件
   const handleSaveButton = async () => {
     setErrorMessage('')
     const token = localStorage.getItem('token')
@@ -68,6 +74,7 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
       introduction: editUserData.introduction,
       avatar: editUserData.avatar,
     }
+    // 錯誤處理
     if (
       editUserData.introduction.length > 160 ||
       editUserData.name.length > 50 ||
@@ -79,8 +86,10 @@ const ProfileEditModal = ({ userData, setProfileModalState }) => {
       setNotiType('editProfile')
       return setErrorMessage('error')
     }
+    // 使用者要改成用預設的cover
     if (defaultCover) {
       payload = { ...payload, cover: null }
+      // 待修bug，使用者上傳過背景圖片後如果再次修改，但只修改頭貼，按儲存會失效
     } else if (cover) {
       setTimeout(() => {
         setNotiState(true)
