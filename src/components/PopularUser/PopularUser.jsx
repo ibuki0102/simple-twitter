@@ -7,8 +7,10 @@ import { UpdateTweetContext } from 'contexts/UpdateTweetContext'
 
 const PopularUser = ({ userData }) => {
   const [updateTweetList, setUpdateTweetList] = useContext(UpdateTweetContext)
+  // 控制當前的使用者有沒有追隨這個人
   const [isFollowed, setIsFollow] = useState(userData.isFollowed)
   const userId = localStorage.getItem('userId')
+  // 點擊追隨
   const handleClickFollow = async () => {
     const token = localStorage.getItem('token')
     const id = userData.id
@@ -18,6 +20,7 @@ const PopularUser = ({ userData }) => {
       setUpdateTweetList(true)
     }
   }
+  // 點擊取消追隨
   const handleClickUnFollow = async () => {
     const token = localStorage.getItem('token')
     const id = userData.id
@@ -38,13 +41,13 @@ const PopularUser = ({ userData }) => {
         <div className={styles.PopularUserName}>
           <div className={styles.UserName}>
             {userData.name.length > 6
-              ? userData.name.substr(0, 6) + '...' || 'UserName'
+              ? userData.name.substr(0, 6) + '...'
               : userData.name || 'UserName'}
           </div>
           <div className={styles.UserAccount}>
             @
             {userData.account.length > 5
-              ? userData.account.substr(0, 5) + '...' || 'UserAccount'
+              ? userData.account.substr(0, 5) + '...'
               : userData.account || 'UserAccount'}
           </div>
         </div>
